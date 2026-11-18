@@ -1,0 +1,1884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prokritee — Admin Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: { extend: { fontFamily: { sans: ['Inter','Hind Siliguri','sans-serif'] } } }
+    }
+  </script>
+  <style>
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    .tab-content.hidden { display: none; }
+  </style>
+</head>
+<body class="bg-slate-100 text-slate-800 font-sans min-h-screen flex flex-col">
+
+<!-- ══════════════════════ TOP NAVBAR ══════════════════════ -->
+<header class="bg-slate-900 text-white sticky top-0 z-40 border-b border-slate-800 shadow-md">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+
+      <!-- Brand -->
+      <div class="flex items-center gap-3">
+        <div class="h-10 w-10 rounded-xl overflow-hidden bg-white p-0.5 shadow-sm border border-emerald-500/30">
+          <img src="assets/images/logo.jpg" alt="Logo" class="h-full w-full object-contain" onerror="this.src=''">
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="text-lg font-black tracking-tight text-white">prokritee</span>
+            <span class="px-2 py-0.5 rounded-md bg-emerald-500/20 text-emerald-400 text-[10px] font-bold border border-emerald-500/30">ADMIN</span>
+          </div>
+          <span class="text-[10px] text-slate-400 block -mt-1">Corporate Gift Management</span>
+        </div>
+      </div>
+
+      <!-- Top Right -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <div id="server-status-badge" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-950/80 border border-emerald-600/40 text-emerald-300 text-xs font-semibold">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span>Live Server</span>
+        </div>
+        <a href="/" target="_blank" class="px-3 py-2 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold rounded-xl transition-all flex items-center gap-1.5">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          <span class="hidden sm:inline">View Store</span>
+        </a>
+        <button onclick="switchTab('tab-add-product')" class="px-3 py-2 bg-white/10 hover:bg-white/20 text-white text-xs font-bold rounded-xl border border-white/20 transition-all flex items-center gap-1.5">
+          <i class="fa-solid fa-plus text-emerald-400"></i>
+          <span class="hidden sm:inline">Add Product</span>
+        </button>
+        <!-- User Menu -->
+        <div class="relative">
+          <button onclick="toggleUserMenu()" id="user-menu-btn" class="flex items-center gap-2 px-3 py-2 bg-white/10 hover:bg-white/20 text-white text-xs font-semibold rounded-xl border border-white/20 transition-all">
+            <i class="fa-solid fa-circle-user text-base text-emerald-400"></i>
+            <span id="nav-username" class="hidden sm:inline">Admin</span>
+            <i class="fa-solid fa-chevron-down text-[10px]"></i>
+          </button>
+          <div id="user-dropdown" class="hidden absolute right-0 top-11 w-48 bg-white rounded-2xl shadow-xl border border-slate-100 py-2 z-50">
+            <div class="px-4 py-2 border-b border-slate-100">
+              <div id="dd-username" class="text-xs font-bold text-slate-800"></div>
+              <div id="dd-role" class="text-[10px] text-slate-400"></div>
+            </div>
+            <button onclick="switchTab('tab-users'); closeUserMenu()" class="w-full text-left px-4 py-2 text-xs text-slate-700 hover:bg-slate-50 flex items-center gap-2">
+              <i class="fa-solid fa-users-gear w-4 text-slate-400"></i> User Management
+            </button>
+            <button onclick="handleLogout()" class="w-full text-left px-4 py-2 text-xs text-red-600 hover:bg-red-50 flex items-center gap-2">
+              <i class="fa-solid fa-right-from-bracket w-4"></i> Sign Out
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════ MAIN LAYOUT ══════════════════════ -->
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full flex-1">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+
+    <!-- ── Sidebar ── -->
+    <aside class="lg:col-span-3 bg-white rounded-2xl border border-slate-200/80 shadow-sm p-4 space-y-1 sticky top-24">
+      <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider px-3 py-1 mb-1">Navigation</div>
+
+      <button onclick="switchTab('tab-dashboard')" id="nav-dashboard" class="sidebar-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold bg-emerald-50 text-emerald-800 transition-colors">
+        <i class="fa-solid fa-chart-pie w-5 text-emerald-600 text-sm"></i>
+        <span>Dashboard</span>
+      </button>
+      <button onclick="switchTab('tab-products')" id="nav-products" class="sidebar-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-700 hover:bg-slate-50 transition-colors">
+        <i class="fa-solid fa-boxes-stacked w-5 text-slate-500 text-sm"></i>
+        <span>Product List</span>
+        <span id="badge-total-prod" class="ml-auto bg-slate-100 text-slate-600 px-2 py-0.5 rounded-md text-[10px] font-bold">0</span>
+      </button>
+      <button onclick="switchTab('tab-add-product')" id="nav-add-product" class="sidebar-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-700 hover:bg-slate-50 transition-colors">
+        <i class="fa-solid fa-plus-circle w-5 text-emerald-600 text-sm"></i>
+        <span class="text-emerald-700 font-bold">+ Add New Product</span>
+      </button>
+      <button onclick="switchTab('tab-categories')" id="nav-categories" class="sidebar-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-700 hover:bg-slate-50 transition-colors">
+        <i class="fa-solid fa-layer-group w-5 text-slate-500 text-sm"></i>
+        <span>Categories</span>
+        <span id="badge-total-sec" class="ml-auto bg-slate-100 text-slate-600 px-2 py-0.5 rounded-md text-[10px] font-bold">0</span>
+      </button>
+      <button onclick="switchTab('tab-orders')" id="nav-orders" class="sidebar-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-700 hover:bg-slate-50 transition-colors">
+        <i class="fa-solid fa-receipt w-5 text-slate-500 text-sm"></i>
+        <span>Orders & Quotations</span>
+        <span id="badge-total-orders" class="ml-auto bg-amber-100 text-amber-800 px-2 py-0.5 rounded-md text-[10px] font-bold">0</span>
+      </button>
+
+      <div class="pt-2">
+        <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider px-3 py-1">Store</div>
+        <button onclick="switchTab('tab-settings')" id="nav-settings" class="sidebar-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-700 hover:bg-slate-50 transition-colors">
+          <i class="fa-solid fa-gear w-5 text-slate-500 text-sm"></i>
+          <span>Store Settings</span>
+        </button>
+        <button onclick="switchTab('tab-users')" id="nav-users" class="sidebar-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-700 hover:bg-slate-50 transition-colors">
+          <i class="fa-solid fa-users-gear w-5 text-slate-500 text-sm"></i>
+          <span>User Management</span>
+        </button>
+      </div>
+
+      <div class="pt-4 mt-4 border-t border-slate-100">
+        <div class="p-3 bg-emerald-50 rounded-xl border border-emerald-100 text-[11px] text-emerald-900 leading-relaxed">
+          <div class="font-bold mb-1 flex items-center gap-1.5">
+            <i class="fa-solid fa-bolt text-emerald-600"></i> Live Auto-Sync
+          </div>
+          Products uploaded here instantly appear on the live website.
+        </div>
+      </div>
+    </aside>
+
+    <!-- ── Main Content ── -->
+    <main class="lg:col-span-9 space-y-6">
+
+      <!-- ══ TAB 1: DASHBOARD ══ -->
+      <div id="tab-dashboard" class="tab-content space-y-6">
+
+        <div class="bg-gradient-to-r from-slate-900 via-emerald-950 to-slate-900 rounded-2xl p-6 text-white shadow-md">
+          <div class="space-y-2">
+            <h2 class="text-xl sm:text-2xl font-black">Welcome to Prokritee Admin 👋</h2>
+            <p class="text-xs sm:text-sm text-slate-300 max-w-xl">Manage your corporate gift products, track orders, and control your online store from here.</p>
+            <div class="pt-2 flex flex-wrap gap-2">
+              <button onclick="switchTab('tab-add-product')" class="px-4 py-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-bold rounded-xl transition-all flex items-center gap-1.5">
+                <i class="fa-solid fa-cloud-arrow-up"></i> Upload New Product
+              </button>
+              <button onclick="switchTab('tab-products')" class="px-4 py-2 bg-white/10 hover:bg-white/20 text-white text-xs font-bold rounded-xl border border-white/20 transition-all flex items-center gap-1.5">
+                <i class="fa-solid fa-list-check"></i> View All Products
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+          <div class="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-sm">
+            <div class="flex items-center justify-between text-slate-500 mb-2">
+              <span class="text-xs font-semibold">Total Products</span>
+              <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center text-sm"><i class="fa-solid fa-box"></i></div>
+            </div>
+            <div id="stat-products" class="text-2xl font-black text-slate-900">0</div>
+            <span class="text-[11px] text-emerald-700 font-semibold">Across all categories</span>
+          </div>
+          <div class="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-sm">
+            <div class="flex items-center justify-between text-slate-500 mb-2">
+              <span class="text-xs font-semibold">Categories</span>
+              <div class="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center text-sm"><i class="fa-solid fa-tags"></i></div>
+            </div>
+            <div id="stat-sections" class="text-2xl font-black text-slate-900">0</div>
+            <span class="text-[11px] text-blue-700 font-semibold">Corporate gift types</span>
+          </div>
+          <div class="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-sm">
+            <div class="flex items-center justify-between text-slate-500 mb-2">
+              <span class="text-xs font-semibold">Orders & Quotes</span>
+              <div class="w-8 h-8 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center text-sm"><i class="fa-solid fa-file-invoice"></i></div>
+            </div>
+            <div id="stat-orders" class="text-2xl font-black text-slate-900">0</div>
+            <span class="text-[11px] text-amber-700 font-semibold">In inbox</span>
+          </div>
+          <div class="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-sm">
+            <div class="flex items-center justify-between text-slate-500 mb-2">
+              <span class="text-xs font-semibold">Image Storage</span>
+              <div class="w-8 h-8 rounded-lg bg-violet-100 text-violet-700 flex items-center justify-center text-sm"><i class="fa-solid fa-images"></i></div>
+            </div>
+            <div class="text-lg font-black text-slate-900">uploads/</div>
+            <span class="text-[11px] text-violet-700 font-semibold">Saved locally</span>
+          </div>
+        </div>
+
+        <!-- Recent Products -->
+        <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm p-5 space-y-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <h3 class="font-bold text-slate-900 text-sm">Recent Products</h3>
+              <p class="text-xs text-slate-500">Latest entries in your catalog</p>
+            </div>
+            <button onclick="switchTab('tab-products')" class="text-xs font-bold text-emerald-700 hover:text-emerald-800">View all &rarr;</button>
+          </div>
+          <div id="dashboard-recent-products" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ TAB 2: ADD / EDIT PRODUCT ══ -->
+      <div id="tab-add-product" class="tab-content hidden space-y-6">
+        <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm p-6 space-y-6">
+          <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+            <div>
+              <h2 id="form-title" class="text-lg font-bold text-slate-900">📦 Add New Product</h2>
+              <p class="text-xs text-slate-500">New products immediately appear on the live website and sync to the store</p>
+            </div>
+            <button type="button" onclick="resetProductForm()" class="px-3 py-1.5 rounded-lg border border-slate-200 text-xs text-slate-600 hover:bg-slate-50 transition-colors">
+              <i class="fa-solid fa-rotate-left mr-1"></i> Reset Form
+            </button>
+          </div>
+
+          <form id="product-upload-form" onsubmit="handleProductSave(event, false)" class="space-y-6">
+            <input type="hidden" id="prod-id" value="">
+
+            <!-- Image Upload & Dropzone -->
+            <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200/80 space-y-3">
+              <div class="flex items-center justify-between">
+                <label class="block text-xs font-bold text-slate-800">
+                  <i class="fa-regular fa-image text-emerald-600 mr-1"></i> Product Image
+                </label>
+                <button type="button" onclick="clearProductImage()" class="text-[11px] text-slate-400 hover:text-red-500 flex items-center gap-1 transition-colors">
+                  <i class="fa-solid fa-trash-can text-[10px]"></i> Reset Image
+                </button>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+                <!-- Dropzone & Preview Box -->
+                <div class="md:col-span-4">
+                  <div id="img-dropzone"
+                    onclick="document.getElementById('prod-file-input').click()"
+                    ondragover="handleDragOver(event)"
+                    ondragleave="handleDragLeave(event)"
+                    ondrop="handleDrop(event)"
+                    class="w-full h-44 bg-white rounded-2xl border-2 border-dashed border-slate-300 hover:border-emerald-500 hover:bg-emerald-50/30 transition-all flex flex-col items-center justify-center cursor-pointer overflow-hidden p-2 relative group">
+                    <img id="img-preview" src="assets/images/logo.jpg" alt="Preview" class="max-h-32 max-w-full object-contain transition-transform group-hover:scale-105">
+                    <div id="img-info-tag" class="text-[10px] text-slate-400 mt-1 truncate max-w-full text-center px-1">Click or drag image here</div>
+                    <div class="absolute inset-0 bg-slate-900/40 text-white text-xs font-semibold flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl">
+                      <i class="fa-solid fa-camera mr-1.5"></i> Change Image
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Controls -->
+                <div class="md:col-span-8 space-y-3">
+                  <div>
+                    <span class="text-xs font-semibold text-slate-700 block mb-1">
+                      <i class="fa-solid fa-laptop mr-1 text-emerald-600"></i> Upload from Device (JPG, PNG, WEBP):
+                    </span>
+                    <input type="file" id="prod-file-input" accept="image/*" onchange="handleFileUpload(this.files[0])"
+                      class="block w-full text-xs text-slate-500 file:mr-3 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-emerald-700 file:text-white hover:file:bg-emerald-800 cursor-pointer border border-slate-200 rounded-xl bg-white p-1">
+                    <div id="upload-status" class="text-[11px] text-emerald-700 font-semibold mt-1 hidden flex items-center gap-1.5">
+                      <i class="fa-solid fa-spinner fa-spin"></i> <span>Uploading image to server...</span>
+                    </div>
+                  </div>
+
+                  <div>
+                    <span class="text-xs font-semibold text-slate-700 block mb-1">
+                      <i class="fa-solid fa-link mr-1 text-emerald-600"></i> Or Paste Image Web URL:
+                    </span>
+                    <input type="url" id="prod-image" oninput="previewImageUrl(this.value)" onchange="previewImageUrl(this.value)"
+                      placeholder="https://example.com/product-image.jpg"
+                      class="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs bg-white focus:ring-2 focus:ring-emerald-600 focus:outline-none">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product Names -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">
+                  Product Name (Bangla) <span class="text-emerald-700 font-normal">* বাংলা নাম</span>
+                </label>
+                <input type="text" id="prod-name-bn" placeholder="e.g. এক্সিকিউটিভ ভিআইপি লাক্সারি গিফট হ্যাম্পার"
+                  class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-600 focus:outline-none bg-slate-50/50 focus:bg-white">
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">
+                  Product Name (English) <span class="text-slate-400 font-normal">(Auto-syncs if left blank)</span>
+                </label>
+                <input type="text" id="prod-name-en" placeholder="e.g. Executive VIP Luxury Gift Hamper"
+                  class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-600 focus:outline-none bg-slate-50/50 focus:bg-white">
+              </div>
+            </div>
+
+            <!-- Category, SKU, MOQ -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div>
+                <div class="flex items-center justify-between mb-1">
+                  <label class="text-xs font-bold text-slate-700">Category *</label>
+                  <button type="button" onclick="openCategoryModal('product-form')" class="text-[11px] font-bold text-emerald-700 hover:text-emerald-800 hover:underline flex items-center gap-1">
+                    <i class="fa-solid fa-plus-circle"></i> + New Category
+                  </button>
+                </div>
+                <div class="flex gap-2">
+                  <select id="prod-section" onchange="onCategoryChanged()" required class="flex-1 px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-600 focus:outline-none bg-white">
+                    <!-- Populated by JS -->
+                  </select>
+                  <button type="button" onclick="openCategoryModal('product-form')" title="Add new category" class="px-3 py-2 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 rounded-xl text-emerald-700 text-xs font-bold transition-colors flex items-center gap-1">
+                    <i class="fa-solid fa-plus"></i>
+                  </button>
+                </div>
+              </div>
+              <div>
+                <div class="flex items-center justify-between mb-1">
+                  <label class="text-xs font-bold text-slate-700">Product Code (SKU) *</label>
+                  <button type="button" onclick="autoGenerateCode()" class="text-[10px] text-emerald-700 hover:underline font-semibold">
+                    <i class="fa-solid fa-rotate mr-0.5"></i> Re-generate
+                  </button>
+                </div>
+                <input type="text" id="prod-code" required placeholder="e.g. GB-183"
+                  class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm font-mono font-bold text-slate-800 uppercase focus:ring-2 focus:ring-emerald-600 focus:outline-none bg-slate-50/50 focus:bg-white">
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Min. Order Qty (MOQ - pcs) *</label>
+                <input type="text" id="prod-moq" required value="50" placeholder="50"
+                  class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-600 focus:outline-none bg-slate-50/50 focus:bg-white">
+              </div>
+            </div>
+
+            <!-- Pricing -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Selling Price (৳) *</label>
+                <div class="relative">
+                  <span class="absolute left-3.5 top-2.5 text-slate-400 font-bold text-sm">৳</span>
+                  <input type="text" id="prod-price" required oninput="calculatePricePreview()" placeholder="e.g. 3200"
+                    class="w-full pl-8 pr-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm font-bold text-emerald-800 focus:ring-2 focus:ring-emerald-600 focus:outline-none bg-slate-50/50 focus:bg-white">
+                </div>
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Regular Price (৳) <span class="text-slate-400 font-normal">Optional</span></label>
+                <div class="relative">
+                  <span class="absolute left-3.5 top-2.5 text-slate-400 font-bold text-sm">৳</span>
+                  <input type="text" id="prod-orig-price" oninput="calculatePricePreview()" placeholder="e.g. 4000"
+                    class="w-full pl-8 pr-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm text-slate-500 focus:ring-2 focus:ring-emerald-600 focus:outline-none bg-slate-50/50 focus:bg-white">
+                </div>
+                <div id="price-preview-badge" class="text-[11px] text-emerald-700 font-semibold mt-1 hidden"></div>
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Product Badge</label>
+                <input type="text" id="prod-badge" value="Corporate Gift" placeholder="e.g. Best Seller"
+                  class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-600 focus:outline-none bg-slate-50/50 focus:bg-white">
+                <!-- Badge Quick Pills -->
+                <div class="flex flex-wrap gap-1 mt-1.5">
+                  <button type="button" onclick="setBadge('Most Popular')" class="text-[10px] px-2 py-0.5 rounded bg-slate-100 hover:bg-emerald-100 text-slate-600 hover:text-emerald-800 transition-colors">Popular</button>
+                  <button type="button" onclick="setBadge('Best Seller')" class="text-[10px] px-2 py-0.5 rounded bg-slate-100 hover:bg-emerald-100 text-slate-600 hover:text-emerald-800 transition-colors">Best Seller</button>
+                  <button type="button" onclick="setBadge('Hot Collection')" class="text-[10px] px-2 py-0.5 rounded bg-slate-100 hover:bg-emerald-100 text-slate-600 hover:text-emerald-800 transition-colors">Hot</button>
+                  <button type="button" onclick="setBadge('Premium Quality')" class="text-[10px] px-2 py-0.5 rounded bg-slate-100 hover:bg-emerald-100 text-slate-600 hover:text-emerald-800 transition-colors">Premium</button>
+                  <button type="button" onclick="setBadge('100% Eco-Friendly')" class="text-[10px] px-2 py-0.5 rounded bg-slate-100 hover:bg-emerald-100 text-slate-600 hover:text-emerald-800 transition-colors">Eco</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Description -->
+            <div>
+              <div class="flex items-center justify-between mb-1">
+                <label class="block text-xs font-bold text-slate-700">Product Description</label>
+                <div class="flex items-center gap-1.5 text-[10px] text-slate-500">
+                  <span>Quick insert:</span>
+                  <button type="button" onclick="appendDescription('কোম্পানির লোগো লেজার খোদাই ও প্রিন্ট সুবিধা। ')" class="hover:text-emerald-700 underline">Logo Print</button>
+                  <span>·</span>
+                  <button type="button" onclick="appendDescription('প্রিমিয়াম হার্ডবক্স প্যাকেজিং সহ। ')" class="hover:text-emerald-700 underline">Box Packaging</button>
+                  <span>·</span>
+                  <button type="button" onclick="appendDescription('ফুড-গ্রেড ৩১৪ স্টেইনলেস স্টিল। ')" class="hover:text-emerald-700 underline">Food Grade</button>
+                </div>
+              </div>
+              <textarea id="prod-desc" rows="3" placeholder="Describe product features, material, customization options..."
+                class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-600 focus:outline-none bg-slate-50/50 focus:bg-white"></textarea>
+            </div>
+
+            <!-- Customizable Checkbox -->
+            <div class="flex items-center gap-2 p-3 bg-emerald-50/60 rounded-xl border border-emerald-100">
+              <input type="checkbox" id="prod-customizable" checked class="w-4 h-4 text-emerald-600 rounded border-slate-300 focus:ring-emerald-500">
+              <label for="prod-customizable" class="text-xs font-semibold text-slate-700 cursor-pointer">
+                Company logo print / laser engraving available for corporate clients (কাস্টমাইজেশন সুবিধা প্রযোজ্য)
+              </label>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="pt-4 border-t border-slate-100 flex flex-wrap items-center gap-3">
+              <button type="submit" id="btn-save-prod"
+                class="px-6 py-3 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-md flex items-center gap-2">
+                <i class="fa-solid fa-floppy-disk"></i>
+                <span id="btn-save-prod-text">Save Product</span>
+              </button>
+
+              <button type="button" id="btn-save-add-another" onclick="handleProductSave(event, true)"
+                class="px-5 py-3 bg-slate-800 hover:bg-slate-900 text-white font-bold text-xs sm:text-sm rounded-xl transition-all flex items-center gap-2">
+                <i class="fa-solid fa-plus"></i>
+                <span>Save & Add Another</span>
+              </button>
+
+              <button type="button" onclick="resetProductForm(); switchTab('tab-products')"
+                class="px-5 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs sm:text-sm rounded-xl transition-colors">
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- ══ TAB 3: PRODUCT LIST ══ -->
+      <div id="tab-products" class="tab-content hidden space-y-4">
+        <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm p-5 space-y-4">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
+            <div>
+              <h2 class="text-lg font-bold text-slate-900">📦 Product Inventory</h2>
+              <p class="text-xs text-slate-500">View, edit or delete any product</p>
+            </div>
+            <div class="flex flex-wrap items-center gap-2">
+              <div class="relative">
+                <input type="text" id="admin-search-input" oninput="filterProductsTable()"
+                  placeholder="Search by name or SKU..."
+                  class="pl-9 pr-3 py-2 text-xs rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-600 w-48 sm:w-60">
+                <i class="fa-solid fa-magnifying-glass text-slate-400 text-xs absolute left-3 top-2.5"></i>
+              </div>
+              <select id="admin-category-filter" onchange="filterProductsTable()"
+                class="py-2 px-3 text-xs rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-600">
+                <option value="all">All Categories</option>
+              </select>
+              <button onclick="switchTab('tab-add-product')" class="px-3.5 py-2 bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold rounded-xl flex items-center gap-1.5">
+                <i class="fa-solid fa-plus"></i> Add New
+              </button>
+            </div>
+          </div>
+
+          <div class="overflow-x-auto rounded-xl border border-slate-100">
+            <table class="w-full text-left border-collapse text-xs">
+              <thead>
+                <tr class="bg-slate-50 text-slate-600 font-bold border-b border-slate-200 uppercase text-[10px] tracking-wider">
+                  <th class="p-3">Image</th>
+                  <th class="p-3">Product Name</th>
+                  <th class="p-3">SKU Code</th>
+                  <th class="p-3">Category</th>
+                  <th class="p-3">Price (৳)</th>
+                  <th class="p-3">MOQ</th>
+                  <th class="p-3 text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="products-table-body" class="divide-y divide-slate-100">
+                <!-- Rendered by JS -->
+              </tbody>
+            </table>
+          </div>
+          <div class="flex items-center justify-between text-xs text-slate-500 pt-2">
+            <span id="table-count-label">Loading products...</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ TAB 4: CATEGORIES ══ -->
+      <div id="tab-categories" class="tab-content hidden space-y-6">
+        <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm p-6 space-y-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-100 gap-3">
+            <div>
+              <h2 class="text-lg font-bold text-slate-900">📂 Category Management</h2>
+              <p class="text-xs text-slate-500">Create and manage product sections displayed on the homepage</p>
+            </div>
+            <button onclick="openCategoryModal('categories-tab')" class="px-4 py-2 bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold rounded-xl transition-all shadow-md flex items-center gap-1.5 self-start sm:self-auto">
+              <i class="fa-solid fa-plus-circle"></i>
+              <span>+ Add New Category</span>
+            </button>
+          </div>
+          <div id="categories-list" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ TAB 5: ORDERS ══ -->
+      <div id="tab-orders" class="tab-content hidden space-y-6">
+        <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm p-6 space-y-4">
+          <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+            <div>
+              <h2 class="text-lg font-bold text-slate-900">🛍️ Orders & Quotation Inbox</h2>
+              <p class="text-xs text-slate-500">Customer orders and corporate bulk quotation requests</p>
+            </div>
+            <button onclick="loadOrders()" class="px-3 py-1.5 rounded-lg border border-slate-200 text-xs text-slate-600 hover:bg-slate-50">
+              <i class="fa-solid fa-rotate mr-1"></i> Refresh
+            </button>
+          </div>
+          <div class="overflow-x-auto rounded-xl border border-slate-100">
+            <table class="w-full text-left border-collapse text-xs">
+              <thead>
+                <tr class="bg-slate-50 text-slate-600 font-bold border-b border-slate-200 uppercase text-[10px] tracking-wider">
+                  <th class="p-3">Order ID</th>
+                  <th class="p-3">Type</th>
+                  <th class="p-3">Customer / Company</th>
+                  <th class="p-3">Address / Area</th>
+                  <th class="p-3">Amount</th>
+                  <th class="p-3">Status</th>
+                  <th class="p-3 text-right">Action</th>
+                </tr>
+              </thead>
+              <tbody id="orders-table-body" class="divide-y divide-slate-100">
+                <!-- Rendered by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ TAB 6: SETTINGS ══ -->
+      <div id="tab-settings" class="tab-content hidden space-y-6">
+        <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm p-6 space-y-6">
+          <div class="pb-4 border-b border-slate-100">
+            <h2 class="text-lg font-bold text-slate-900">⚙️ Store Settings</h2>
+            <p class="text-xs text-slate-500">Update contact info, address and delivery charges</p>
+          </div>
+          <form onsubmit="handleSettingsSave(event)" class="space-y-4 max-w-xl">
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">Hotline Phone Number</label>
+              <input type="text" id="setting-phone" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">WhatsApp Number (with country code, e.g. 8801911193642)</label>
+              <input type="text" id="setting-whatsapp" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">Office / Showroom Address</label>
+              <textarea id="setting-address" rows="2" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm"></textarea>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Delivery Charge – Inside Dhaka (৳)</label>
+                <input type="number" id="setting-del-dhaka" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm">
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Delivery Charge – Outside Dhaka (৳)</label>
+                <input type="number" id="setting-del-outside" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm">
+              </div>
+            </div>
+            <button type="submit" class="px-6 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-md">
+              <i class="fa-solid fa-floppy-disk mr-1.5"></i> Save Settings
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- ══ TAB 7: USER MANAGEMENT ══ -->
+      <div id="tab-users" class="tab-content hidden space-y-6">
+
+        <!-- Change Own Password -->
+        <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm p-6 space-y-5">
+          <div class="pb-4 border-b border-slate-100">
+            <h2 class="text-lg font-bold text-slate-900">🔑 Change Your Password</h2>
+            <p class="text-xs text-slate-500">Update the password for your current admin account</p>
+          </div>
+          <form onsubmit="handleChangePassword(event)" class="space-y-4 max-w-sm">
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">Current Password</label>
+              <input type="password" id="cur-password" required placeholder="Enter current password"
+                class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-600 focus:outline-none">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">New Password</label>
+              <input type="password" id="new-password" required minlength="4" placeholder="Minimum 4 characters"
+                class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-600 focus:outline-none">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">Confirm New Password</label>
+              <input type="password" id="confirm-password" required placeholder="Re-enter new password"
+                class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-600 focus:outline-none">
+            </div>
+            <button type="submit" class="px-6 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs rounded-xl transition-all shadow-md flex items-center gap-2">
+              <i class="fa-solid fa-key"></i> Update Password
+            </button>
+          </form>
+        </div>
+
+        <!-- All Users List -->
+        <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm p-6 space-y-5">
+          <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+            <div>
+              <h2 class="text-lg font-bold text-slate-900">👥 Admin Users</h2>
+              <p class="text-xs text-slate-500">All users who can access this admin panel</p>
+            </div>
+            <button onclick="document.getElementById('add-user-form-wrapper').classList.toggle('hidden')"
+              class="px-3.5 py-2 bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold rounded-xl flex items-center gap-1.5 transition-all">
+              <i class="fa-solid fa-plus"></i> Add New User
+            </button>
+          </div>
+
+          <!-- Add User Form (hidden by default) -->
+          <div id="add-user-form-wrapper" class="hidden bg-slate-50 rounded-xl border border-slate-200 p-4 space-y-3">
+            <h3 class="text-sm font-bold text-slate-800">Add New Admin User</h3>
+            <form onsubmit="handleAddUser(event)" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Full Name</label>
+                <input type="text" id="new-user-fullname" required placeholder="e.g. John Doe"
+                  class="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs focus:ring-2 focus:ring-emerald-600 focus:outline-none bg-white">
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Username</label>
+                <input type="text" id="new-user-username" required placeholder="e.g. manager1"
+                  class="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs focus:ring-2 focus:ring-emerald-600 focus:outline-none bg-white">
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Password</label>
+                <input type="password" id="new-user-password" required minlength="4" placeholder="Minimum 4 characters"
+                  class="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs focus:ring-2 focus:ring-emerald-600 focus:outline-none bg-white">
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Role</label>
+                <select id="new-user-role" class="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs focus:ring-2 focus:ring-emerald-600 focus:outline-none bg-white">
+                  <option value="admin">Admin (Full Access)</option>
+                  <option value="manager">Manager</option>
+                </select>
+              </div>
+              <div class="sm:col-span-2 flex gap-2 pt-1">
+                <button type="submit" class="px-5 py-2 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs rounded-xl transition-all flex items-center gap-1.5">
+                  <i class="fa-solid fa-user-plus"></i> Create User
+                </button>
+                <button type="button" onclick="document.getElementById('add-user-form-wrapper').classList.add('hidden')"
+                  class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs rounded-xl transition-colors">
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Users Table -->
+          <div class="overflow-x-auto rounded-xl border border-slate-100">
+            <table class="w-full text-left border-collapse text-xs">
+              <thead>
+                <tr class="bg-slate-50 text-slate-600 font-bold border-b border-slate-200 uppercase text-[10px] tracking-wider">
+                  <th class="p-3">Full Name</th>
+                  <th class="p-3">Username</th>
+                  <th class="p-3">Role</th>
+                  <th class="p-3">Reset Password</th>
+                  <th class="p-3 text-right">Action</th>
+                </tr>
+              </thead>
+              <tbody id="users-table-body" class="divide-y divide-slate-100">
+                <!-- Rendered by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<!-- ══════════════════════ CATEGORY MODAL ══════════════════════ -->
+<div id="category-modal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+  <div class="bg-white rounded-3xl shadow-2xl border border-slate-100 max-w-lg w-full overflow-hidden">
+    <div class="p-5 border-b border-slate-100 flex items-center justify-between bg-slate-50">
+      <div>
+        <h3 id="cat-modal-title" class="text-base font-bold text-slate-900">✨ Add New Category</h3>
+        <p class="text-xs text-slate-500">Categories automatically create dedicated sections on the homepage</p>
+      </div>
+      <button onclick="closeCategoryModal()" class="w-8 h-8 rounded-full bg-white border border-slate-200 text-slate-400 hover:text-slate-600 flex items-center justify-center transition-colors">
+        <i class="fa-solid fa-xmark text-sm"></i>
+      </button>
+    </div>
+
+    <form id="category-form" onsubmit="handleCategorySave(event)" class="p-6 space-y-4">
+      <input type="hidden" id="cat-edit-id" value="">
+      <input type="hidden" id="cat-target-source" value="product-form">
+
+      <!-- Names -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">
+            Category Name (Bangla) <span class="text-emerald-700">*</span>
+          </label>
+          <input type="text" id="cat-name-bn" required placeholder="e.g. লেদার ওয়ালেট ও বেল্ট"
+            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-600 focus:outline-none">
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">
+            Category Name (English)
+          </label>
+          <input type="text" id="cat-name-en" placeholder="e.g. Leather Wallets & Belts"
+            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-600 focus:outline-none">
+        </div>
+      </div>
+
+      <!-- Icon & Badge -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Category Icon</label>
+          <div class="flex items-center gap-2">
+            <div id="cat-icon-preview" class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center text-base flex-shrink-0">
+              <i id="cat-icon-preview-i" class="fa-solid fa-gift"></i>
+            </div>
+            <input type="text" id="cat-icon" value="fa-solid fa-gift" oninput="updateIconPreview(this.value)"
+              class="flex-1 px-3 py-2 rounded-xl border border-slate-200 text-xs font-mono focus:ring-2 focus:ring-emerald-600 focus:outline-none">
+          </div>
+          <!-- Quick Icon Selection -->
+          <div class="flex flex-wrap gap-1 mt-1.5">
+            <button type="button" onclick="selectCatIcon('fa-solid fa-gift')" class="text-xs px-2 py-1 rounded bg-slate-100 hover:bg-emerald-100 text-slate-700"><i class="fa-solid fa-gift"></i></button>
+            <button type="button" onclick="selectCatIcon('fa-solid fa-bag-shopping')" class="text-xs px-2 py-1 rounded bg-slate-100 hover:bg-emerald-100 text-slate-700"><i class="fa-solid fa-bag-shopping"></i></button>
+            <button type="button" onclick="selectCatIcon('fa-solid fa-bottle-water')" class="text-xs px-2 py-1 rounded bg-slate-100 hover:bg-emerald-100 text-slate-700"><i class="fa-solid fa-bottle-water"></i></button>
+            <button type="button" onclick="selectCatIcon('fa-solid fa-pen-nib')" class="text-xs px-2 py-1 rounded bg-slate-100 hover:bg-emerald-100 text-slate-700"><i class="fa-solid fa-pen-nib"></i></button>
+            <button type="button" onclick="selectCatIcon('fa-solid fa-award')" class="text-xs px-2 py-1 rounded bg-slate-100 hover:bg-emerald-100 text-slate-700"><i class="fa-solid fa-award"></i></button>
+            <button type="button" onclick="selectCatIcon('fa-solid fa-boxes-stacked')" class="text-xs px-2 py-1 rounded bg-slate-100 hover:bg-emerald-100 text-slate-700"><i class="fa-solid fa-boxes-stacked"></i></button>
+            <button type="button" onclick="selectCatIcon('fa-solid fa-medal')" class="text-xs px-2 py-1 rounded bg-slate-100 hover:bg-emerald-100 text-slate-700"><i class="fa-solid fa-medal"></i></button>
+            <button type="button" onclick="selectCatIcon('fa-solid fa-clock')" class="text-xs px-2 py-1 rounded bg-slate-100 hover:bg-emerald-100 text-slate-700"><i class="fa-solid fa-clock"></i></button>
+            <button type="button" onclick="selectCatIcon('fa-solid fa-shirt')" class="text-xs px-2 py-1 rounded bg-slate-100 hover:bg-emerald-100 text-slate-700"><i class="fa-solid fa-shirt"></i></button>
+            <button type="button" onclick="selectCatIcon('fa-solid fa-tags')" class="text-xs px-2 py-1 rounded bg-slate-100 hover:bg-emerald-100 text-slate-700"><i class="fa-solid fa-tags"></i></button>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Badge Tag</label>
+          <input type="text" id="cat-badge" placeholder="e.g. নতুন কালেকশন" value="নতুন কালেকশন"
+            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-600 focus:outline-none">
+          <div class="flex flex-wrap gap-1 mt-1.5">
+            <button type="button" onclick="document.getElementById('cat-badge').value='নতুন কালেকশন'" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-100 hover:bg-emerald-100 text-slate-600">নতুন</button>
+            <button type="button" onclick="document.getElementById('cat-badge').value='বেস্ট সেলার'" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-100 hover:bg-emerald-100 text-slate-600">বেস্ট সেলার</button>
+            <button type="button" onclick="document.getElementById('cat-badge').value='প্রিমিয়াম চয়েস'" class="text-[10px] px-1.5 py-0.5 rounded bg-slate-100 hover:bg-emerald-100 text-slate-600">প্রিমিয়াম</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <div>
+        <label class="block text-xs font-bold text-slate-700 mb-1">Short Description</label>
+        <textarea id="cat-desc" rows="2" placeholder="e.g. কর্পোরেট উপহার ও কাস্টম লোগো প্রিন্ট সুবিধা সহ প্রিমিয়াম কালেকশন..."
+          class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-600 focus:outline-none"></textarea>
+      </div>
+
+      <!-- Buttons -->
+      <div class="pt-3 border-t border-slate-100 flex items-center justify-end gap-2">
+        <button type="button" onclick="closeCategoryModal()" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs transition-colors">
+          Cancel
+        </button>
+        <button type="submit" id="cat-modal-save-btn" class="px-5 py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs transition-all shadow-md flex items-center gap-1.5">
+          <i class="fa-solid fa-check"></i>
+          <span id="cat-modal-save-text">Create Category</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Toast Notification -->
+<div id="admin-toast" class="fixed bottom-5 right-5 z-50 bg-slate-900 text-white px-5 py-3 rounded-xl shadow-2xl text-xs sm:text-sm font-medium flex items-center gap-3 transition-all duration-300 transform translate-y-20 opacity-0 pointer-events-none">
+  <i id="admin-toast-icon" class="fa-solid fa-circle-check text-emerald-400 text-base"></i>
+  <span id="admin-toast-text">Done!</span>
+</div>
+
+<!-- ══════════════════════ JAVASCRIPT ══════════════════════ -->
+<script>
+  let allProducts = [];
+  let allSections = [];
+  let allOrders   = [];
+  let currentUser = null;
+
+  // ── Boot ──────────────────────────────────────────────────────────────────
+
+  document.addEventListener('DOMContentLoaded', async () => {
+    // Verify auth
+    try {
+      const res = await fetch('/api/auth-check');
+      if (!res.ok || !(await res.json()).authenticated) {
+        window.location.href = '/login';
+        return;
+      }
+      const data = await res.json().catch(() => ({}));
+      // Re-fetch since we already consumed the body above — use a second call
+    } catch (e) {
+      window.location.href = '/login';
+      return;
+    }
+
+    // Load user info
+    try {
+      const authRes = await fetch('/api/auth-check');
+      const authData = await authRes.json();
+      if (!authData.authenticated) { window.location.href = '/login'; return; }
+      currentUser = authData.user;
+      document.getElementById('nav-username').textContent = currentUser.fullName || currentUser.username;
+      document.getElementById('dd-username').textContent  = currentUser.fullName || currentUser.username;
+      document.getElementById('dd-role').textContent      = currentUser.role || 'admin';
+    } catch (e) {}
+
+    document.getElementById('server-status-badge').classList.remove('hidden');
+    await loadInitialData();
+  });
+
+  // ── Auth ──────────────────────────────────────────────────────────────────
+
+  function toggleUserMenu() {
+    document.getElementById('user-dropdown').classList.toggle('hidden');
+  }
+  function closeUserMenu() {
+    document.getElementById('user-dropdown').classList.add('hidden');
+  }
+  document.addEventListener('click', e => {
+    const btn  = document.getElementById('user-menu-btn');
+    const drop = document.getElementById('user-dropdown');
+    if (btn && !btn.contains(e.target) && drop && !drop.contains(e.target)) {
+      drop.classList.add('hidden');
+    }
+  });
+
+  async function handleLogout() {
+    await fetch('/api/logout', { method: 'POST' });
+    window.location.href = '/login';
+  }
+
+  // ── Data Loading ──────────────────────────────────────────────────────────
+
+  async function loadInitialData() {
+    try {
+      const [pRes, sRes] = await Promise.all([
+        fetch('/api/products'),
+        fetch('/api/sections')
+      ]);
+      if (pRes.ok) allProducts = await pRes.json();
+      if (sRes.ok) allSections = await sRes.json();
+    } catch (e) {
+      console.error('Data load error:', e);
+    }
+
+    updateStatsUI();
+    populateSectionDropdowns();
+    renderProductsTable();
+    renderCategoriesList();
+    renderDashboardRecent();
+    loadOrders();
+    loadSettings();
+    loadUsers();
+  }
+
+  // ── Tab Switching ─────────────────────────────────────────────────────────
+
+  function switchTab(tabId) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+    const activeTab = document.getElementById(tabId);
+    if (activeTab) activeTab.classList.remove('hidden');
+
+    document.querySelectorAll('.sidebar-btn').forEach(btn => {
+      btn.classList.remove('bg-emerald-50', 'text-emerald-800', 'font-bold');
+      btn.classList.add('text-slate-700', 'font-semibold');
+    });
+    const activeNavId = tabId.replace('tab-', 'nav-');
+    const activeNav = document.getElementById(activeNavId);
+    if (activeNav) {
+      activeNav.classList.add('bg-emerald-50', 'text-emerald-800', 'font-bold');
+      activeNav.classList.remove('text-slate-700');
+    }
+    if (tabId === 'tab-add-product' && !document.getElementById('prod-id').value) {
+      const codeEl = document.getElementById('prod-code');
+      if (codeEl && !codeEl.value) autoGenerateCode();
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ── Stats ─────────────────────────────────────────────────────────────────
+
+  function updateStatsUI() {
+    document.getElementById('stat-products').textContent     = allProducts.length;
+    document.getElementById('stat-sections').textContent     = allSections.length;
+    document.getElementById('badge-total-prod').textContent  = allProducts.length;
+    document.getElementById('badge-total-sec').textContent   = allSections.length;
+  }
+
+  // ── Section Dropdowns ─────────────────────────────────────────────────────
+
+  function populateSectionDropdowns() {
+    const selectForm   = document.getElementById('prod-section');
+    const selectFilter = document.getElementById('admin-category-filter');
+
+    const sectionsToUse = (allSections && allSections.length > 0) ? allSections : [
+      { id: 'gift-boxes', titleEn: 'Corporate Gift Boxes & Combos', titleBn: 'কর্পোরেট গিফট বক্স ও কম্বো প্যাকেজ' },
+      { id: 'crests-awards', titleEn: 'Crests, Metal Plates & Awards', titleBn: 'ক্রেস্ট ও অ্যাওয়ার্ড' },
+      { id: 'smart-drinkware', titleEn: 'Smart Vacuum Flasks & Drinkware', titleBn: 'স্মার্ট ফ্লাস্ক ও বোটল' },
+      { id: 'desktop-organizers', titleEn: 'Desktop Organizers & Accessories', titleBn: 'ডেস্কটপ অর্গানাইজার' },
+      { id: 'op-pens', titleEn: 'Executive Metal Pens (OP Series)', titleBn: 'সিগনেচার মেটাল পেন' },
+      { id: 'pins-accessories', titleEn: 'Coat Pins, Cufflinks & Medals', titleBn: 'কোটপিন ও মেডেল' },
+      { id: 'eco-bags', titleEn: 'Eco Jute & Conference Bags', titleBn: 'পাটজাত ও পরিবেশবান্ধব ব্যাগ' }
+    ];
+
+    if (selectForm) {
+      const currentSelected = selectForm.value;
+      selectForm.innerHTML = sectionsToUse.map(s =>
+        `<option value="${s.id}">[${s.titleEn}] — ${s.titleBn}</option>`
+      ).join('');
+      if (currentSelected) selectForm.value = currentSelected;
+    }
+
+    if (selectFilter) {
+      selectFilter.innerHTML = `<option value="all">All Categories (${allProducts.length})</option>` +
+        sectionsToUse.map(s => {
+          const count = allProducts.filter(p => p.section === s.id).length;
+          return `<option value="${s.id}">${s.titleEn} (${count})</option>`;
+        }).join('');
+    }
+
+    // Ensure a code is generated if empty
+    const codeInput = document.getElementById('prod-code');
+    if (codeInput && !codeInput.value) {
+      autoGenerateCode();
+    }
+  }
+
+  // ── Dashboard Recent ──────────────────────────────────────────────────────
+
+  function renderDashboardRecent() {
+    const container = document.getElementById('dashboard-recent-products');
+    if (!container) return;
+    container.innerHTML = allProducts.slice(0, 6).map(p => `
+      <div class="flex items-center gap-3 p-2.5 rounded-xl border border-slate-100 bg-slate-50/50 hover:bg-slate-50 cursor-pointer" onclick="editProduct(${p.id}); switchTab('tab-add-product')">
+        <img src="${p.image}" alt="${p.nameEn}" onerror="this.src='assets/images/logo.jpg'" class="w-12 h-12 rounded-lg object-cover bg-white border border-slate-200">
+        <div class="flex-1 min-w-0">
+          <div class="text-[10px] text-emerald-700 font-bold">${p.code}</div>
+          <div class="text-xs font-bold text-slate-800 line-clamp-1">${p.nameEn || p.nameBn}</div>
+          <div class="text-xs font-extrabold text-emerald-800">৳${(p.price||0).toLocaleString()}</div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // ── Products Table ────────────────────────────────────────────────────────
+
+  function renderProductsTable(productsToRender = null) {
+    const tbody    = document.getElementById('products-table-body');
+    const products = productsToRender !== null ? productsToRender : allProducts;
+
+    document.getElementById('table-count-label').textContent = `Showing ${products.length} product${products.length !== 1 ? 's' : ''}`;
+
+    if (products.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="7" class="text-center py-12 text-slate-400">
+        <i class="fa-solid fa-box-open text-3xl mb-3 block"></i>No products found
+      </td></tr>`;
+      return;
+    }
+
+    tbody.innerHTML = products.map(p => {
+      const sec     = allSections.find(s => s.id === p.section);
+      const secName = sec ? sec.titleEn : p.section;
+      return `
+        <tr class="hover:bg-slate-50/80 transition-colors">
+          <td class="p-3">
+            <img src="${p.image}" alt="${p.nameEn}" onerror="this.src='assets/images/logo.jpg'"
+              class="w-12 h-12 rounded-lg object-cover bg-white border border-slate-200 shadow-sm">
+          </td>
+          <td class="p-3 max-w-xs">
+            <div class="font-bold text-slate-800 line-clamp-1">${p.nameEn || p.nameBn}</div>
+            <div class="text-[11px] text-slate-400 line-clamp-1">${p.nameBn}</div>
+          </td>
+          <td class="p-3">
+            <span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold text-[11px]">${p.code}</span>
+          </td>
+          <td class="p-3">
+            <span class="text-slate-600 font-medium text-xs">${secName}</span>
+          </td>
+          <td class="p-3">
+            <div class="font-bold text-emerald-800">৳${(p.price||0).toLocaleString()}</div>
+            ${p.originalPrice > p.price ? `<div class="text-[10px] text-slate-400 line-through">৳${p.originalPrice.toLocaleString()}</div>` : ''}
+          </td>
+          <td class="p-3">
+            <span class="text-slate-600 font-semibold">${p.minOrder || 50} pcs</span>
+          </td>
+          <td class="p-3 text-right">
+            <div class="flex items-center justify-end gap-1.5">
+              <button onclick="editProduct(${p.id})" class="p-1.5 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors" title="Edit">
+                <i class="fa-solid fa-pen-to-square"></i>
+              </button>
+              <button onclick="deleteProduct(${p.id})" class="p-1.5 text-red-500 hover:bg-red-50 rounded-lg transition-colors" title="Delete">
+                <i class="fa-solid fa-trash-can"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      `;
+    }).join('');
+  }
+
+  function filterProductsTable() {
+    const search = document.getElementById('admin-search-input').value.toLowerCase().trim();
+    const cat    = document.getElementById('admin-category-filter').value;
+    let filtered = allProducts;
+    if (cat !== 'all') filtered = filtered.filter(p => p.section === cat);
+    if (search) filtered = filtered.filter(p =>
+      (p.nameBn||'').toLowerCase().includes(search) ||
+      (p.nameEn||'').toLowerCase().includes(search) ||
+      (p.code||'').toLowerCase().includes(search)
+    );
+    renderProductsTable(filtered);
+  }
+
+  // ── Drag & Drop and Image Helpers ─────────────────────────────────────────
+
+  function handleDragOver(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    const zone = document.getElementById('img-dropzone');
+    if (zone) zone.classList.add('border-emerald-500', 'bg-emerald-50/50', 'ring-2', 'ring-emerald-400');
+  }
+
+  function handleDragLeave(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    const zone = document.getElementById('img-dropzone');
+    if (zone) zone.classList.remove('border-emerald-500', 'bg-emerald-50/50', 'ring-2', 'ring-emerald-400');
+  }
+
+  function handleDrop(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    handleDragLeave(e);
+    if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0]) {
+      handleFileUpload(e.dataTransfer.files[0]);
+    }
+  }
+
+  function clearProductImage() {
+    document.getElementById('prod-image').value = '';
+    const fileInput = document.getElementById('prod-file-input');
+    if (fileInput) fileInput.value = '';
+    document.getElementById('img-preview').src = 'assets/images/logo.jpg';
+    const tag = document.getElementById('img-info-tag');
+    if (tag) tag.textContent = 'Click or drag image here';
+  }
+
+  // ── Image Upload ──────────────────────────────────────────────────────────
+
+  async function handleFileUpload(file) {
+    if (!file) return;
+
+    if (file.size > 15 * 1024 * 1024) {
+      showAdminToast('File too large (maximum 15MB).', true);
+      return;
+    }
+
+    const statusEl = document.getElementById('upload-status');
+    const infoTag  = document.getElementById('img-info-tag');
+    if (statusEl) statusEl.classList.remove('hidden');
+
+    // Immediate preview
+    const reader = new FileReader();
+    reader.onload = e => {
+      document.getElementById('img-preview').src = e.target.result;
+      if (infoTag) {
+        const sizeKb = Math.round(file.size / 1024);
+        infoTag.textContent = `${file.name} (${sizeKb} KB)`;
+      }
+    };
+    reader.readAsDataURL(file);
+
+    // Upload to server
+    const formData = new FormData();
+    formData.append('image', file);
+
+    try {
+      const res = await fetch('/api/upload', { method: 'POST', body: formData });
+      if (res.status === 401) {
+        showAdminToast('Session expired. Please log in again.', true);
+        setTimeout(() => { window.location.href = '/login'; }, 1500);
+        return;
+      }
+      const result = await res.json();
+      if (result.success && result.url) {
+        document.getElementById('prod-image').value = result.url;
+        showAdminToast('✓ Image uploaded successfully!');
+      } else {
+        // Fallback: save base64 URL so product is never without its image
+        document.getElementById('prod-image').value = reader.result || '';
+        showAdminToast('Image attached locally.', false);
+      }
+    } catch (err) {
+      console.warn('Upload API unavailable, using base64 fallback:', err);
+      setTimeout(() => {
+        if (!document.getElementById('prod-image').value && reader.result) {
+          document.getElementById('prod-image').value = reader.result;
+        }
+      }, 200);
+      showAdminToast('Image loaded for preview.', false);
+    } finally {
+      if (statusEl) statusEl.classList.add('hidden');
+    }
+  }
+
+  function previewImageUrl(url) {
+    const img     = document.getElementById('img-preview');
+    const infoTag = document.getElementById('img-info-tag');
+    if (!url || !url.trim()) {
+      img.src = 'assets/images/logo.jpg';
+      if (infoTag) infoTag.textContent = 'Click or drag image here';
+      return;
+    }
+    img.src = url.trim();
+    img.onerror = () => { img.src = 'assets/images/logo.jpg'; };
+    if (infoTag) infoTag.textContent = 'Image URL linked';
+  }
+
+  // ── Auto Generate Code & Category Helpers ─────────────────────────────────
+
+  function autoGenerateCode() {
+    const secSelect = document.getElementById('prod-section');
+    const sec = secSelect ? secSelect.value : 'gift-boxes';
+    const prefixMap = {
+      'gift-boxes': 'GB',
+      'crests-awards': 'CR',
+      'smart-drinkware': 'DW',
+      'desktop-organizers': 'DO',
+      'op-pens': 'OP',
+      'pins-accessories': 'PA',
+      'eco-bags': 'EB'
+    };
+    let prefix = prefixMap[sec];
+    if (!prefix && sec) {
+      const parts = sec.split('-').filter(Boolean);
+      prefix = parts.length > 1 ? parts.map(p => p[0]).join('').substring(0, 3).toUpperCase() : sec.substring(0, 2).toUpperCase();
+    }
+    if (!prefix) prefix = 'PK';
+
+    // Find next available number
+    const existingNums = allProducts
+      .map(p => {
+        const m = String(p.code || '').match(/\d+/);
+        return m ? parseInt(m[0], 10) : 0;
+      })
+      .filter(n => n > 0);
+    const nextNum = existingNums.length > 0 ? (Math.max(...existingNums) + 1) : Math.floor(100 + Math.random() * 899);
+
+    const codeInput = document.getElementById('prod-code');
+    if (codeInput) codeInput.value = `${prefix}-${nextNum}`;
+  }
+
+  function onCategoryChanged() {
+    const codeInput = document.getElementById('prod-code');
+    if (codeInput) {
+      const cur = codeInput.value.trim();
+      if (!cur || /^[A-Z]{2}-\d+$/.test(cur)) {
+        autoGenerateCode();
+      }
+    }
+  }
+
+  // ── Pricing & Helper Badges ───────────────────────────────────────────────
+
+  function parseNumberInput(val) {
+    if (!val) return 0;
+    const bnDigits = ['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
+    let str = String(val).trim();
+    bnDigits.forEach((d, i) => { str = str.split(d).join(String(i)); });
+    str = str.replace(/[৳,\s]/g, '');
+    const num = parseInt(str, 10);
+    return isNaN(num) ? 0 : num;
+  }
+
+  function calculatePricePreview() {
+    const pInput = document.getElementById('prod-price');
+    const oInput = document.getElementById('prod-orig-price');
+    const badge  = document.getElementById('price-preview-badge');
+    if (!pInput || !badge) return;
+
+    const price = parseNumberInput(pInput.value);
+    const orig  = parseNumberInput(oInput ? oInput.value : 0);
+
+    if (orig > price && price > 0) {
+      const diff = orig - price;
+      const pct  = Math.round((diff / orig) * 100);
+      badge.textContent = `Discount: Save ৳${diff.toLocaleString()} (${pct}% OFF)`;
+      badge.classList.remove('hidden');
+    } else {
+      badge.classList.add('hidden');
+    }
+  }
+
+  function setBadge(text) {
+    const el = document.getElementById('prod-badge');
+    if (el) el.value = text;
+  }
+
+  function appendDescription(snippet) {
+    const el = document.getElementById('prod-desc');
+    if (!el) return;
+    el.value = el.value ? (el.value.trim() + ' ' + snippet) : snippet;
+    el.focus();
+  }
+
+  // ── Save Product (with Add Another option) ─────────────────────────────────
+
+  async function handleProductSave(e, andAddAnother = false) {
+    if (e && e.preventDefault) e.preventDefault();
+
+    let nameBn = document.getElementById('prod-name-bn').value.trim();
+    let nameEn = document.getElementById('prod-name-en').value.trim();
+
+    // Flexible name validation: at least one name is required
+    if (!nameBn && !nameEn) {
+      showAdminToast('Please provide a product name (Bangla or English).', true);
+      document.getElementById('prod-name-bn').focus();
+      return;
+    }
+    if (!nameBn) nameBn = nameEn;
+    if (!nameEn) nameEn = nameBn;
+
+    const pid    = document.getElementById('prod-id').value;
+    const isEdit = !!pid;
+
+    const price     = parseNumberInput(document.getElementById('prod-price').value);
+    const origInput = parseNumberInput(document.getElementById('prod-orig-price').value);
+    const origPrice = origInput > 0 ? origInput : price;
+
+    const moqVal = parseNumberInput(document.getElementById('prod-moq').value);
+    const moq    = moqVal > 0 ? moqVal : 50;
+
+    let code = document.getElementById('prod-code').value.trim().toUpperCase();
+    if (!code) {
+      autoGenerateCode();
+      code = document.getElementById('prod-code').value.trim().toUpperCase();
+    }
+
+    const imageVal   = document.getElementById('prod-image').value.trim() || 'assets/images/logo.jpg';
+    const sectionVal = document.getElementById('prod-section').value || 'gift-boxes';
+
+    const productData = {
+      nameBn:        nameBn,
+      nameEn:        nameEn,
+      section:       sectionVal,
+      code:          code,
+      price:         price,
+      originalPrice: origPrice,
+      minOrder:      moq,
+      badge:         document.getElementById('prod-badge').value.trim() || 'Corporate Gift',
+      image:         imageVal,
+      description:   document.getElementById('prod-desc').value.trim() || 'কর্পোরেট কাস্টম লোগো প্রিন্ট ও প্রিমিয়াম বক্স প্যাকেজিং সুবিধা সহ।',
+      customizable:  document.getElementById('prod-customizable').checked
+    };
+
+    // UI Loading state
+    const saveBtn       = document.getElementById('btn-save-prod');
+    const saveText      = document.getElementById('btn-save-prod-text');
+    const addAnotherBtn = document.getElementById('btn-save-add-another');
+    if (saveBtn) saveBtn.disabled = true;
+    if (addAnotherBtn) addAnotherBtn.disabled = true;
+    if (saveText) saveText.textContent = 'Saving...';
+
+    try {
+      const url    = isEdit ? `/api/products/${pid}` : '/api/products';
+      const method = isEdit ? 'PUT' : 'POST';
+
+      const res = await fetch(url, {
+        method: method,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(productData)
+      });
+
+      if (res.status === 401) {
+        showAdminToast('Session expired. Please log in again.', true);
+        setTimeout(() => { window.location.href = '/login'; }, 1500);
+        return;
+      }
+
+      const result = await res.json();
+      if (result.success) {
+        showAdminToast(isEdit ? `✓ Updated: [${code}] ${nameEn}` : `✓ Added: [${code}] ${nameEn}`);
+        await loadInitialData();
+
+        if (andAddAnother && !isEdit) {
+          const keepCategory = sectionVal;
+          resetProductForm();
+          const secSelect = document.getElementById('prod-section');
+          if (secSelect) secSelect.value = keepCategory;
+          autoGenerateCode();
+          document.getElementById('prod-name-bn').focus();
+        } else {
+          resetProductForm();
+          switchTab('tab-products');
+        }
+      } else {
+        showAdminToast('Save failed: ' + (result.error || 'Unknown error'), true);
+      }
+    } catch (err) {
+      console.error('Save product error:', err);
+      showAdminToast('Server connection error. Make sure server.py is running.', true);
+    } finally {
+      if (saveBtn) saveBtn.disabled = false;
+      if (addAnotherBtn) addAnotherBtn.disabled = false;
+      if (saveText) saveText.textContent = isEdit ? 'Update Product' : 'Save Product';
+    }
+  }
+
+  function editProduct(productId) {
+    const prod = allProducts.find(p => p.id === productId);
+    if (!prod) return;
+    document.getElementById('prod-id').value = prod.id;
+    document.getElementById('form-title').textContent = `✏️ Edit Product: [${prod.code}] ${prod.nameEn || prod.nameBn}`;
+    const saveText = document.getElementById('btn-save-prod-text');
+    if (saveText) saveText.textContent = 'Update Product';
+
+    const addAnotherBtn = document.getElementById('btn-save-add-another');
+    if (addAnotherBtn) addAnotherBtn.classList.add('hidden');
+
+    document.getElementById('prod-name-bn').value   = prod.nameBn || '';
+    document.getElementById('prod-name-en').value   = prod.nameEn || '';
+    document.getElementById('prod-section').value   = prod.section;
+    document.getElementById('prod-code').value      = prod.code || '';
+    document.getElementById('prod-price').value     = prod.price || 0;
+    document.getElementById('prod-orig-price').value= prod.originalPrice || prod.price;
+    document.getElementById('prod-moq').value       = prod.minOrder || 50;
+    document.getElementById('prod-badge').value     = prod.badge || '';
+    document.getElementById('prod-image').value     = prod.image || '';
+    document.getElementById('prod-desc').value      = prod.description || '';
+    document.getElementById('prod-customizable').checked = prod.customizable !== false;
+
+    previewImageUrl(prod.image);
+    calculatePricePreview();
+    switchTab('tab-add-product');
+  }
+
+  async function deleteProduct(productId) {
+    const prod = allProducts.find(p => p.id === productId);
+    if (!prod) return;
+    if (!confirm(`Are you sure you want to delete:\n\n[${prod.code}] ${prod.nameEn || prod.nameBn}\n\nThis will remove it from the website immediately.`)) return;
+    try {
+      const res = await fetch(`/api/products/${productId}`, { method: 'DELETE' });
+      if (res.status === 401) {
+        showAdminToast('Session expired. Please log in again.', true);
+        setTimeout(() => { window.location.href = '/login'; }, 1500);
+        return;
+      }
+      const result = await res.json();
+      if (result.success) {
+        showAdminToast(`✓ Deleted product [${prod.code}]`);
+        await loadInitialData();
+      } else {
+        showAdminToast('Delete failed: ' + (result.error || ''), true);
+      }
+    } catch (e) {
+      showAdminToast('Server connection error.', true);
+    }
+  }
+
+  function resetProductForm() {
+    document.getElementById('prod-id').value = '';
+    document.getElementById('form-title').textContent = '📦 Add New Product';
+    const saveText = document.getElementById('btn-save-prod-text');
+    if (saveText) saveText.textContent = 'Save Product';
+
+    const addAnotherBtn = document.getElementById('btn-save-add-another');
+    if (addAnotherBtn) addAnotherBtn.classList.remove('hidden');
+
+    document.getElementById('product-upload-form').reset();
+    clearProductImage();
+    document.getElementById('prod-moq').value = '50';
+    document.getElementById('prod-badge').value = 'Corporate Gift';
+    document.getElementById('prod-customizable').checked = true;
+    const badge = document.getElementById('price-preview-badge');
+    if (badge) badge.classList.add('hidden');
+
+    // Automatically generate fresh unique SKU code!
+    autoGenerateCode();
+  }
+
+  // ── Categories ────────────────────────────────────────────────────────────
+
+  function openCategoryModal(source = 'product-form') {
+    document.getElementById('cat-target-source').value = source;
+    document.getElementById('cat-edit-id').value = '';
+    document.getElementById('cat-modal-title').textContent = '✨ Add New Category';
+    document.getElementById('cat-modal-save-text').textContent = 'Create Category';
+
+    // Reset fields
+    document.getElementById('cat-name-bn').value = '';
+    document.getElementById('cat-name-en').value = '';
+    document.getElementById('cat-icon').value = 'fa-solid fa-gift';
+    updateIconPreview('fa-solid fa-gift');
+    document.getElementById('cat-badge').value = 'নতুন কালেকশন';
+    document.getElementById('cat-desc').value = '';
+
+    const modal = document.getElementById('category-modal');
+    if (modal) modal.classList.remove('hidden');
+    setTimeout(() => {
+      const bnInput = document.getElementById('cat-name-bn');
+      if (bnInput) bnInput.focus();
+    }, 100);
+  }
+
+  function closeCategoryModal() {
+    const modal = document.getElementById('category-modal');
+    if (modal) modal.classList.add('hidden');
+  }
+
+  function selectCatIcon(iconClass) {
+    const input = document.getElementById('cat-icon');
+    if (input) {
+      input.value = iconClass;
+      updateIconPreview(iconClass);
+    }
+  }
+
+  function updateIconPreview(val) {
+    const iconEl = document.getElementById('cat-icon-preview-i');
+    if (iconEl) {
+      iconEl.className = val || 'fa-solid fa-gift';
+    }
+  }
+
+  async function handleCategorySave(e) {
+    e.preventDefault();
+    const editId   = document.getElementById('cat-edit-id').value;
+    const titleBn  = document.getElementById('cat-name-bn').value.trim();
+    const titleEn  = document.getElementById('cat-name-en').value.trim();
+    const icon     = document.getElementById('cat-icon').value.trim() || 'fa-solid fa-gift';
+    const badge    = document.getElementById('cat-badge').value.trim() || 'নতুন কালেকশন';
+    const desc     = document.getElementById('cat-desc').value.trim();
+    const source   = document.getElementById('cat-target-source').value || 'product-form';
+
+    if (!titleBn && !titleEn) {
+      showAdminToast('Category name is required.', true);
+      return;
+    }
+
+    const payload = {
+      titleBn: titleBn || titleEn,
+      titleEn: titleEn || titleBn,
+      icon:    icon,
+      badge:   badge,
+      desc:    desc || `${titleBn || titleEn} কালেকশন ও কর্পোরেট উপহার।`,
+      descEn:  desc || `${titleEn || titleBn} collection and corporate gifts.`
+    };
+
+    const saveBtn = document.getElementById('cat-modal-save-btn');
+    if (saveBtn) saveBtn.disabled = true;
+
+    try {
+      let res;
+      if (editId) {
+        res = await fetch(`/api/sections/${encodeURIComponent(editId)}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+      } else {
+        res = await fetch('/api/sections', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+      }
+
+      if (res.status === 401) {
+        showAdminToast('Session expired. Please log in again.', true);
+        setTimeout(() => { window.location.href = '/login'; }, 1500);
+        return;
+      }
+
+      const result = await res.json();
+      if (result.success) {
+        showAdminToast(editId ? '✓ Category updated successfully!' : '✓ Category created successfully!');
+        closeCategoryModal();
+
+        // Reload data to reflect new/updated category everywhere
+        await loadInitialData();
+
+        // If called from the product form, auto-select this new category and refresh SKU
+        if (source === 'product-form' && result.section && result.section.id) {
+          const prodSecSelect = document.getElementById('prod-section');
+          if (prodSecSelect) {
+            prodSecSelect.value = result.section.id;
+            autoGenerateCode();
+          }
+        }
+      } else {
+        showAdminToast('Error: ' + (result.error || 'Failed to save category'), true);
+      }
+    } catch (err) {
+      console.error('Save category error:', err);
+      showAdminToast('Server connection error.', true);
+    } finally {
+      if (saveBtn) saveBtn.disabled = false;
+    }
+  }
+
+  function editCategory(secId) {
+    const sec = allSections.find(s => s.id === secId);
+    if (!sec) {
+      showAdminToast('Category not found', true);
+      return;
+    }
+    document.getElementById('cat-target-source').value = 'categories-tab';
+    document.getElementById('cat-edit-id').value = sec.id;
+    document.getElementById('cat-modal-title').textContent = '✏️ Edit Category';
+    document.getElementById('cat-modal-save-text').textContent = 'Update Category';
+
+    document.getElementById('cat-name-bn').value = sec.titleBn || '';
+    document.getElementById('cat-name-en').value = sec.titleEn || '';
+    document.getElementById('cat-icon').value = sec.icon || 'fa-solid fa-gift';
+    updateIconPreview(sec.icon || 'fa-solid fa-gift');
+    document.getElementById('cat-badge').value = sec.badge || '';
+    document.getElementById('cat-desc').value = sec.desc || sec.descEn || '';
+
+    const modal = document.getElementById('category-modal');
+    if (modal) modal.classList.remove('hidden');
+  }
+
+  async function deleteCategory(secId) {
+    const sec = allSections.find(s => s.id === secId);
+    const catName = sec ? (sec.titleEn || sec.titleBn) : secId;
+    const prodCount = allProducts.filter(p => p.section === secId).length;
+
+    let confirmMsg = `Are you sure you want to delete category "${catName}"?`;
+    if (prodCount > 0) {
+      confirmMsg = `⚠️ Attention: There are ${prodCount} product(s) linked to "${catName}".\n\nDeleting this category will remove it from the homepage and category lists. Existing products will remain in the database but without an active category section.\n\nDo you want to proceed?`;
+    }
+
+    if (!confirm(confirmMsg)) return;
+
+    try {
+      const res = await fetch(`/api/sections/${encodeURIComponent(secId)}`, {
+        method: 'DELETE'
+      });
+      if (res.status === 401) {
+        showAdminToast('Session expired. Please log in again.', true);
+        setTimeout(() => { window.location.href = '/login'; }, 1500);
+        return;
+      }
+      const result = await res.json();
+      if (result.success) {
+        showAdminToast(`✓ Category "${catName}" deleted successfully!`);
+        await loadInitialData();
+      } else {
+        showAdminToast('Delete failed: ' + (result.error || ''), true);
+      }
+    } catch (e) {
+      showAdminToast('Server error during category delete.', true);
+    }
+  }
+
+  function viewCategoryProducts(secId) {
+    const filter = document.getElementById('admin-category-filter');
+    if (filter) {
+      filter.value = secId;
+      filterProductsTable();
+    }
+    switchTab('tab-products');
+  }
+
+  function renderCategoriesList() {
+    const container = document.getElementById('categories-list');
+    if (!container) return;
+    if (!allSections || allSections.length === 0) {
+      container.innerHTML = `
+        <div class="col-span-full py-12 text-center text-slate-400 bg-white rounded-2xl border border-slate-200">
+          <i class="fa-solid fa-folder-open text-3xl mb-2 text-slate-300"></i>
+          <p class="text-sm font-semibold text-slate-600">No categories found</p>
+          <button onclick="openCategoryModal('categories-tab')" class="mt-3 px-4 py-2 bg-emerald-700 text-white rounded-xl text-xs font-bold hover:bg-emerald-800 transition-colors">
+            + Create First Category
+          </button>
+        </div>
+      `;
+      return;
+    }
+
+    container.innerHTML = allSections.map(s => {
+      const count = allProducts.filter(p => p.section === s.id).length;
+      return `
+        <div class="p-4 rounded-2xl border border-slate-200 bg-white hover:border-emerald-300 hover:shadow-md transition-all flex flex-col justify-between">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-2.5">
+              <div class="flex items-center gap-3 min-w-0">
+                <div class="w-11 h-11 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center text-lg flex-shrink-0">
+                  <i class="${s.icon || 'fa-solid fa-gift'}"></i>
+                </div>
+                <div class="min-w-0">
+                  <h4 class="font-bold text-slate-900 text-sm truncate" title="${s.titleEn}">${s.titleEn}</h4>
+                  <div class="text-xs text-slate-500 truncate" title="${s.titleBn}">${s.titleBn}</div>
+                </div>
+              </div>
+              <span class="text-[11px] font-bold text-emerald-800 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-full whitespace-nowrap">
+                ${count} items
+              </span>
+            </div>
+
+            ${s.badge ? `
+              <div class="mb-2">
+                <span class="inline-block text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200">
+                  <i class="fa-solid fa-tag text-[9px] mr-1 text-emerald-600"></i>${s.badge}
+                </span>
+              </div>
+            ` : ''}
+
+            <p class="text-[11px] text-slate-500 line-clamp-2 mb-3">
+              ${s.desc || s.descEn || s.descBn || 'No description provided.'}
+            </p>
+          </div>
+
+          <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+            <button onclick="viewCategoryProducts('${s.id}')"
+              class="text-emerald-700 hover:text-emerald-800 font-bold flex items-center gap-1 hover:underline">
+              <i class="fa-solid fa-boxes-stacked text-[11px]"></i> View Products
+            </button>
+            <div class="flex items-center gap-1">
+              <button onclick="editCategory('${s.id}')"
+                class="p-1.5 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors" title="Edit Category">
+                <i class="fa-solid fa-pen-to-square"></i>
+              </button>
+              <button onclick="deleteCategory('${s.id}')"
+                class="p-1.5 text-red-500 hover:bg-red-50 rounded-lg transition-colors" title="Delete Category">
+                <i class="fa-solid fa-trash-can"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  // ── Orders ────────────────────────────────────────────────────────────────
+
+  async function loadOrders() {
+    try {
+      const res = await fetch('/api/orders');
+      if (res.ok) {
+        allOrders = await res.json();
+        document.getElementById('stat-orders').textContent          = allOrders.length;
+        document.getElementById('badge-total-orders').textContent   = allOrders.length;
+        renderOrdersTable();
+      }
+    } catch (e) {}
+  }
+
+  function renderOrdersTable() {
+    const tbody = document.getElementById('orders-table-body');
+    if (!tbody) return;
+    if (allOrders.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="7" class="text-center py-12 text-slate-400">
+        <i class="fa-solid fa-receipt text-3xl mb-3 block"></i>No orders yet
+      </td></tr>`;
+      return;
+    }
+    tbody.innerHTML = allOrders.map(o => `
+      <tr class="hover:bg-slate-50/80 transition-colors">
+        <td class="p-3 font-bold text-slate-900 text-xs">${o.id}</td>
+        <td class="p-3">
+          <span class="px-2 py-0.5 rounded text-[10px] font-bold ${o.type==='quote' ? 'bg-amber-100 text-amber-800' : 'bg-blue-100 text-blue-800'}">
+            ${o.type === 'quote' ? 'Quote' : 'Order'}
+          </span>
+        </td>
+        <td class="p-3">
+          <div class="font-bold text-slate-800 text-xs">${o.customerName||'N/A'} ${o.company?`(${o.company})`:''}}</div>
+          <a href="https://wa.me/88${o.phone}" target="_blank" class="text-[11px] text-emerald-700 hover:underline flex items-center gap-1 mt-0.5">
+            <i class="fa-brands fa-whatsapp"></i> ${o.phone}
+          </a>
+        </td>
+        <td class="p-3 max-w-xs text-slate-600 text-xs line-clamp-2">${o.address || (o.area === 'dhaka' ? 'Inside Dhaka' : 'Outside Dhaka')}</td>
+        <td class="p-3 font-bold text-emerald-800 text-xs">৳${(o.total||0).toLocaleString()}</td>
+        <td class="p-3">
+          <select onchange="updateOrderStatus('${o.id}', this.value)" class="text-xs font-bold border border-slate-200 rounded-lg py-1 px-2 bg-white">
+            <option value="Pending" ${o.status==='Pending'?'selected':''}>Pending</option>
+            <option value="Confirmed" ${o.status==='Confirmed'?'selected':''}>Confirmed</option>
+            <option value="Shipped" ${o.status==='Shipped'?'selected':''}>Shipped</option>
+            <option value="Delivered" ${o.status==='Delivered'?'selected':''}>Delivered</option>
+          </select>
+        </td>
+        <td class="p-3 text-right">
+          <a href="https://wa.me/88${o.phone}" target="_blank"
+            class="px-2 py-1 bg-emerald-600 hover:bg-emerald-700 text-white rounded text-[11px] font-bold inline-flex items-center gap-1">
+            <i class="fa-brands fa-whatsapp"></i> Chat
+          </a>
+        </td>
+      </tr>
+    `).join('');
+  }
+
+  async function updateOrderStatus(orderId, status) {
+    try {
+      await fetch(`/api/orders/${orderId}`, {
+        method: 'PUT', headers: { 'Content-Type':'application/json' },
+        body: JSON.stringify({ status })
+      });
+      showAdminToast('Order status updated!');
+    } catch (e) {}
+  }
+
+  // ── Settings ──────────────────────────────────────────────────────────────
+
+  async function loadSettings() {
+    try {
+      const res = await fetch('/api/settings');
+      if (res.ok) {
+        const s = await res.json();
+        if (document.getElementById('setting-phone'))      document.getElementById('setting-phone').value      = s.phone || '';
+        if (document.getElementById('setting-whatsapp'))   document.getElementById('setting-whatsapp').value   = s.whatsapp || '';
+        if (document.getElementById('setting-address'))    document.getElementById('setting-address').value    = s.address || '';
+        if (document.getElementById('setting-del-dhaka'))  document.getElementById('setting-del-dhaka').value  = s.deliveryDhaka || 80;
+        if (document.getElementById('setting-del-outside'))document.getElementById('setting-del-outside').value= s.deliveryOutside || 150;
+      }
+    } catch (e) {}
+  }
+
+  async function handleSettingsSave(e) {
+    e.preventDefault();
+    const settings = {
+      phone:          document.getElementById('setting-phone').value,
+      whatsapp:       document.getElementById('setting-whatsapp').value,
+      address:        document.getElementById('setting-address').value,
+      deliveryDhaka:  parseInt(document.getElementById('setting-del-dhaka').value) || 80,
+      deliveryOutside:parseInt(document.getElementById('setting-del-outside').value) || 150
+    };
+    try {
+      const res = await fetch('/api/settings', {
+        method: 'POST', headers: { 'Content-Type':'application/json' },
+        body: JSON.stringify(settings)
+      });
+      if ((await res.json()).success) showAdminToast('✓ Settings saved successfully!');
+    } catch (e) {
+      showAdminToast('Failed to save settings.', true);
+    }
+  }
+
+  // ── User Management ───────────────────────────────────────────────────────
+
+  async function loadUsers() {
+    try {
+      const res = await fetch('/api/users');
+      if (res.ok) {
+        const users = await res.json();
+        renderUsersTable(users);
+      }
+    } catch (e) {}
+  }
+
+  function renderUsersTable(users) {
+    const tbody = document.getElementById('users-table-body');
+    if (!tbody) return;
+    if (!users || users.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="5" class="text-center py-8 text-slate-400 text-xs">No users found</td></tr>`;
+      return;
+    }
+    tbody.innerHTML = users.map(u => `
+      <tr class="hover:bg-slate-50/80 transition-colors">
+        <td class="p-3 font-bold text-slate-800 text-xs">${u.fullName || '—'}</td>
+        <td class="p-3 text-xs font-mono text-slate-700">${u.username}</td>
+        <td class="p-3">
+          <span class="px-2 py-0.5 rounded text-[10px] font-bold ${u.role==='admin' ? 'bg-emerald-100 text-emerald-800' : 'bg-slate-100 text-slate-600'}">
+            ${u.role || 'admin'}
+          </span>
+        </td>
+        <td class="p-3">
+          <div class="flex items-center gap-2">
+            <input type="password" id="reset-pw-${u.username}" placeholder="New password" minlength="4"
+              class="px-2.5 py-1.5 rounded-lg border border-slate-200 text-xs w-36 focus:ring-2 focus:ring-emerald-600 focus:outline-none bg-white">
+            <button onclick="resetUserPassword('${u.username}')"
+              class="px-3 py-1.5 bg-slate-700 hover:bg-slate-800 text-white text-xs font-bold rounded-lg transition-colors">
+              Reset
+            </button>
+          </div>
+        </td>
+        <td class="p-3 text-right">
+          ${u.username === (currentUser && currentUser.username) ? 
+            `<span class="text-[10px] text-slate-400 italic">You</span>` :
+            `<button onclick="deleteUser('${u.username}')" class="p-1.5 text-red-500 hover:bg-red-50 rounded-lg transition-colors" title="Delete user">
+              <i class="fa-solid fa-trash-can text-xs"></i>
+            </button>`
+          }
+        </td>
+      </tr>
+    `).join('');
+  }
+
+  async function resetUserPassword(username) {
+    const input = document.getElementById(`reset-pw-${username}`);
+    const newPw = input ? input.value.trim() : '';
+    if (!newPw) { showAdminToast('Enter a new password first.', true); return; }
+    if (newPw.length < 4) { showAdminToast('Password must be at least 4 characters.', true); return; }
+    if (!confirm(`Reset password for user "${username}"?`)) return;
+    try {
+      const res = await fetch(`/api/users/${encodeURIComponent(username)}`, {
+        method: 'PUT', headers: { 'Content-Type':'application/json' },
+        body: JSON.stringify({ newPassword: newPw })
+      });
+      const result = await res.json();
+      if (result.success) {
+        showAdminToast(`✓ Password for "${username}" has been reset!`);
+        if (input) input.value = '';
+      } else {
+        showAdminToast('Failed: ' + (result.error || ''), true);
+      }
+    } catch (e) {
+      showAdminToast('Server error.', true);
+    }
+  }
+
+  async function deleteUser(username) {
+    if (!confirm(`Delete user "${username}"?\n\nThis cannot be undone.`)) return;
+    try {
+      const res    = await fetch(`/api/users/${encodeURIComponent(username)}`, { method: 'DELETE' });
+      const result = await res.json();
+      if (result.success) {
+        showAdminToast(`✓ User "${username}" deleted.`);
+        loadUsers();
+      } else {
+        showAdminToast('Error: ' + (result.error || ''), true);
+      }
+    } catch (e) {
+      showAdminToast('Server error.', true);
+    }
+  }
+
+  async function handleAddUser(e) {
+    e.preventDefault();
+    const body = {
+      fullName: document.getElementById('new-user-fullname').value.trim(),
+      username: document.getElementById('new-user-username').value.trim(),
+      password: document.getElementById('new-user-password').value,
+      role:     document.getElementById('new-user-role').value
+    };
+    if (!body.username || !body.password) {
+      showAdminToast('Username and password are required.', true); return;
+    }
+    try {
+      const res    = await fetch('/api/users', { method: 'POST', headers: { 'Content-Type':'application/json' }, body: JSON.stringify(body) });
+      const result = await res.json();
+      if (result.success) {
+        showAdminToast(`✓ User "${body.username}" created!`);
+        document.getElementById('add-user-form-wrapper').classList.add('hidden');
+        e.target.reset();
+        loadUsers();
+      } else {
+        showAdminToast('Error: ' + (result.error || ''), true);
+      }
+    } catch (e) {
+      showAdminToast('Server error.', true);
+    }
+  }
+
+  async function handleChangePassword(e) {
+    e.preventDefault();
+    const curPw  = document.getElementById('cur-password').value;
+    const newPw  = document.getElementById('new-password').value;
+    const conPw  = document.getElementById('confirm-password').value;
+    if (newPw !== conPw) { showAdminToast('New passwords do not match.', true); return; }
+    if (newPw.length < 4) { showAdminToast('Password must be at least 4 characters.', true); return; }
+    try {
+      const res = await fetch('/api/change-password', {
+        method: 'POST', headers: { 'Content-Type':'application/json' },
+        body: JSON.stringify({ currentPassword: curPw, newPassword: newPw })
+      });
+      const result = await res.json();
+      if (result.success) {
+        showAdminToast('✓ Password changed successfully! Please log in again.');
+        e.target.reset();
+        setTimeout(() => { handleLogout(); }, 2000);
+      } else {
+        showAdminToast('Error: ' + (result.error || ''), true);
+      }
+    } catch (e) {
+      showAdminToast('Server error.', true);
+    }
+  }
+
+  // ── Toast ─────────────────────────────────────────────────────────────────
+
+  function showAdminToast(msg, isError = false) {
+    const toast = document.getElementById('admin-toast');
+    const text  = document.getElementById('admin-toast-text');
+    const icon  = document.getElementById('admin-toast-icon');
+    if (!toast || !text) return;
+    text.textContent = msg;
+    icon.className   = isError
+      ? 'fa-solid fa-circle-xmark text-red-400 text-base'
+      : 'fa-solid fa-circle-check text-emerald-400 text-base';
+    toast.classList.remove('translate-y-20', 'opacity-0');
+    toast.classList.add('translate-y-0', 'opacity-100');
+    setTimeout(() => {
+      toast.classList.add('translate-y-20', 'opacity-0');
+      toast.classList.remove('translate-y-0', 'opacity-100');
+    }, 3500);
+  }
+</script>
+</body>
+</html>

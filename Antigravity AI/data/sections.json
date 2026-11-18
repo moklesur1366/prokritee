@@ -1,0 +1,112 @@
+[
+  {
+    "id": "gift-boxes",
+    "titleBn": "কর্পোরেট গিফট বক্স ও কম্বো প্যাকেজ",
+    "titleEn": "Corporate Gift Boxes & Combos",
+    "desc": "প্রতিষ্ঠানের কর্মকর্তা ও সম্মানিত ক্লায়েন্টদের জন্য প্রিমিয়াম হার্ডবক্স কম্বো সেট। কাস্টম লোগো প্রিন্ট সুবিধা সহ।",
+    "descEn": "Premium hard-box combo sets for company executives and VIP clients, with custom logo printing.",
+    "icon": "fa-solid fa-gift",
+    "badge": "সবচেয়ে জনপ্রিয়",
+    "badgeEn": "Most Popular"
+  },
+  {
+    "id": "crests-awards",
+    "titleBn": "ক্রেস্ট, মেটাল প্লেট ও ক্রিস্টাল অ্যাওয়ার্ড",
+    "titleEn": "Crests, Metal Plates & Crystal Awards",
+    "desc": "সম্মাননা স্মারক, ভিআইপি রিটায়ারমেন্ট ও বিশেষ অবদানের জন্য রাজকীয় মেটাল রাউন্ড প্লেট, এক্রিলিক ও ক্রিস্টাল ক্রেস্ট।",
+    "descEn": "Royal metal round plates, acrylic and crystal crests for recognition awards, VIP retirement and achievements.",
+    "icon": "fa-solid fa-award",
+    "badge": "প্রিমিয়াম কোয়ালিটি",
+    "badgeEn": "Premium Quality"
+  },
+  {
+    "id": "smart-drinkware",
+    "titleBn": "স্মার্ট ওয়াটার বোটল ও ভ্যাকুয়াম ফ্লাস্ক",
+    "titleEn": "Smart Vacuum Flasks & Drinkware",
+    "desc": "ডিজিটাল LED তাপমাত্রা প্রদর্শক বোতল, ফুড-গ্রেড স্টিল ফ্লাস্ক ও কাস্টমাইজড সাবলিমেশন সিরামিক মগ।",
+    "descEn": "Digital LED temperature display bottles, food-grade steel flasks and customized sublimation ceramic mugs.",
+    "icon": "fa-solid fa-bottle-water",
+    "badge": "হট কালেকশন",
+    "badgeEn": "Hot Collection"
+  },
+  {
+    "id": "desktop-organizers",
+    "titleBn": "ডেস্কটপ অর্গানাইজার ও অফিস টেবিল কালেকশন",
+    "titleEn": "Desktop Organizers & Table Accessories",
+    "desc": "উডেন ও লেদারেট মাল্টি-কম্পার্টমেন্ট পেন স্ট্যান্ড, বিজনেস কার্ড হোল্ডার, টেবিল ওয়াচ ও ডেস্ক অর্গানাইজার।",
+    "descEn": "Wooden & leatherette multi-compartment pen stands, business card holders, table watches and desk organizers.",
+    "icon": "fa-solid fa-boxes-stacked",
+    "badge": "এক্সিকিউটিভ চয়েস",
+    "badgeEn": "Executive Choice"
+  },
+  {
+    "id": "op-pens",
+    "titleBn": "সিগনেচার মেটাল পেন (OP সিরিজ)",
+    "titleEn": "Executive Metal Pens (OP Series)",
+    "desc": "স্মুথ ব্ল্যাক জেল রিফিল ও লেজার খোদাই লোগো প্রিন্ট সহ প্রিমিয়াম মেটালিক রোলার ও বলপেন কালেকশন।",
+    "descEn": "Smooth black gel refills and laser-engraved logo branding with premium metallic roller and ballpoint pens.",
+    "icon": "fa-solid fa-pen-nib",
+    "badge": "বেস্ট সেলার",
+    "badgeEn": "Best Seller"
+  },
+  {
+    "id": "pins-accessories",
+    "titleBn": "কোটপিন, কাফলিংক, টাই ক্লিপ ও মেডেল",
+    "titleEn": "Coat Pins, Cufflinks & Honor Medals",
+    "desc": "কোম্পানি লোগো খোদাইকৃত মেটালিক কোটপিন, গোল্ডেন/সিলভার কাফলিংক, টাই বার ও সম্মাননা মেডেল।",
+    "descEn": "Company logo engraved metallic coat pins, golden/silver cufflinks, tie bars and honor medals.",
+    "icon": "fa-solid fa-medal",
+    "badge": "কাস্টম ডাই কাস্টিং",
+    "badgeEn": "Custom Die Casting"
+  },
+  {
+    "id": "eco-bags",
+    "titleBn": "পাটজাত ও পরিবেশবান্ধব কর্পোরেট ব্যাগ",
+    "titleEn": "Eco Jute & Conference Bags",
+    "desc": "১০০% প্রাকৃতিক পাট ও কাপড়ে তৈরি সেমিনার ব্যাগ, ল্যাপটপ স্লিভ এবং শপিং টোট ব্যাগ।",
+    "descEn": "100% natural eco-friendly jute and canvas seminar bags, laptop sleeves and corporate tote bags.",
+    "icon": "fa-solid fa-leaf",
+    "badge": "১০০% ইকো-ফ্রেন্ডলি",
+    "badgeEn": "100% Eco-Friendly"
+  },
+  {
+    "id": "trophy-awards",
+    "titleBn": "ট্রফি, শিল্ড ও স্পোর্টস অ্যাওয়ার্ড",
+    "titleEn": "Trophies, Shields & Sports Awards",
+    "desc": "ক্রিকেট, ফুটবল, বার্ষিক ক্রীড়া প্রতিযোগিতা ও বিভিন্ন টুর্নামেন্টের জন্য আকর্ষণীয় চ্যাম্পিয়নশিপ ট্রফি ও শিল্ড।",
+    "descEn": "Prestigious championship trophies, tournament shields and sports achievement cups.",
+    "icon": "fa-solid fa-trophy",
+    "badge": "চ্যাম্পিয়ন চয়েস",
+    "badgeEn": "Champion Choice"
+  },
+  {
+    "id": "italian-frames",
+    "titleBn": "ইতালিয়ান ফ্রেম ও এক্সিকিউটিভ গ্লাস",
+    "titleEn": "Italian Frames & Executive Eyewear",
+    "desc": "স্টাইলিশ ও ক্লাসিক ডিজাইনের প্রিমিয়াম ইতালিয়ান সানগ্লাস ও ফ্যাশনেবল অপটিক্যাল ফ্রেম।",
+    "descEn": "Stylish and classic designer premium Italian eyewear frames and sunglasses.",
+    "icon": "fa-solid fa-glasses",
+    "badge": "ইতালিয়ান কালেকশন",
+    "badgeEn": "Italian Collection"
+  },
+  {
+    "id": "keyrings-accessories",
+    "titleBn": "মেটাল ও লেদার চাবির রিং",
+    "titleEn": "Premium Metal & Leather Keyrings",
+    "desc": "কাস্টমাইজড ব্র্যান্ড লোগো খোদাই করা মেটাল, লেদার ও উডেন প্রিমিয়াম কি-রিং কালেকশন।",
+    "descEn": "Custom logo engraved metallic, leather and wooden premium keychains and promotional keyrings.",
+    "icon": "fa-solid fa-key",
+    "badge": "ব্র্যান্ডিং গিফট",
+    "badgeEn": "Branding Gift"
+  },
+  {
+    "id": "door-plates-signage",
+    "titleBn": "ডোর প্লেট, লেকচার স্ট্যান্ড ও সাইনেজ",
+    "titleEn": "Door Plates, Lecture Stands & Signage",
+    "desc": "অফিস ও কনফারেন্স রুমের জন্য এক্সিকিউটিভ ডোর নেমপ্লেট, মেটাল সাইনবোর্ড ও লেকচার স্ট্যান্ড।",
+    "descEn": "Executive door name plates, conference podiums, signage and lecture stands for corporate offices.",
+    "icon": "fa-solid fa-chalkboard-user",
+    "badge": "অফিস সল্যুশন",
+    "badgeEn": "Office Solution"
+  }
+]

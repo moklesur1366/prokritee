@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="bn" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Category | Prokritee Corporate Gift & Merchandise</title>
+  <meta name="description" content="প্রকৃতি (Prokritee) - প্রিমিয়াম কর্পোরেট গিফট ও ক্যাটাগরি কালেকশন।">
+  <link rel="icon" href="assets/images/logo.jpg">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0fdf4',
+              100: '#dcfce7',
+              200: '#bbf7d0',
+              500: '#22c55e',
+              600: '#16a34a',
+              700: '#15803d',
+              800: '#166534',
+              900: '#14532d',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-slate-50 text-slate-800 flex flex-col min-h-screen">
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-emerald-900 text-emerald-100 text-xs py-2 px-4 border-b border-emerald-800">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+      <div class="flex items-center gap-2 text-center sm:text-left">
+        <span class="bg-emerald-600 text-white px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider" data-bn="অফার" data-en="OFFER">অফার</span>
+        <span data-bn="কর্পোরেট বাল্ক অর্ডারে ৩০% পর্যন্ত ছাড় ও ফ্রি কাস্টম লোগো প্রিন্টিং!" data-en="Up to 30% discount on corporate bulk orders & free custom logo printing!">কর্পোরেট বাল্ক অর্ডারে ৩০% পর্যন্ত ছাড় ও ফ্রি কাস্টম লোগো প্রিন্টিং!</span>
+      </div>
+      <div class="flex items-center gap-3 text-[11px]">
+        <a href="https://www.facebook.com/prokritee360/" target="_blank" rel="noopener noreferrer" class="hover:text-white flex items-center gap-1 transition-colors" title="Facebook">
+          <i class="fa-brands fa-facebook text-xs"></i> <span class="hidden md:inline">Facebook</span>
+        </a>
+        <span class="text-emerald-700">|</span>
+        <a href="https://www.instagram.com/prokritee.com.bd/" target="_blank" rel="noopener noreferrer" class="hover:text-white flex items-center gap-1 transition-colors" title="Instagram">
+          <i class="fa-brands fa-instagram text-xs"></i> <span class="hidden md:inline">Instagram</span>
+        </a>
+        <span class="text-emerald-700">|</span>
+        <a href="tel:01911193642" class="hover:text-white flex items-center gap-1 transition-colors">
+          <i class="fa-solid fa-phone"></i> ০১৯১১১৯৩৬৪২
+        </a>
+        <span class="text-emerald-700">|</span>
+        <a href="https://wa.me/8801911193642" target="_blank" class="hover:text-white flex items-center gap-1 text-emerald-400 hover:text-emerald-300 font-semibold transition-colors">
+          <i class="fa-brands fa-whatsapp"></i> <span data-bn="হোয়াটসঅ্যাপ" data-en="WhatsApp">হোয়াটসঅ্যাপ</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation Header -->
+  <header class="sticky top-0 z-40 glass-nav border-b border-slate-200/80 shadow-sm transition-all duration-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20 gap-4">
+        
+        <!-- Brand Logo -->
+        <a href="index.html" class="flex items-center gap-3 group shrink-0">
+          <div class="h-12 w-12 rounded-xl overflow-hidden shadow-sm border border-emerald-100 bg-white flex items-center justify-center p-0.5">
+            <img src="assets/images/logo.jpg" alt="Prokritee Logo" class="h-full w-full object-contain">
+          </div>
+          <div>
+            <span class="text-2xl font-black tracking-tight text-emerald-800 block leading-tight">prokritee</span>
+            <span class="text-[11px] text-slate-500 font-medium italic block tracking-wide -mt-0.5">impossible is nothing</span>
+          </div>
+        </a>
+
+        <!-- Search Bar (Desktop) -->
+        <div class="hidden md:flex flex-1 max-w-lg mx-6">
+          <div class="relative w-full">
+            <input 
+              type="text" 
+              id="category-search-input"
+              oninput="handleCategorySearch(this.value)"
+              data-placeholder-bn="এই ক্যাটাগরিতে পণ্য বা মডেল সার্চ করুন..."
+              data-placeholder-en="Search products or model in this category..."
+              placeholder="এই ক্যাটাগরিতে পণ্য বা মডেল সার্চ করুন..." 
+              class="w-full pl-10 pr-4 py-2.5 rounded-full text-xs sm:text-sm bg-slate-100/90 border border-slate-200 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-transparent transition-all shadow-inner"
+            />
+            <div class="absolute left-3.5 top-3 text-slate-400">
+              <i class="fa-solid fa-magnifying-glass text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Header Actions -->
+        <div class="flex items-center gap-2 sm:gap-3">
+          
+          <!-- Back to Homepage -->
+          <a href="index.html" class="flex items-center gap-1.5 text-xs font-bold text-slate-700 hover:text-emerald-700 bg-white border border-slate-200 hover:border-emerald-300 px-3 py-2 rounded-xl transition-all shadow-sm">
+            <i class="fa-solid fa-house text-emerald-600"></i>
+            <span data-bn="হোমপেজ" data-en="Home">হোমপেজ</span>
+          </a>
+
+          <!-- Bulk Quotation Request Button -->
+          <button 
+            onclick="openQuotationModal()"
+            class="hidden lg:flex items-center gap-2 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 px-3.5 py-2 rounded-xl text-xs font-bold border border-emerald-200 transition-all">
+            <i class="fa-solid fa-file-invoice text-emerald-600"></i>
+            <span data-bn="কোটেশন রিকোয়েস্ট" data-en="Request Quotation">কোটেশন রিকোয়েস্ট</span>
+          </button>
+
+          <!-- WhatsApp Direct Hotline -->
+          <a 
+            href="https://wa.me/8801911193642?text=হ্যালো,%20আমি%20প্রকৃতি%20থেকে%20কর্পোরেট%20গিফট%20সম্পর্কে%20জানতে%20চাই।" 
+            target="_blank"
+            class="hidden sm:flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-3.5 py-2 rounded-xl text-xs font-bold shadow-md shadow-emerald-600/20 transition-all">
+            <i class="fa-brands fa-whatsapp text-sm"></i>
+            <span data-bn="হটলাইন" data-en="Hotline">হটলাইন</span>
+          </a>
+
+          <!-- Language Toggle -->
+          <button
+            id="lang-toggle-btn"
+            onclick="toggleLang()"
+            class="flex items-center gap-0.5 px-3 py-2 rounded-xl text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:border-emerald-400 hover:bg-emerald-50 transition-all shadow-sm"
+            title="Switch Language / ভাষা পরিবর্তন">
+            <span class="font-black text-emerald-700">বাং</span><span class="text-slate-400 mx-1">|</span><span class="text-slate-500 font-medium">EN</span>
+          </button>
+
+          <!-- Cart Drawer Button -->
+          <button 
+            onclick="toggleCartDrawer()" 
+            class="relative p-2.5 rounded-xl bg-white border border-slate-200 text-slate-700 hover:border-emerald-400 hover:bg-emerald-50 transition-all shadow-sm"
+            title="Shopping Cart">
+            <i class="fa-solid fa-cart-shopping text-emerald-700 text-base"></i>
+            <span id="cart-counter" class="absolute -top-1.5 -right-1.5 bg-emerald-600 text-white font-black text-[10px] w-5 h-5 rounded-full flex items-center justify-center border-2 border-white shadow-sm">
+              0
+            </span>
+          </button>
+
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sticky Category Switcher Bar -->
+  <div class="sticky top-20 z-30 bg-slate-50/95 backdrop-blur-md border-b border-slate-200/90 py-3 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1" id="category-page-switcher-nav">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Dedicated Category Main Content Area -->
+  <main id="category-page-container" class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+    
+    <!-- Breadcrumb -->
+    <nav class="flex items-center gap-2 text-xs text-slate-500 mb-6">
+      <a href="index.html" class="hover:text-emerald-700 flex items-center gap-1 font-medium">
+        <i class="fa-solid fa-house text-[10px]"></i> <span data-bn="হোম" data-en="Home">হোম</span>
+      </a>
+      <span class="text-slate-400">/</span>
+      <span data-bn="ক্যাটাগরি" data-en="Categories">ক্যাটাগরি</span>
+      <span class="text-slate-400">/</span>
+      <span id="cat-breadcrumb-title" class="font-bold text-slate-800"></span>
+    </nav>
+
+    <!-- Category Hero Header Card -->
+    <div id="cat-hero-card" class="bg-gradient-to-r from-emerald-900 via-slate-900 to-emerald-950 text-white rounded-3xl p-6 sm:p-8 mb-8 shadow-xl relative overflow-hidden">
+      <!-- Decorative background blur -->
+      <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-emerald-600/20 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div class="flex items-start sm:items-center gap-5">
+          <div id="cat-hero-icon-wrapper" class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-emerald-400 flex items-center justify-center text-3xl sm:text-4xl shrink-0 shadow-lg">
+            <i id="cat-hero-icon" class="fa-solid fa-gift"></i>
+          </div>
+          <div>
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 text-[11px] font-bold mb-2">
+              <i class="fa-solid fa-sparkles text-[10px]"></i>
+              <span id="cat-hero-badge">সবচেয়ে জনপ্রিয়</span>
+            </div>
+            <h1 id="cat-hero-title-bn" class="text-2xl sm:text-4xl font-extrabold tracking-tight"></h1>
+            <p id="cat-hero-title-en" class="text-xs sm:text-sm text-emerald-200 font-medium mt-1"></p>
+            <p id="cat-hero-desc" class="text-xs sm:text-sm text-slate-300 mt-2 max-w-2xl leading-relaxed"></p>
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row md:flex-col items-start md:items-end gap-3 shrink-0">
+          <div class="px-4 py-2 bg-white/10 backdrop-blur-md rounded-xl border border-white/15 text-right">
+            <div class="text-[11px] text-emerald-300 font-semibold uppercase tracking-wider" data-bn="উপলব্ধ পণ্য" data-en="Available Items">উপলব্ধ পণ্য</div>
+            <div id="cat-hero-count" class="text-xl sm:text-2xl font-black text-white">০ টি</div>
+          </div>
+          <button onclick="openQuotationModalForCurrentCategory()" class="px-5 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs sm:text-sm rounded-xl shadow-lg transition-all flex items-center gap-2">
+            <i class="fa-solid fa-file-invoice"></i>
+            <span data-bn="কোটেশন রিকোয়েস্ট" data-en="Request Quote">কোটেশন রিকোয়েস্ট</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filter & Sort Toolbar -->
+    <div class="bg-white rounded-2xl border border-slate-200/80 p-4 mb-8 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+      
+      <!-- Left: Mobile Search & Count -->
+      <div class="flex items-center justify-between gap-4 flex-1">
+        <div class="md:hidden flex-1 relative">
+          <input 
+            type="text" 
+            oninput="handleCategorySearch(this.value)"
+            placeholder="পণ্য সার্চ করুন..." 
+            class="w-full pl-9 pr-4 py-2 rounded-xl text-xs bg-slate-100 border border-slate-200 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-600"
+          />
+          <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-slate-400 text-xs"></i>
+        </div>
+        <div id="cat-items-showing-label" class="text-xs font-bold text-slate-600 whitespace-nowrap">
+          দেখানো হচ্ছে ১-২০ পণ্য
+        </div>
+      </div>
+
+      <!-- Right: Price Filter & Sort Dropdowns -->
+      <div class="flex items-center gap-3">
+        
+        <!-- Price Filter -->
+        <div class="flex items-center gap-1.5">
+          <span class="text-xs text-slate-500 font-medium hidden sm:inline" data-bn="মূল্য:" data-en="Price:">মূল্য:</span>
+          <select id="cat-price-filter" onchange="handleCategoryFilterChange()" class="text-xs font-semibold bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-600">
+            <option value="all">সকল মূল্য (All Prices)</option>
+            <option value="0-500">৳৫০০ এর নিচে</option>
+            <option value="500-1500">৳৫০০ - ৳১,৫০০</option>
+            <option value="1500-3000">৳১,৫০০ - ৳৩,০০০</option>
+            <option value="3000+">৳৩,০০০ এর উপরে</option>
+          </select>
+        </div>
+
+        <!-- Sort Select -->
+        <div class="flex items-center gap-1.5">
+          <span class="text-xs text-slate-500 font-medium hidden sm:inline" data-bn="বাছাই:" data-en="Sort:">বাছাই:</span>
+          <select id="cat-sort-select" onchange="handleCategoryFilterChange()" class="text-xs font-semibold bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-600">
+            <option value="default">ডিফল্ট (Default)</option>
+            <option value="price-asc">দাম: কম থেকে বেশি (Low to High)</option>
+            <option value="price-desc">দাম: বেশি থেকে কম (High to Low)</option>
+            <option value="rating">সর্বোচ্চ রেটিং (Top Rated)</option>
+          </select>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Products Grid -->
+    <div id="category-products-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6">
+      <!-- Rendered dynamically by JS -->
+    </div>
+
+    <!-- Empty State -->
+    <div id="category-empty-state" class="hidden py-16 text-center bg-white rounded-3xl border border-slate-200 mt-6">
+      <div class="w-16 h-16 mx-auto mb-3 bg-slate-100 text-slate-400 rounded-full flex items-center justify-center text-2xl">
+        <i class="fa-solid fa-box-open"></i>
+      </div>
+      <h3 class="text-base font-bold text-slate-800" data-bn="কোনো পণ্য পাওয়া যায়নি" data-en="No Products Found">কোনো পণ্য পাওয়া যায়নি</h3>
+      <p class="text-xs text-slate-400 mt-1 max-w-sm mx-auto" data-bn="আপনার সার্চ অথবা ফিল্টার পরিবর্তন করে পুনরায় চেষ্টা করুন।" data-en="Please try adjusting your search or filters.">আপনার সার্চ অথবা ফিল্টার পরিবর্তন করে পুনরায় চেষ্টা করুন।</p>
+      <button onclick="resetCategoryFilters()" class="mt-4 px-4 py-2 bg-emerald-700 text-white rounded-xl text-xs font-bold hover:bg-emerald-800 transition-colors">
+        ফিল্টার রিসেট করুন
+      </button>
+    </div>
+
+    <!-- Pagination Controls -->
+    <div id="category-pagination-container" class="mt-12 flex items-center justify-center gap-2 pb-6">
+      <!-- Rendered by JS -->
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400 text-xs pt-16 pb-12 border-t border-slate-800 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-slate-800">
+        
+        <!-- About Prokritee -->
+        <div class="space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="h-10 w-10 rounded-lg overflow-hidden bg-white p-0.5">
+              <img src="assets/images/logo.jpg" alt="Prokritee" class="h-full w-full object-contain">
+            </div>
+            <div>
+              <span class="text-xl font-bold text-white block">prokritee</span>
+              <span class="text-[10px] text-emerald-400 italic">impossible is nothing</span>
+            </div>
+          </div>
+          <p class="text-slate-400 text-xs leading-relaxed" data-bn="প্রকৃতি (Prokritee) পরিবেশবান্ধব ও প্রিমিয়াম কর্পোরেট গিফটিং সলিউশন প্রোভাইডার। আধুনিক ডিজাইন ও লোকাল কারুশিল্পের মেলবন্ধনে তৈরি আমাদের প্রতিটি উপহার সামগ্রী।" data-en="Prokritee is a premier eco-friendly corporate gifting solutions partner, blending modern design with fine local craftsmanship.">
+            প্রকৃতি (Prokritee) পরিবেশবান্ধব ও প্রিমিয়াম কর্পোরেট গিফটিং সলিউশন প্রোভাইডার। আধুনিক ডিজাইন ও লোকাল কারুশিল্পের মেলবন্ধনে তৈরি আমাদের প্রতিটি উপহার সামগ্রী।
+          </p>
+          <div class="flex gap-3 text-slate-400 text-base">
+            <a href="https://www.facebook.com/prokritee360/" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-slate-800 hover:bg-emerald-600 flex items-center justify-center text-slate-300 hover:text-white transition-all shadow-sm" title="Facebook"><i class="fa-brands fa-facebook-f text-sm"></i></a>
+            <a href="https://www.instagram.com/prokritee.com.bd/" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-slate-800 hover:bg-emerald-600 flex items-center justify-center text-slate-300 hover:text-white transition-all shadow-sm" title="Instagram"><i class="fa-brands fa-instagram text-sm"></i></a>
+            <a href="https://wa.me/8801911193642" target="_blank" class="w-9 h-9 rounded-full bg-slate-800 hover:bg-emerald-600 flex items-center justify-center text-slate-300 hover:text-white transition-all shadow-sm" title="WhatsApp"><i class="fa-brands fa-whatsapp text-sm"></i></a>
+          </div>
+        </div>
+
+        <!-- Quick Categories -->
+        <div>
+          <h4 class="text-sm font-bold text-white mb-4 uppercase tracking-wider" data-bn="ক্যাটাগরি সমূহ" data-en="Categories">ক্যাটাগরি সমূহ</h4>
+          <ul class="space-y-2.5" id="footer-categories-list">
+            <li><a href="category.html?id=gift-boxes" class="hover:text-emerald-400 transition-colors">কর্পোরেট গিফট কম্বো</a></li>
+            <li><a href="category.html?id=crests-awards" class="hover:text-emerald-400 transition-colors">ক্রেস্ট ও অ্যাওয়ার্ড</a></li>
+            <li><a href="category.html?id=trophy-awards" class="hover:text-emerald-400 transition-colors">ট্রফি ও মেডেল</a></li>
+            <li><a href="category.html?id=smart-drinkware" class="hover:text-emerald-400 transition-colors">স্মার্ট ফ্লাস্ক ও মগ</a></li>
+            <li><a href="category.html?id=eco-bags" class="hover:text-emerald-400 transition-colors">পাটজাত ও ইকো ব্যাগ</a></li>
+          </ul>
+        </div>
+
+        <!-- Customer Care -->
+        <div>
+          <h4 class="text-sm font-bold text-white mb-4 uppercase tracking-wider" data-bn="সহায়তা ও সেবা" data-en="Support & Services">সহায়তা ও সেবা</h4>
+          <ul class="space-y-2.5">
+            <li><a href="javascript:void(0)" onclick="openQuotationModal()" class="hover:text-emerald-400 transition-colors" data-bn="বাল্ক অর্ডার ও কোটেশন" data-en="Bulk Orders & Quotes">বাল্ক অর্ডার ও কোটেশন</a></li>
+            <li><a href="javascript:void(0)" onclick="toggleCartDrawer()" class="hover:text-emerald-400 transition-colors" data-bn="আপনার কার্ট দেখুন" data-en="View Your Cart">আপনার কার্ট দেখুন</a></li>
+            <li><a href="javascript:void(0)" class="hover:text-emerald-400 transition-colors" data-bn="ডেলিভারি ও রিটার্ন পলিসি" data-en="Delivery & Return Policy">ডেলিভারি ও রিটার্ন পলিসি</a></li>
+            <li><a href="javascript:void(0)" class="hover:text-emerald-400 transition-colors" data-bn="টার্মস অ্যান্ড কন্ডিশনস" data-en="Terms & Conditions">টার্মস অ্যান্ড কন্ডিশনস</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact & Office -->
+        <div>
+          <h4 class="text-sm font-bold text-white mb-4 uppercase tracking-wider" data-bn="যোগাযোগ" data-en="Contact Us">যোগাযোগ</h4>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-2.5">
+              <i class="fa-solid fa-location-dot text-emerald-500 mt-1"></i>
+              <span data-bn="২২১, ঢাকা ইউনিভার্সিটি মার্কেট, কাঁটাবন, ঢাকা" data-en="221, Dhaka University Market, Katabon, Dhaka">২২১, ঢাকা ইউনিভার্সিটি মার্কেট, কাঁটাবন, ঢাকা</span>
+            </li>
+            <li class="flex items-center gap-2.5">
+              <i class="fa-solid fa-phone text-emerald-500"></i>
+              <a href="tel:01911193642" class="hover:text-white">০১৯১১১৯৩৬৪২</a>
+            </li>
+            <li class="flex items-center gap-2.5">
+              <i class="fa-solid fa-envelope text-emerald-500"></i>
+              <a href="mailto:info@prokriteebd.com" class="hover:text-white">info@prokriteebd.com</a>
+            </li>
+            <li class="flex items-center gap-2.5">
+              <i class="fa-brands fa-whatsapp text-emerald-500 text-sm"></i>
+              <a href="https://wa.me/8801911193642" target="_blank" class="hover:text-white">০১৯১১১৯৩৬৪২ (হোয়াটসঅ্যাপ)</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Payment Gateways & Copyright -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <p class="text-slate-500 text-[11px]" data-bn="&copy; ২০২৬ Prokritee. সর্বস্বত্ব সংরক্ষিত। impossible is nothing." data-en="&copy; 2026 Prokritee. All rights reserved. impossible is nothing.">
+            &copy; ২০২৬ Prokritee. সর্বস্বত্ব সংরক্ষিত। impossible is nothing.
+          </p>
+          <span class="text-slate-700 text-xs">|</span>
+          <a href="/admin" target="_blank" class="text-slate-400 hover:text-emerald-400 text-[11px] font-medium transition-colors flex items-center gap-1.5">
+            <i class="fa-solid fa-shield-halved text-[10px] text-emerald-500"></i>
+            <span data-bn="অ্যাডমিন প্যানেল" data-en="Admin Portal">অ্যাডমিন প্যানেল</span>
+          </a>
+        </div>
+        
+        <div class="flex items-center gap-2 text-slate-400">
+          <span class="text-[11px] mr-2" data-bn="নিরাপদ পেমেন্ট:" data-en="Secure Payment:">নিরাপদ পেমেন্ট:</span>
+          <span class="px-2 py-1 bg-slate-800 rounded font-bold text-[10px] text-pink-400">bKash</span>
+          <span class="px-2 py-1 bg-slate-800 rounded font-bold text-[10px] text-amber-500">Nagad</span>
+          <span class="px-2 py-1 bg-slate-800 rounded font-bold text-[10px] text-violet-400">Rocket</span>
+          <span class="px-2 py-1 bg-slate-800 rounded font-bold text-[10px] text-emerald-400" data-bn="ক্যাশ অন ডেলিভারি" data-en="Cash on Delivery">ক্যাশ অন ডেলিভারি</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Slide-Over Shopping Cart Drawer -->
+  <div id="cart-drawer" class="fixed inset-y-0 right-0 max-w-full flex pl-10 z-50 transform translate-x-full transition-transform duration-300 ease-in-out">
+    <div class="w-screen max-w-md bg-white shadow-2xl flex flex-col">
+      <div class="p-4 border-b border-slate-200 flex items-center justify-between bg-slate-50">
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-cart-shopping text-emerald-700"></i>
+          <h3 class="font-bold text-slate-800 text-sm" data-bn="আপনার শপিং কার্ট" data-en="Your Shopping Cart">আপনার শপিং কার্ট</h3>
+        </div>
+        <button onclick="toggleCartDrawer()" class="p-2 text-slate-400 hover:text-slate-600 rounded-lg">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+      <div class="flex-1 overflow-y-auto p-4 space-y-3">
+        <div id="cart-empty-state" class="hidden py-16 text-center">
+          <div class="w-16 h-16 mx-auto mb-3 bg-slate-100 rounded-full flex items-center justify-center text-slate-400 text-xl">
+            <i class="fa-solid fa-basket-shopping"></i>
+          </div>
+          <p class="text-sm font-semibold text-slate-700" data-bn="আপনার কার্ট খালি রয়েছে" data-en="Your cart is currently empty">আপনার কার্ট খালি রয়েছে</p>
+          <p class="text-xs text-slate-400 mt-1" data-bn="পণ্য যোগ করতে ক্যাটালগ দেখুন" data-en="Browse catalog to add items">পণ্য যোগ করতে ক্যাটালগ দেখুন</p>
+        </div>
+        <div id="cart-items-list" class="space-y-3"></div>
+      </div>
+      <div id="cart-drawer-footer" class="p-4 border-t border-slate-200 bg-slate-50 space-y-3">
+        <div class="flex items-center justify-between text-sm">
+          <span class="text-slate-600 font-medium" data-bn="উপমোট (Subtotal):" data-en="Subtotal:">উপমোট (Subtotal):</span>
+          <span id="cart-drawer-subtotal" class="font-bold text-lg text-emerald-800">৳০</span>
+        </div>
+        <p class="text-[11px] text-slate-500" data-bn="ডেলিভারি চার্জ চেকআউটের সময় নির্ধারিত হবে।" data-en="Delivery charge calculated at checkout.">ডেলিভারি চার্জ চেকআউটের সময় নির্ধারিত হবে।</p>
+        <button onclick="openCheckoutModal()" class="w-full py-3 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-sm rounded-xl transition-all shadow-md shadow-emerald-700/20 flex items-center justify-center gap-2">
+          <i class="fa-solid fa-credit-card"></i>
+          <span data-bn="অর্ডার সম্পন্ন করতে এগিয়ে যান" data-en="Proceed to Checkout">অর্ডার সম্পন্ন করতে এগিয়ে যান</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product Quick View Modal -->
+  <div id="product-modal" class="fixed inset-0 z-50 modal-backdrop hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-2xl w-full overflow-hidden shadow-2xl relative animate-in fade-in zoom-in duration-200">
+      <button onclick="closeProductModal()" class="absolute top-4 right-4 z-10 w-9 h-9 bg-slate-100 hover:bg-slate-200 rounded-full flex items-center justify-center text-slate-600 transition-colors">
+        <i class="fa-solid fa-xmark text-sm"></i>
+      </button>
+      <div class="grid grid-cols-1 md:grid-cols-2">
+        <div class="h-64 md:h-full bg-slate-100 relative">
+          <img id="modal-img" src="" alt="Product" onerror="this.onerror=null;this.src='assets/images/logo.jpg';" class="w-full h-full object-cover">
+          <div class="absolute bottom-3 right-3 bg-slate-950/80 backdrop-blur-md text-white text-[11px] font-bold px-2.5 py-1 rounded-lg pointer-events-none flex items-center gap-1.5 shadow-md border border-white/20">
+            <i class="fa-solid fa-leaf text-emerald-400 text-xs"></i>
+            <span class="tracking-wide">Prokritee • প্রকৃতি</span>
+          </div>
+        </div>
+        <div class="p-6 flex flex-col justify-between">
+          <div>
+            <span class="text-[11px] font-semibold text-emerald-700 uppercase tracking-wide" data-bn="পণ্যের বিস্তারিত" data-en="Product Details">পণ্যের বিস্তারিত</span>
+            <h3 id="modal-title-bn" class="text-lg font-bold text-slate-900 mt-1"></h3>
+            <p id="modal-title-en" class="text-xs text-slate-400"></p>
+            <div class="flex items-baseline gap-2 mt-3">
+              <span id="modal-price" class="text-2xl font-bold text-emerald-700"></span>
+              <span id="modal-orig-price" class="text-sm text-slate-400 line-through"></span>
+            </div>
+            <p id="modal-desc" class="text-xs text-slate-600 mt-3 leading-relaxed"></p>
+            <div class="mt-4 pt-3 border-t border-slate-100">
+              <div class="text-[11px] font-bold text-slate-700 mb-1.5" data-bn="লোগো কাস্টমাইজেশন সুবিধা:" data-en="Customization Features:">লোগো কাস্টমাইজেশন সুবিধা:</div>
+              <ul id="modal-features" class="space-y-1"></ul>
+            </div>
+            <div class="mt-3 text-[11px] text-slate-500">
+              <span data-bn="সর্বনিম্ন অর্ডার (MOQ):" data-en="Min Order:">সর্বনিম্ন অর্ডার (MOQ):</span> <span id="modal-moq" class="font-bold text-slate-700"></span>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-100 flex items-center gap-3">
+            <div class="flex items-center border border-slate-200 rounded-xl bg-slate-50 p-1">
+              <button onclick="updateModalQty(-1)" class="w-8 h-8 rounded-lg bg-white shadow-sm flex items-center justify-center text-slate-600 hover:bg-slate-100"><i class="fa-solid fa-minus text-xs"></i></button>
+              <input type="number" id="modal-qty" value="1" min="1" class="w-12 text-center text-xs font-bold bg-transparent focus:outline-none">
+              <button onclick="updateModalQty(1)" class="w-8 h-8 rounded-lg bg-white shadow-sm flex items-center justify-center text-slate-600 hover:bg-slate-100"><i class="fa-solid fa-plus text-xs"></i></button>
+            </div>
+            <button onclick="addModalItemToCart()" class="flex-1 py-3 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs rounded-xl shadow-md transition-all flex items-center justify-center gap-2">
+              <i class="fa-solid fa-cart-plus"></i>
+              <span data-bn="কার্টে যোগ করুন" data-en="Add to Cart">কার্টে যোগ করুন</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Direct Order Modal -->
+  <div id="direct-order-modal" class="fixed inset-0 z-50 modal-backdrop hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl relative animate-in fade-in zoom-in duration-200">
+      <div class="p-4 border-b border-slate-100 flex items-center justify-between bg-slate-50">
+        <h3 class="font-bold text-slate-800 text-sm flex items-center gap-2">
+          <i class="fa-solid fa-bolt text-amber-500"></i>
+          <span data-bn="দ্রুত অর্ডার সম্পন্ন করুন" data-en="Quick Direct Order">দ্রুত অর্ডার সম্পন্ন করুন</span>
+        </h3>
+        <button onclick="closeDirectOrderModal()" class="text-slate-400 hover:text-slate-600 p-1"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form id="direct-order-form" onsubmit="handleDirectOrderSubmit(event)" class="p-6 space-y-4">
+        <div id="direct-order-product-info" class="p-3 rounded-2xl bg-slate-50 border border-slate-100 flex items-center gap-3"></div>
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1" data-bn="আপনার পুরো নাম *" data-en="Full Name *">আপনার পুরো নাম *</label>
+          <input type="text" id="do-name" required placeholder="e.g. মোঃ তানভীর আহমেদ" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-600 focus:outline-none">
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1" data-bn="মোবাইল নম্বর *" data-en="Mobile Number *">মোবাইল নম্বর *</label>
+            <input type="tel" id="do-phone" required placeholder="017xxxxxxxx" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-600 focus:outline-none">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1" data-bn="কোম্পানি / প্রতিষ্ঠান" data-en="Company Name">কোম্পানি / প্রতিষ্ঠান</label>
+            <input type="text" id="do-company" placeholder="e.g. ABC Ltd." class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-600 focus:outline-none">
+          </div>
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1" data-bn="ডেলিভারি ঠিকানা *" data-en="Delivery Address *">ডেলিভারি ঠিকানা *</label>
+          <textarea id="do-address" required rows="2" placeholder="বাড়ি নং, রোড নং, এলাকা, শহর" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-600 focus:outline-none"></textarea>
+        </div>
+        <div class="grid grid-cols-2 gap-3 pt-2">
+          <label class="cursor-pointer border border-slate-200 rounded-xl p-3 flex items-center gap-2 has-[:checked]:border-emerald-600 has-[:checked]:bg-emerald-50">
+            <input type="radio" name="do-area" value="dhaka" checked onchange="updateDirectOrderSummary()" class="text-emerald-600">
+            <div><div class="text-xs font-bold text-slate-800" data-bn="ঢাকার ভেতরে" data-en="Inside Dhaka">ঢাকার ভেতরে</div><div class="text-[10px] text-slate-400">৳৮০</div></div>
+          </label>
+          <label class="cursor-pointer border border-slate-200 rounded-xl p-3 flex items-center gap-2 has-[:checked]:border-emerald-600 has-[:checked]:bg-emerald-50">
+            <input type="radio" name="do-area" value="outside" onchange="updateDirectOrderSummary()" class="text-emerald-600">
+            <div><div class="text-xs font-bold text-slate-800" data-bn="ঢাকার বাইরে" data-en="Outside Dhaka">ঢাকার বাইরে</div><div class="text-[10px] text-slate-400">৳১৫০</div></div>
+          </label>
+        </div>
+        <div class="p-3 bg-emerald-50 rounded-xl text-xs flex justify-between font-bold text-emerald-900">
+          <span data-bn="সর্বমোট প্রদেয় বিল:" data-en="Grand Total:">সর্বমোট প্রদেয় বিল:</span>
+          <span id="do-grand-total">৳০</span>
+        </div>
+        <button type="submit" class="w-full py-3 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-md flex items-center justify-center gap-2">
+          <i class="fa-solid fa-circle-check"></i>
+          <span data-bn="অর্ডার কনফার্ম করুন" data-en="Confirm Order">অর্ডার কনফার্ম করুন</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Bulk Quotation Modal -->
+  <div id="quotation-modal" class="fixed inset-0 z-50 modal-backdrop hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl relative animate-in fade-in zoom-in duration-200">
+      <div class="p-4 border-b border-slate-100 flex items-center justify-between bg-slate-50">
+        <h3 class="font-bold text-slate-800 text-sm flex items-center gap-2">
+          <i class="fa-solid fa-file-invoice text-emerald-700"></i>
+          <span data-bn="কর্পোরেট কোটেশন ও ক্যাটালগ রিকোয়েস্ট" data-en="Corporate Quotation Request">কর্পোরেট কোটেশন ও ক্যাটালগ রিকোয়েস্ট</span>
+        </h3>
+        <button onclick="closeQuotationModal()" class="text-slate-400 hover:text-slate-600 p-1"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form id="quotation-form" onsubmit="handleQuotationSubmit(event)" class="p-6 space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1" data-bn="কোম্পানি / প্রতিষ্ঠানের নাম *" data-en="Company Name *">কোম্পানি / প্রতিষ্ঠানের নাম *</label>
+          <input type="text" id="quote-company" required placeholder="e.g. ব্র্যাক ব্যাংক / গ্রামীণফোন / স্কয়ার" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-600 focus:outline-none">
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1" data-bn="যোগাযোগকারীর নাম *" data-en="Contact Person *">যোগাযোগকারীর নাম *</label>
+            <input type="text" id="quote-name" required placeholder="আপনার নাম" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-600 focus:outline-none">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1" data-bn="মোবাইল / হোয়াটসঅ্যাপ *" data-en="Mobile / WhatsApp *">মোবাইল / হোয়াটসঅ্যাপ *</label>
+            <input type="tel" id="quote-phone" required placeholder="017xxxxxxxx" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-600 focus:outline-none">
+          </div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1" data-bn="আগ্রহী ক্যাটাগরি" data-en="Interested Category">আগ্রহী ক্যাটাগরি</label>
+            <select id="quote-category" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-600 focus:outline-none bg-white">
+              <!-- Populated by JS -->
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1" data-bn="আনুমানিক পরিমাণ (Quantity)" data-en="Approx. Quantity">আনুমানিক পরিমাণ (Quantity)</label>
+            <input type="number" id="quote-qty" min="10" placeholder="e.g. 50 pcs" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-600 focus:outline-none">
+          </div>
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1" data-bn="বিস্তারিত চাহিদা ও বাজেট (যদি থাকে)" data-en="Requirements & Budget">বিস্তারিত চাহিদা ও বাজেট (যদি থাকে)</label>
+          <textarea id="quote-notes" rows="2" placeholder="লোগো প্রিন্ট, প্যাকেজিং বা কাঙ্ক্ষিত বাজেট উল্লেখ করতে পারেন..." class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-600 focus:outline-none"></textarea>
+        </div>
+        <button type="submit" class="w-full py-3 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-md flex items-center justify-center gap-2">
+          <i class="fa-solid fa-paper-plane"></i>
+          <span data-bn="কোটেশন রিকোয়েস্ট পাঠান" data-en="Submit Quotation Request">কোটেশন রিকোয়েস্ট পাঠান</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Order Confirmation Modal -->
+  <div id="confirmation-modal" class="fixed inset-0 z-50 modal-backdrop hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 text-center shadow-2xl relative animate-in fade-in zoom-in duration-200">
+      <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-3xl mx-auto mb-4">
+        <i class="fa-solid fa-check"></i>
+      </div>
+      <h3 class="text-lg font-bold text-slate-900" data-bn="ধন্যবাদ! আপনার রিকোয়েস্ট গৃহীত হয়েছে" data-en="Thank You! Request Received">ধন্যবাদ! আপনার রিকোয়েস্ট গৃহীত হয়েছে</h3>
+      <p class="text-xs text-slate-500 mt-2" data-bn="অর্ডার আইডি:" data-en="Order ID:">অর্ডার আইডি: <span id="confirmed-order-id" class="font-bold text-emerald-800"></span></p>
+      <p class="text-xs text-slate-600 mt-2 leading-relaxed" data-bn="আমাদের কর্পোরেট রিপ্রেজেন্টেটিভ শীঘ্রই আপনার সাথে যোগাযোগ করবেন।" data-en="Our representative will contact you shortly.">আমাদের কর্পোরেট রিপ্রেজেন্টেটিভ শীঘ্রই আপনার সাথে যোগাযোগ করবেন।</p>
+      <div class="mt-6 flex gap-3">
+        <button onclick="closeConfirmationModal()" class="flex-1 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-xl" data-bn="বন্ধ করুন" data-en="Close">বন্ধ করুন</button>
+        <a id="confirmed-wa-btn" href="#" target="_blank" class="flex-1 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl flex items-center justify-center gap-1.5">
+          <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Social Actions Stack -->
+  <div class="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-2.5">
+    
+    <!-- Facebook Floating Pill -->
+    <a 
+      href="https://www.facebook.com/prokritee360/" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      class="bg-[#1877F2] hover:bg-blue-700 text-white w-11 h-11 rounded-full flex items-center justify-center text-lg shadow-xl hover:scale-110 transition-all duration-300 group relative"
+      title="Facebook Page">
+      <i class="fa-brands fa-facebook-f"></i>
+      <span class="absolute right-14 bg-slate-900 text-white text-[11px] font-semibold py-1 px-2.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-md">
+        Facebook
+      </span>
+    </a>
+
+    <!-- Instagram Floating Pill -->
+    <a 
+      href="https://www.instagram.com/prokritee.com.bd/" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      class="bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white w-11 h-11 rounded-full flex items-center justify-center text-lg shadow-xl hover:scale-110 transition-all duration-300 group relative"
+      title="Instagram Profile">
+      <i class="fa-brands fa-instagram"></i>
+      <span class="absolute right-14 bg-slate-900 text-white text-[11px] font-semibold py-1 px-2.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-md">
+        Instagram
+      </span>
+    </a>
+
+    <!-- Floating WhatsApp Button -->
+    <a 
+      href="https://wa.me/8801911193642?text=হ্যালো,%20আমি%20প্রকৃতি%20(Prokritee)%20থেকে%20কর্পোরেট%20গিফট%20সম্পর্কে%20জানতে%20চাই।" 
+      target="_blank"
+      class="bg-emerald-600 hover:bg-emerald-700 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-2xl hover:scale-110 transition-all duration-300 pulse-badge group relative"
+      title="WhatsApp Chat">
+      <i class="fa-brands fa-whatsapp"></i>
+      <span class="absolute right-16 bg-slate-900 text-white text-[11px] font-semibold py-1.5 px-3 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-md" data-bn="হোয়াটসঅ্যাপে চ্যাট করুন" data-en="Chat on WhatsApp">
+        হোয়াটসঅ্যাপে চ্যাট করুন
+      </span>
+    </a>
+  </div>
+
+  <!-- Application Script -->
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

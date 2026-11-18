@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --primary: #15803d; /* Nature Forest Green */
+  --primary-dark: #166534;
+  --primary-light: #22c55e;
+  --primary-soft: #f0fdf4;
+  --accent: #eab308;
+  --text-dark: #0f172a;
+  --text-muted: #64748b;
+  --bg-subtle: #f8fafc;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', 'Hind Siliguri', sans-serif;
+  color: #1e293b;
+  background-color: #fafbfc;
+  -webkit-font-smoothing: antialiased;
+}
+
+.bangla-text {
+  font-family: 'Hind Siliguri', 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Glassmorphism */
+.glass-nav {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Badges & Animations */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.pulse-badge {
+  box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+  animation: pulse-green 2s infinite;
+}
+
+@keyframes pulse-green {
+  0% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(34, 197, 94, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+  }
+}
+
+/* Product Card Effects */
+.product-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+}
+
+/* Custom Modal Backdrop */
+.modal-backdrop {
+  background-color: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(4px);
+}
+
+/* Quantity input spinner removal */
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* ==========================================================================
+   Hero Slider & 5 Slide Animations
+   ========================================================================== */
+.hero-slider-container {
+  position: relative;
+  min-height: 580px;
+}
+@media (min-width: 1024px) {
+  .hero-slider-container {
+    min-height: 620px;
+  }
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.7s ease;
+  z-index: 1;
+}
+
+.hero-slide.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  z-index: 2;
+}
+
+/* Text Staggered Animations when slide becomes active */
+.hero-slide .slide-badge {
+  transform: translateY(-12px);
+  opacity: 0;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+  transition-delay: 0.1s;
+}
+.hero-slide.active .slide-badge {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.hero-slide .slide-title {
+  transform: translateY(20px);
+  opacity: 0;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.7s ease;
+  transition-delay: 0.2s;
+}
+.hero-slide.active .slide-title {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.hero-slide .slide-desc {
+  transform: translateY(20px);
+  opacity: 0;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.7s ease;
+  transition-delay: 0.3s;
+}
+.hero-slide.active .slide-desc {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.hero-slide .slide-bullets {
+  transform: translateY(18px);
+  opacity: 0;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.7s ease;
+  transition-delay: 0.4s;
+}
+.hero-slide.active .slide-bullets {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.hero-slide .slide-cta {
+  transform: translateY(16px);
+  opacity: 0;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.7s ease;
+  transition-delay: 0.5s;
+}
+.hero-slide.active .slide-cta {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Visual Image Animation: Ken Burns smooth zoom */
+.hero-slide .slide-visual {
+  transform: scale(0.94) translateY(10px);
+  opacity: 0;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
+  transition-delay: 0.25s;
+}
+.hero-slide.active .slide-visual {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+
+.hero-slide .slide-img {
+  transform: scale(1);
+  transition: transform 6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.hero-slide.active .slide-img {
+  transform: scale(1.06);
+}
+
+/* Floating badge animations */
+@keyframes badgeBobble {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+.animate-badge-bobble {
+  animation: badgeBobble 3.5s ease-in-out infinite;
+}
+
+/* Slider Progress Bar for the active dot */
+.slider-indicator {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+.slider-indicator.active {
+  width: 44px !important;
+  background-color: rgba(16, 185, 129, 0.3) !important;
+}
+.slider-indicator-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  background: linear-gradient(90deg, #10b981, #34d399);
+  border-radius: 9999px;
+}
+.slider-indicator.active .slider-indicator-fill {
+  animation: progressFill 5.5s linear forwards;
+}
+
+@keyframes progressFill {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+

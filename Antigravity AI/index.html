@@ -1,0 +1,1508 @@
+<!DOCTYPE html>
+<html lang="bn" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prokritee | Corporate Gift & Eco-friendly Merchandise</title>
+  <meta name="description" content="প্রকৃতি (Prokritee) - প্রিমিয়াম কর্পোরেট গিফট, ইকো-ফ্রেন্ডলি পাটজাত পণ্য, কাস্টমাইজড এক্সিকিউটিভ ডায়েরি, মেটাল পেন, মগ ও অ্যাওয়ার্ড ট্রফি সলিউশন।">
+  <link rel="icon" href="assets/images/logo.jpg">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0fdf4',
+              100: '#dcfce7',
+              200: '#bbf7d0',
+              500: '#22c55e',
+              600: '#16a34a',
+              700: '#15803d',
+              800: '#166534',
+              900: '#14532d',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-slate-50 text-slate-800 flex flex-col min-h-screen">
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-emerald-900 text-emerald-100 text-xs py-2 px-4 border-b border-emerald-800">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+      <div class="flex items-center gap-2 text-center sm:text-left">
+        <span class="bg-emerald-600 text-white px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider" data-bn="অফার" data-en="OFFER">অফার</span>
+        <span data-bn="কর্পোরেট বাল্ক অর্ডারে ৩০% পর্যন্ত ছাড় ও ফ্রি কাস্টম লোগো প্রিন্টিং!" data-en="Up to 30% discount on corporate bulk orders & free custom logo printing!">কর্পোরেট বাল্ক অর্ডারে ৩০% পর্যন্ত ছাড় ও ফ্রি কাস্টম লোগো প্রিন্টিং!</span>
+      </div>
+      <div class="flex items-center gap-3 text-[11px]">
+        <a href="https://www.facebook.com/prokritee360/" target="_blank" rel="noopener noreferrer" class="hover:text-white flex items-center gap-1 transition-colors" title="Facebook">
+          <i class="fa-brands fa-facebook text-xs"></i> <span class="hidden md:inline">Facebook</span>
+        </a>
+        <span class="text-emerald-700">|</span>
+        <a href="https://www.instagram.com/prokritee.com.bd/" target="_blank" rel="noopener noreferrer" class="hover:text-white flex items-center gap-1 transition-colors" title="Instagram">
+          <i class="fa-brands fa-instagram text-xs"></i> <span class="hidden md:inline">Instagram</span>
+        </a>
+        <span class="text-emerald-700">|</span>
+        <a href="tel:01911193642" class="hover:text-white flex items-center gap-1 transition-colors">
+          <i class="fa-solid fa-phone"></i> ০১৯১১১৯৩৬৪২
+        </a>
+        <span class="text-emerald-700">|</span>
+        <a href="https://wa.me/8801911193642" target="_blank" class="hover:text-white flex items-center gap-1 text-emerald-400 hover:text-emerald-300 font-semibold transition-colors">
+          <i class="fa-brands fa-whatsapp"></i> <span data-bn="হোয়াটসঅ্যাপ চ্যাট" data-en="WhatsApp Chat">হোয়াটসঅ্যাপ চ্যাট</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation Header -->
+  <header class="sticky top-0 z-40 glass-nav border-b border-slate-200/80 shadow-sm transition-all duration-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20 gap-4">
+        
+        <!-- Brand Logo -->
+        <a href="index.html" class="flex items-center gap-3 group shrink-0">
+          <div class="h-12 w-12 rounded-xl overflow-hidden shadow-sm border border-emerald-100 bg-white flex items-center justify-center p-0.5">
+            <img src="assets/images/logo.jpg" alt="Prokritee Logo" class="h-full w-full object-contain">
+          </div>
+          <div>
+            <span class="text-2xl font-black tracking-tight text-emerald-800 block leading-tight">prokritee</span>
+            <span class="text-[11px] text-slate-500 font-medium italic block tracking-wide -mt-0.5">impossible is nothing</span>
+          </div>
+        </a>
+
+        <!-- Search Bar (Desktop) -->
+        <div class="hidden md:flex flex-1 max-w-lg mx-6">
+          <div class="relative w-full">
+            <input 
+              type="text" 
+              id="search-input"
+              data-placeholder-bn="পণ্য বা ক্যাটাগরি সার্চ করুন (যেমন: ডায়েরি, মগ, জুট ব্যাগ)..."
+              data-placeholder-en="Search products or category (e.g.: diary, mug, jute bag)..."
+              placeholder="পণ্য বা ক্যাটাগরি সার্চ করুন (যেমন: ডায়েরি, মগ, জুট ব্যাগ)..." 
+              class="w-full pl-10 pr-4 py-2.5 rounded-full text-xs sm:text-sm bg-slate-100/90 border border-slate-200 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-transparent transition-all shadow-inner"
+            />
+            <div class="absolute left-3.5 top-3 text-slate-400">
+              <i class="fa-solid fa-magnifying-glass text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Header Actions -->
+        <div class="flex items-center gap-2 sm:gap-3">
+          
+          <!-- Bulk Quotation Request Button -->
+          <button 
+            onclick="openQuotationModal()"
+            class="hidden lg:flex items-center gap-2 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 px-3.5 py-2 rounded-xl text-xs font-bold border border-emerald-200 transition-all">
+            <i class="fa-solid fa-file-invoice text-emerald-600"></i>
+            <span data-bn="কোটেশন রিকোয়েস্ট" data-en="Request Quotation">কোটেশন রিকোয়েস্ট</span>
+          </button>
+
+          <!-- WhatsApp Direct Hotline -->
+          <a 
+            href="https://wa.me/8801911193642?text=হ্যালো,%20আমি%20প্রকৃতি%20থেকে%20কর্পোরেট%20গিফট%20সম্পর্কে%20জানতে%20চাই।" 
+            target="_blank"
+            class="hidden sm:flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-3.5 py-2 rounded-xl text-xs font-bold shadow-md shadow-emerald-600/20 transition-all">
+            <i class="fa-brands fa-whatsapp text-sm"></i>
+            <span data-bn="হটলাইন" data-en="Hotline">হটলাইন</span>
+          </a>
+
+          <!-- Language Toggle -->
+          <button
+            id="lang-toggle-btn"
+            onclick="toggleLang()"
+            class="flex items-center gap-0.5 px-3 py-2 rounded-xl text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:border-emerald-400 hover:bg-emerald-50 transition-all shadow-sm"
+            title="Switch Language / ভাষা পরিবর্তন">
+            <span class="font-black text-emerald-700">বাং</span><span class="text-slate-400 mx-1">|</span><span class="text-slate-500 font-medium">EN</span>
+          </button>
+
+          <!-- Shopping Cart Trigger -->
+          <button 
+            onclick="toggleCartDrawer()" 
+            class="relative p-2.5 text-slate-700 hover:text-emerald-700 hover:bg-slate-100 rounded-xl transition-colors"
+            data-title-bn="আপনার কার্ট" data-title-en="Your Cart"
+            title="আপনার কার্ট">
+            <i class="fa-solid fa-cart-shopping text-lg"></i>
+            <span class="cart-count absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold rounded-full h-5 w-5 flex items-center justify-center shadow-md hidden">0</span>
+          </button>
+
+          <!-- Mobile Menu Button -->
+          <button 
+            id="mobile-menu-btn" 
+            class="md:hidden p-2 text-slate-700 hover:text-emerald-700 hover:bg-slate-100 rounded-lg">
+            <i class="fa-solid fa-bars text-xl"></i>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Mobile Search Bar -->
+      <div class="md:hidden pb-3">
+        <div class="relative w-full">
+          <input 
+            type="text" 
+            data-placeholder-bn="পণ্য সার্চ করুন..."
+            data-placeholder-en="Search products..."
+            placeholder="পণ্য সার্চ করুন..." 
+            oninput="document.getElementById('search-input').value = this.value; document.getElementById('search-input').dispatchEvent(new Event('input'))"
+            class="w-full pl-9 pr-3 py-2 rounded-lg text-xs bg-slate-100 border border-slate-200 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-600"
+          />
+          <div class="absolute left-3 top-2.5 text-slate-400">
+            <i class="fa-solid fa-magnifying-glass text-xs"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Slide Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 py-3 space-y-2">
+      <button onclick="openQuotationModal(); document.getElementById('mobile-menu').classList.add('hidden');" class="w-full text-left py-2 text-sm font-semibold text-emerald-800 flex items-center gap-2">
+        <i class="fa-solid fa-file-invoice text-emerald-600"></i> <span data-bn="কর্পোরেট কোটেশন অনুরোধ" data-en="Request Corporate Quote">কর্পোরেট কোটেশন অনুরোধ</span>
+      </button>
+      <a href="tel:01911193642" class="block py-2 text-sm font-medium text-slate-700">
+        <i class="fa-solid fa-phone mr-2 text-emerald-600"></i> <span data-bn="কল করুন: ০১৯১১১৯৩৬৪২" data-en="Call: 01911193642">কল করুন: ০১৯১১১৯৩৬৪২</span>
+      </a>
+      <a href="https://wa.me/8801911193642" target="_blank" class="block py-2 text-sm font-medium text-emerald-700">
+        <i class="fa-brands fa-whatsapp mr-2 text-emerald-600"></i> <span data-bn="হোয়াটসঅ্যাপে মেসেজ দিন" data-en="Message on WhatsApp">হোয়াটসঅ্যাপে মেসেজ দিন</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero 5-Slide Animated Slider Section — Corporate First Look -->
+  <section id="hero-slider-section" class="relative bg-slate-950 text-white overflow-hidden select-none">
+    <!-- Background grid texture -->
+    <div class="absolute inset-0 opacity-[0.06] pointer-events-none z-0" style="background-image:url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+    
+    <!-- Slides Viewport Container -->
+    <div id="hero-slides-viewport" class="hero-slider-container relative z-10">
+
+      <!-- ==================== SLIDE 1: Executive Corporate Gift Boxes ==================== -->
+      <div class="hero-slide active bg-gradient-to-br from-slate-950 via-emerald-950 to-slate-900" data-slide-index="0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            
+            <!-- Text Content -->
+            <div class="lg:col-span-7 space-y-5 text-center lg:text-left">
+              <div class="slide-badge inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-emerald-800/80 border border-emerald-500/40 text-emerald-300 text-xs font-semibold backdrop-blur-sm shadow-lg shadow-emerald-900/40">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping flex-shrink-0"></span>
+                <span data-bn="কর্পোরেট গিফট কম্বো • VIP Choice" data-en="Corporate Gift Combo • VIP Choice">কর্পোরেট গিফট কম্বো • VIP Choice</span>
+              </div>
+
+              <h1 class="slide-title text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-[1.15]">
+                <span data-bn="আপনার ব্র্যান্ডকে" data-en="Elevate Your">আপনার ব্র্যান্ডকে</span><br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-200" data-bn="পরিচিত করুন প্রিমিয়াম" data-en="Brand with Premium">পরিচিত করুন প্রিমিয়াম</span><br>
+                <span data-bn="কর্পোরেট গিফটে" data-en="Corporate Gifts">কর্পোরেট গিফটে</span>
+              </h1>
+
+              <p class="slide-desc text-slate-300 text-sm sm:text-base max-w-xl leading-relaxed mx-auto lg:mx-0" data-bn="ম্যাগনেটিক হার্ডবক্স, স্মার্ট ফ্লাস্ক, লেদার ডায়েরি ও মেটাল সিগনেচার কলম। AGM, ঈদ, বার্ষিকী ও যেকোনো কর্পোরেট ইভেন্টের জন্য ট্রাস্টেড সলিউশন।" data-en="Executive diaries, metal pens, smart flasks, jute bags, crests & gift hampers — all with custom logo printing. Trusted solution for AGM, Eid, anniversaries & any corporate event.">ম্যাগনেটিক হার্ডবক্স, স্মার্ট ফ্লাস্ক, লেদার ডায়েরি ও মেটাল সিগনেচার কলম। AGM, ঈদ, বার্ষিকী ও যেকোনো কর্পোরেট ইভেন্টের জন্য ট্রাস্টেড সলিউশন।</p>
+
+              <div class="slide-bullets grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs text-emerald-200/90 py-1 max-w-xl mx-auto lg:mx-0 text-left">
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-circle-check text-emerald-400 flex-shrink-0"></i>
+                  <span data-bn="কাস্টম লোগো খোদাই ও UV কালার প্রিন্ট" data-en="Custom Logo Engraving & UV Print">কাস্টম লোগো খোদাই ও UV কালার প্রিন্ট</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-circle-check text-emerald-400 flex-shrink-0"></i>
+                  <span data-bn="প্রিমিয়াম হার্ডবক্স ও এক্সিকিউটিভ কম্বো" data-en="Premium Hardbox & Executive Combos">প্রিমিয়াম হার্ডবক্স ও এক্সিকিউটিভ কম্বো</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-circle-check text-emerald-400 flex-shrink-0"></i>
+                  <span data-bn="১০০% পরিবেশবান্ধব পাটজাত ও ইকো গিফট" data-en="100% Eco-Friendly Jute & Sustainable Gifts">১০০% পরিবেশবান্ধব পাটজাত ও ইকো গিফট</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-circle-check text-emerald-400 flex-shrink-0"></i>
+                  <span data-bn="বাল্ক অর্ডারে স্পেশাল রেট ও অফিসিয়াল ইনভয়েস" data-en="Special Bulk Rates & Official Invoicing">বাল্ক অর্ডারে স্পেশাল রেট ও অফিসিয়াল ইনভয়েস</span>
+                </div>
+              </div>
+
+              <div class="slide-cta flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-2">
+                <a href="category.html?id=gift-boxes" class="px-7 py-3.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold rounded-xl text-sm transition-all shadow-lg shadow-emerald-500/30 flex items-center gap-2 hover:-translate-y-0.5">
+                  <i class="fa-solid fa-bag-shopping"></i>
+                  <span data-bn="গিফট বক্স ক্যাটালগ দেখুন" data-en="Browse Gift Boxes">গিফট বক্স ক্যাটালগ দেখুন</span>
+                </a>
+                <button onclick="openQuotationModalForSection('gift-boxes')" class="px-7 py-3.5 bg-white/10 hover:bg-white/20 text-white font-bold rounded-xl text-sm border border-white/25 backdrop-blur-sm transition-all flex items-center gap-2 hover:-translate-y-0.5">
+                  <i class="fa-solid fa-file-lines"></i>
+                  <span data-bn="বাল্ক কোটেশন পান" data-en="Get Bulk Quote">বাল্ক কোটেশন পান</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Slide Visual -->
+            <div class="lg:col-span-5 relative mt-6 lg:mt-0">
+              <div class="slide-visual relative mx-auto max-w-md">
+                <div class="absolute -inset-2 bg-gradient-to-r from-emerald-500 to-teal-400 rounded-3xl blur-2xl opacity-25"></div>
+                <div class="relative bg-slate-900/80 border border-emerald-700/50 rounded-3xl p-4 shadow-2xl backdrop-blur-md overflow-hidden">
+                  <div class="overflow-hidden rounded-2xl h-72 sm:h-80">
+                    <img 
+                      src="https://www.giftpalacebd.com/public/uploads/all/x33my3JtkFAZeBlq7FBRAopun8AjTZLZEnWDrSTo.jpg" 
+                      alt="Corporate Gift Box" 
+                      class="slide-img w-full h-full object-cover"
+                      loading="eager"
+                    />
+                  </div>
+                  <!-- Floating badge bottom-left -->
+                  <div class="animate-badge-bobble absolute -bottom-3 -left-3 bg-white text-slate-900 p-3.5 rounded-2xl shadow-2xl border border-slate-100 flex items-center gap-3 max-w-[230px]">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-lg flex-shrink-0">
+                      <i class="fa-solid fa-certificate"></i>
+                    </div>
+                    <div>
+                      <div class="text-xs font-bold" data-bn="প্রিমিয়াম কোয়ালিটি গ্যারান্টি" data-en="Premium Quality Guarantee">প্রিমিয়াম কোয়ালিটি গ্যারান্টি</div>
+                      <div class="text-[11px] text-slate-500" data-bn="ফ্রি ডিজিটাল মক-আপ ডিজাইন" data-en="Free Digital Mock-up Design">ফ্রি ডিজিটাল মক-আপ ডিজাইন</div>
+                    </div>
+                  </div>
+                  <!-- Floating badge top-right -->
+                  <div class="absolute -top-3 -right-3 bg-emerald-600 text-white px-3.5 py-2.5 rounded-2xl shadow-xl flex items-center gap-2">
+                    <i class="fa-solid fa-building-columns text-base"></i>
+                    <div class="text-[11px] font-bold leading-tight">
+                      <div data-bn="কর্পোরেট" data-en="Corporate">কর্পোরেট</div>
+                      <div data-bn="বিশেষজ্ঞ" data-en="Specialists">বিশেষজ্ঞ</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== SLIDE 2: Royal Crests, Metal Plates & Crystal Awards ==================== -->
+      <div class="hero-slide bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900" data-slide-index="1">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            
+            <!-- Text Content -->
+            <div class="lg:col-span-7 space-y-5 text-center lg:text-left">
+              <div class="slide-badge inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-amber-900/60 border border-amber-500/40 text-amber-300 text-xs font-semibold backdrop-blur-sm shadow-lg shadow-amber-950/40">
+                <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping flex-shrink-0"></span>
+                <span data-bn="সম্মাননা স্মারক • Royal Collection" data-en="Recognition Awards • Royal Collection">সম্মাননা স্মারক • Royal Collection</span>
+              </div>
+
+              <h1 class="slide-title text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-[1.15]">
+                <span data-bn="বিশেষ অবদানের স্বীকৃতিতে" data-en="Honor Achievements with">বিশেষ অবদানের স্বীকৃতিতে</span><br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-200" data-bn="রাজকীয় মেটাল প্লেট ও" data-en="Royal Metal Plates &">রাজকীয় মেটাল প্লেট ও</span><br>
+                <span data-bn="ক্রিস্টাল ক্রেস্ট" data-en="Crystal Crest Awards">ক্রিস্টাল ক্রেস্ট</span>
+              </h1>
+
+              <p class="slide-desc text-slate-300 text-sm sm:text-base max-w-xl leading-relaxed mx-auto lg:mx-0" data-bn="গোল্ডেন মেটাল রাউন্ড প্লেট, উডেন ৩-পার্ট ভেলভেট বক্স ও ক্রিস্টাল ট্রফি। রিটায়ারমেন্ট, বার্ষিক সম্মাননা ও ভিআইপি ডেলিগেশনের জন্য সেরা স্মারক।" data-en="Golden metal round plates, wooden 3-part velvet boxes & crystal trophies. Perfect for retirement, annual honours & VIP delegations.">গোল্ডেন মেটাল রাউন্ড প্লেট, উডেন ৩-পার্ট ভেলভেট বক্স ও ক্রিস্টাল ট্রফি। রিটায়ারমেন্ট, বার্ষিক সম্মাননা ও ভিআইপি ডেলিগেশনের জন্য সেরা স্মারক।</p>
+
+              <div class="slide-bullets grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs text-amber-200/90 py-1 max-w-xl mx-auto lg:mx-0 text-left">
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-circle-check text-amber-400 flex-shrink-0"></i>
+                  <span data-bn="নিখুঁত হাই-প্রিসিশন লেজার এনগ্রেভিং" data-en="High-Precision Laser Engraving">নিখুঁত হাই-প্রিসিশন লেজার এনগ্রেভিং</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-circle-check text-amber-400 flex-shrink-0"></i>
+                  <span data-bn="রয়্যাল উডেন ৩-পার্ট ভেলভেট বক্স প্রেজেন্টেশন" data-en="Royal Wooden 3-Part Velvet Presentation Box">রয়্যাল উডেন ৩-পার্ট ভেলভেট বক্স প্রেজেন্টেশন</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-circle-check text-amber-400 flex-shrink-0"></i>
+                  <span data-bn="হেভিওয়েট গোল্ডেন মেটাল প্লেট ও ব্রাশড ফিনিশ" data-en="Heavyweight Golden Metal Plate & Brushed Finish">হেভিওয়েট গোল্ডেন মেটাল প্লেট ও ব্রাশড ফিনিশ</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-circle-check text-amber-400 flex-shrink-0"></i>
+                  <span data-bn="কাস্টম সাইজ, শেপ ও পারসোনালাইজড টেক্সট" data-en="Custom Sizes, Shapes & Personalized Text">কাস্টম সাইজ, শেপ ও পারসোনালাইজড টেক্সট</span>
+                </div>
+              </div>
+
+              <div class="slide-cta flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-2">
+                <a href="category.html?id=crests-awards" class="px-7 py-3.5 bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-400 hover:to-yellow-400 text-slate-950 font-bold rounded-xl text-sm transition-all shadow-lg shadow-amber-500/30 flex items-center gap-2 hover:-translate-y-0.5">
+                  <i class="fa-solid fa-award"></i>
+                  <span data-bn="ক্রেস্ট কালেকশন দেখুন" data-en="Explore Crests">ক্রেস্ট কালেকশন দেখুন</span>
+                </a>
+                <button onclick="openQuotationModalForSection('crests-awards')" class="px-7 py-3.5 bg-white/10 hover:bg-white/20 text-white font-bold rounded-xl text-sm border border-white/25 backdrop-blur-sm transition-all flex items-center gap-2 hover:-translate-y-0.5">
+                  <i class="fa-solid fa-file-signature"></i>
+                  <span data-bn="অ্যাওয়ার্ড কোটেশন চান" data-en="Award Quotation">অ্যাওয়ার্ড কোটেশন চান</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Slide Visual -->
+            <div class="lg:col-span-5 relative mt-6 lg:mt-0">
+              <div class="slide-visual relative mx-auto max-w-md">
+                <div class="absolute -inset-2 bg-gradient-to-r from-amber-500 to-indigo-500 rounded-3xl blur-2xl opacity-25"></div>
+                <div class="relative bg-slate-900/80 border border-amber-600/40 rounded-3xl p-4 shadow-2xl backdrop-blur-md overflow-hidden">
+                  <div class="overflow-hidden rounded-2xl h-72 sm:h-80 bg-slate-950/60 flex items-center justify-center">
+                    <img 
+                      src="https://www.giftpalacebd.com/public/uploads/all/BysqCGv8ptnp8JGlbAF6hKwezypGo15R1AJX606V.png" 
+                      alt="Royal Crest Award" 
+                      class="slide-img w-full h-full object-contain p-2"
+                      loading="lazy"
+                    />
+                  </div>
+                  <!-- Floating badge bottom-left -->
+                  <div class="animate-badge-bobble absolute -bottom-3 -left-3 bg-white text-slate-900 p-3.5 rounded-2xl shadow-2xl border border-slate-100 flex items-center gap-3 max-w-[230px]">
+                    <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-lg flex-shrink-0">
+                      <i class="fa-solid fa-trophy"></i>
+                    </div>
+                    <div>
+                      <div class="text-xs font-bold" data-bn="লেজার কাটিং ফিনিশ" data-en="Laser Cut Precision">লেজার কাটিং ফিনিশ</div>
+                      <div class="text-[11px] text-slate-500" data-bn="প্রিমিয়াম ক্রিস্টাল ও মেটাল" data-en="Premium Crystal & Metal">প্রিমিয়াম ক্রিস্টাল ও মেটাল</div>
+                    </div>
+                  </div>
+                  <!-- Floating badge top-right -->
+                  <div class="absolute -top-3 -right-3 bg-amber-600 text-slate-950 px-3.5 py-2.5 rounded-2xl shadow-xl flex items-center gap-2 font-bold">
+                    <i class="fa-solid fa-crown text-base"></i>
+                    <div class="text-[11px] font-bold leading-tight">
+                      <div data-bn="রয়্যাল" data-en="Royal">রয়্যাল</div>
+                      <div data-bn="সম্মাননা" data-en="Awards">সম্মাননা</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== SLIDE 3: Smart Temperature Vacuum Flasks & Drinkware ==================== -->
+      <div class="hero-slide bg-gradient-to-br from-slate-950 via-cyan-950 to-slate-900" data-slide-index="2">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            
+            <!-- Text Content -->
+            <div class="lg:col-span-7 space-y-5 text-center lg:text-left">
+              <div class="slide-badge inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-cyan-900/60 border border-cyan-500/40 text-cyan-300 text-xs font-semibold backdrop-blur-sm shadow-lg shadow-cyan-950/40">
+                <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping flex-shrink-0"></span>
+                <span data-bn="স্মার্ট ড্রিংকওয়্যার • Food-Grade 304 Steel" data-en="Smart Drinkware • Food-Grade 304 Steel">স্মার্ট ড্রিংকওয়্যার • Food-Grade 304 Steel</span>
+              </div>
+
+              <h1 class="slide-title text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-[1.15]">
+                <span data-bn="স্মার্ট তাপমাত্রা ডিসপ্লে সহ" data-en="Smart LED Temperature">স্মার্ট তাপমাত্রা ডিসপ্লে সহ</span><br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-300 to-emerald-300" data-bn="প্রিমিয়াম ভ্যাকুয়াম ফ্লাস্ক ও" data-en="Vacuum Flasks &">প্রিমিয়াম ভ্যাকুয়াম ফ্লাস্ক ও</span><br>
+                <span data-bn="সিরামিক মগ" data-en="Ceramic Drinkware">সিরামিক মগ</span>
+              </h1>
+
+              <p class="slide-desc text-slate-300 text-sm sm:text-base max-w-xl leading-relaxed mx-auto lg:mx-0" data-bn="স্মার্ট টাচ LED ডিসপ্লে, ফুড-গ্রেড ৩০৪ স্টেইনলেস স্টিল ও ১২ ঘণ্টা হট/কোল্ড তাপমাত্রা ধরে রাখার নিশ্চয়তা। প্রতিষ্ঠানের লোগো প্রিন্ট সহ উপহারের দারুণ চয়েস।" data-en="Smart touch LED display, food-grade 304 stainless steel and 12-hour hot/cold insulation. Great choice for branded corporate gifts.">স্মার্ট টাচ LED ডিসপ্লে, ফুড-গ্রেড ৩০৪ স্টেইনলেস স্টিল ও ১২ ঘণ্টা হট/কোল্ড তাপমাত্রা ধরে রাখার নিশ্চয়তা। প্রতিষ্ঠানের লোগো প্রিন্ট সহ উপহারের দারুণ চয়েস।</p>
+
+              <div class="slide-bullets grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs text-cyan-200/90 py-1 max-w-xl mx-auto lg:mx-0 text-left">
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-circle-check text-cyan-400 flex-shrink-0"></i>
+                  <span data-bn="ডিজিটাল রিয়েলটাইম LED তাপমাত্রা সেন্সর" data-en="Digital Real-Time LED Temperature Sensor">ডিজিটাল রিয়েলটাইম LED তাপমাত্রা সেন্সর</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-circle-check text-cyan-400 flex-shrink-0"></i>
+                  <span data-bn="ডাবল-ওয়াল ভ্যাকুয়াম ইনসুলেশন (১২ ঘণ্টা)" data-en="Double-Wall Vacuum Insulation (12 Hours)">ডাবল-ওয়াল ভ্যাকুয়াম ইনসুলেশন (১২ ঘণ্টা)</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-circle-check text-cyan-400 flex-shrink-0"></i>
+                  <span data-bn="১০০% ফুড-গ্রেড ৩০৪ স্টেইনলেস স্টিল" data-en="100% Food-Grade 304 Stainless Steel">১০০% ফুড-গ্রেড ৩০৪ স্টেইনলেস স্টিল</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-circle-check text-cyan-400 flex-shrink-0"></i>
+                  <span data-bn="লেজার এনগ্রেভিং ও কালার UV লোগো প্রিন্ট" data-en="Laser Engraving & Full-Color UV Print">লেজার এনগ্রেভিং ও কালার UV লোগো প্রিন্ট</span>
+                </div>
+              </div>
+
+              <div class="slide-cta flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-2">
+                <a href="category.html?id=smart-drinkware" class="px-7 py-3.5 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold rounded-xl text-sm transition-all shadow-lg shadow-cyan-500/30 flex items-center gap-2 hover:-translate-y-0.5">
+                  <i class="fa-solid fa-bottle-water"></i>
+                  <span data-bn="স্মার্ট ফ্লাস্ক কালেকশন" data-en="Browse Drinkware">স্মার্ট ফ্লাস্ক কালেকশন</span>
+                </a>
+                <button onclick="openQuotationModalForSection('smart-drinkware')" class="px-7 py-3.5 bg-white/10 hover:bg-white/20 text-white font-bold rounded-xl text-sm border border-white/25 backdrop-blur-sm transition-all flex items-center gap-2 hover:-translate-y-0.5">
+                  <i class="fa-solid fa-file-lines"></i>
+                  <span data-bn="বাল্ক কোটেশন পান" data-en="Bulk Quote">বাল্ক কোটেশন পান</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Slide Visual -->
+            <div class="lg:col-span-5 relative mt-6 lg:mt-0">
+              <div class="slide-visual relative mx-auto max-w-md">
+                <div class="absolute -inset-2 bg-gradient-to-r from-cyan-500 to-teal-400 rounded-3xl blur-2xl opacity-25"></div>
+                <div class="relative bg-slate-900/80 border border-cyan-700/50 rounded-3xl p-4 shadow-2xl backdrop-blur-md overflow-hidden">
+                  <div class="overflow-hidden rounded-2xl h-72 sm:h-80">
+                    <img 
+                      src="https://www.giftpalacebd.com/public/uploads/all/ApoSbr4Ln1VCz8VHT128Q3NixhxkmFfC7e1nXPAp.jpg" 
+                      alt="Smart Flask with Temperature Display" 
+                      class="slide-img w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                  <!-- Floating badge bottom-left -->
+                  <div class="animate-badge-bobble absolute -bottom-3 -left-3 bg-white text-slate-900 p-3.5 rounded-2xl shadow-2xl border border-slate-100 flex items-center gap-3 max-w-[230px]">
+                    <div class="w-10 h-10 rounded-xl bg-cyan-100 text-cyan-700 flex items-center justify-center text-lg flex-shrink-0">
+                      <i class="fa-solid fa-temperature-half"></i>
+                    </div>
+                    <div>
+                      <div class="text-xs font-bold" data-bn="১২ ঘণ্টা হট & কোল্ড" data-en="12H Hot & Cold Retention">১২ ঘণ্টা হট & কোল্ড</div>
+                      <div class="text-[11px] text-slate-500" data-bn="১০০% লিকপ্রুফ ও ফুড গ্রেড" data-en="100% Leakproof & Safe">১০০% লিকপ্রুফ ও ফুড গ্রেড</div>
+                    </div>
+                  </div>
+                  <!-- Floating badge top-right -->
+                  <div class="absolute -top-3 -right-3 bg-cyan-600 text-white px-3.5 py-2.5 rounded-2xl shadow-xl flex items-center gap-2">
+                    <i class="fa-solid fa-microchip text-base"></i>
+                    <div class="text-[11px] font-bold leading-tight">
+                      <div data-bn="স্মার্ট" data-en="Smart">স্মার্ট</div>
+                      <div data-bn="ডিসপ্লে" data-en="Display">ডিসপ্লে</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== SLIDE 4: Custom Die-Cast Coat Pins & Accessories ==================== -->
+      <div class="hero-slide bg-gradient-to-br from-slate-950 via-zinc-900 to-slate-900" data-slide-index="3">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            
+            <!-- Text Content -->
+            <div class="lg:col-span-7 space-y-5 text-center lg:text-left">
+              <div class="slide-badge inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-yellow-900/60 border border-yellow-500/40 text-yellow-300 text-xs font-semibold backdrop-blur-sm shadow-lg shadow-yellow-950/40">
+                <span class="w-2 h-2 rounded-full bg-yellow-400 animate-ping flex-shrink-0"></span>
+                <span data-bn="অফিসিয়াল কর্পোরেট ওয়্যার • Die-Casting Quality" data-en="Official Corporate Wear • Die-Casting Quality">অফিসিয়াল কর্পোরেট ওয়্যার • Die-Casting Quality</span>
+              </div>
+
+              <h1 class="slide-title text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-[1.15]">
+                <span data-bn="কোম্পানি লোগো খোদাইকৃত" data-en="Custom Die-Cast Metallic">কোম্পানি লোগো খোদাইকৃত</span><br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-400 to-amber-200" data-bn="মেটালিক কোটপিন, কাফলিংক ও" data-en="Coat Pins, Cufflinks &">মেটালিক কোটপিন, কাফলিংক ও</span><br>
+                <span data-bn="সম্মাননা মেডেল" data-en="Honor Medals">সম্মাননা মেডেল</span>
+              </h1>
+
+              <p class="slide-desc text-slate-300 text-sm sm:text-base max-w-xl leading-relaxed mx-auto lg:mx-0" data-bn="অফিসিয়াল আইডেন্টিটি ও ইভেন্ট ব্রান্ডিংয়ের জন্য গোল্ডেন, সিলভার ও কালার এনামেল ফিনিশ কোটপিন। ম্যাগনেটিক ও বাটারফ্লাই ক্লাচ সুবিধাসহ যে কোনো জটিল লোগো তৈরিতে সক্ষম।" data-en="Golden, silver and enamel finish lapel pins for official company branding. Magnetic and butterfly clutch with custom die-casting for any complex logo.">অফিসিয়াল আইডেন্টিটি ও ইভেন্ট ব্রান্ডিংয়ের জন্য গোল্ডেন, সিলভার ও কালার এনামেল ফিনিশ কোটপিন। ম্যাগনেটিক ও বাটারফ্লাই ক্লাচ সুবিধাসহ যে কোনো জটিল লোগো তৈরিতে সক্ষম।</p>
+
+              <div class="slide-bullets grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs text-yellow-200/90 py-1 max-w-xl mx-auto lg:mx-0 text-left">
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-circle-check text-yellow-400 flex-shrink-0"></i>
+                  <span data-bn="অ্যান্টি-ফেড ইলেকট্রোপ্লেটেড গোল্ডেন ও সিলভার ফিনিশ" data-en="Anti-Fade Electroplated Gold & Silver Finish">অ্যান্টি-ফেড ইলেকট্রোপ্লেটেড গোল্ডেন ও সিলভার ফিনিশ</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-circle-check text-yellow-400 flex-shrink-0"></i>
+                  <span data-bn="স্ট্রং ম্যাগনেটিক ব্যাক ও ক্লাসিক বাটারফ্লাই ক্লিপ" data-en="Strong Magnetic Back & Butterfly Clutch">স্ট্রং ম্যাগনেটিক ব্যাক ও ক্লাসিক বাটারফ্লাই ক্লিপ</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-circle-check text-yellow-400 flex-shrink-0"></i>
+                  <span data-bn="কালার এনামেল ফিলিং ও হাই-গ্লস পলিশিং" data-en="Vibrant Enamel Color Filling & High-Gloss Polish">কালার এনামেল ফিলিং ও হাই-গ্লস পলিশিং</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-circle-check text-yellow-400 flex-shrink-0"></i>
+                  <span data-bn="কম্পানি এক্সিকিউটিভ ও স্পেশাল কনফারেন্সের জন্য সেরা" data-en="Ideal for Executives & Special Conferences">কম্পানি এক্সিকিউটিভ ও স্পেশাল কনফারেন্সের জন্য সেরা</span>
+                </div>
+              </div>
+
+              <div class="slide-cta flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-2">
+                <a href="category.html?id=pins-accessories" class="px-7 py-3.5 bg-gradient-to-r from-amber-400 to-yellow-500 hover:from-amber-300 hover:to-yellow-400 text-slate-950 font-bold rounded-xl text-sm transition-all shadow-lg shadow-yellow-500/30 flex items-center gap-2 hover:-translate-y-0.5">
+                  <i class="fa-solid fa-shield-halved"></i>
+                  <span data-bn="কোটপিন কালেকশন দেখুন" data-en="Browse Pins & Badges">কোটপিন কালেকশন দেখুন</span>
+                </a>
+                <button onclick="openQuotationModalForSection('pins-accessories')" class="px-7 py-3.5 bg-white/10 hover:bg-white/20 text-white font-bold rounded-xl text-sm border border-white/25 backdrop-blur-sm transition-all flex items-center gap-2 hover:-translate-y-0.5">
+                  <i class="fa-solid fa-pen-ruler"></i>
+                  <span data-bn="কাস্টম ডিজাইন চান?" data-en="Custom Design Quote">কাস্টম ডিজাইন চান?</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Slide Visual -->
+            <div class="lg:col-span-5 relative mt-6 lg:mt-0">
+              <div class="slide-visual relative mx-auto max-w-md">
+                <div class="absolute -inset-2 bg-gradient-to-r from-yellow-500 to-amber-600 rounded-3xl blur-2xl opacity-25"></div>
+                <div class="relative bg-slate-900/80 border border-yellow-700/50 rounded-3xl p-4 shadow-2xl backdrop-blur-md overflow-hidden">
+                  <div class="overflow-hidden rounded-2xl h-72 sm:h-80">
+                    <img 
+                      src="https://www.giftpalacebd.com/public/uploads/all/nAoDAcgFocglML9TBtanMi9rAhN0mdj0l21xnN1F.jpg" 
+                      alt="Custom Metal Coat Pins" 
+                      class="slide-img w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                  <!-- Floating badge bottom-left -->
+                  <div class="animate-badge-bobble absolute -bottom-3 -left-3 bg-white text-slate-900 p-3.5 rounded-2xl shadow-2xl border border-slate-100 flex items-center gap-3 max-w-[230px]">
+                    <div class="w-10 h-10 rounded-xl bg-yellow-100 text-yellow-700 flex items-center justify-center text-lg flex-shrink-0">
+                      <i class="fa-solid fa-gem"></i>
+                    </div>
+                    <div>
+                      <div class="text-xs font-bold" data-bn="কাস্টম ডাই মোল্ডিং" data-en="Custom Die Molding">কাস্টম ডাই মোল্ডিং</div>
+                      <div class="text-[11px] text-slate-500" data-bn="প্রিমিয়াম মেটালিক লাস্টার" data-en="Premium Metallic Luster">প্রিমিয়াম মেটালিক লাস্টার</div>
+                    </div>
+                  </div>
+                  <!-- Floating badge top-right -->
+                  <div class="absolute -top-3 -right-3 bg-yellow-500 text-slate-950 px-3.5 py-2.5 rounded-2xl shadow-xl flex items-center gap-2 font-bold">
+                    <i class="fa-solid fa-ribbon text-base"></i>
+                    <div class="text-[11px] font-bold leading-tight">
+                      <div data-bn="অফিসিয়াল" data-en="Official">অফিসিয়াল</div>
+                      <div data-bn="কোটপিন" data-en="Lapel Pin">কোটপিন</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== SLIDE 5: 100% Eco-Friendly Jute & Sustainable Bags ==================== -->
+      <div class="hero-slide bg-gradient-to-br from-slate-950 via-emerald-950 to-slate-900" data-slide-index="4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            
+            <!-- Text Content -->
+            <div class="lg:col-span-7 space-y-5 text-center lg:text-left">
+              <div class="slide-badge inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-emerald-800/80 border border-emerald-500/40 text-emerald-300 text-xs font-semibold backdrop-blur-sm shadow-lg shadow-emerald-900/40">
+                <span class="w-2 h-2 rounded-full bg-lime-400 animate-ping flex-shrink-0"></span>
+                <span data-bn="১০০% পরিবেশবান্ধব • Eco-Friendly Jute" data-en="100% Sustainable • Eco-Friendly Jute">১০০% পরিবেশবান্ধব • Eco-Friendly Jute</span>
+              </div>
+
+              <h1 class="slide-title text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-[1.15]">
+                <span data-bn="প্রাকৃতিক পাটে তৈরি টেকসই" data-en="Sustainable Natural Jute">প্রাকৃতিক পাটে তৈরি টেকসই</span><br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-lime-300 to-teal-200" data-bn="সেমিনার, কনফারেন্স ও" data-en="Seminar, Conference &">সেমিনার, কনফারেন্স ও</span><br>
+                <span data-bn="ল্যাপটপ ব্যাগ" data-en="Laptop Bags">ল্যাপটপ ব্যাগ</span>
+              </h1>
+
+              <p class="slide-desc text-slate-300 text-sm sm:text-base max-w-xl leading-relaxed mx-auto lg:mx-0" data-bn="পরিবেশবান্ধব গোল্ডেন জুট ও ক্যানভাস কাপড়ে তৈরি প্রিমিয়াম ব্যাগ। বড় সাইজের কোম্পানি লোগো স্ক্রিন প্রিন্ট সুবিধা, জিপার পকেট ও আরামদায়ক প্যাডেড হ্যান্ডেল সহ।" data-en="Eco-friendly golden jute and canvas seminar bags. Large company logo screen printing, durable zipper pockets and comfortable padded handles.">পরিবেশবান্ধব গোল্ডেন জুট ও ক্যানভাস কাপড়ে তৈরি প্রিমিয়াম ব্যাগ। বড় সাইজের কোম্পানি লোগো স্ক্রিন প্রিন্ট সুবিধা, জিপার পকেট ও আরামদায়ক প্যাডেড হ্যান্ডেল সহ।</p>
+
+              <div class="slide-bullets grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs text-emerald-200/90 py-1 max-w-xl mx-auto lg:mx-0 text-left">
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-circle-check text-lime-400 flex-shrink-0"></i>
+                  <span data-bn="১০০% পরিবেশবান্ধব এক্সপোর্ট কোয়ালিটি পাট" data-en="100% Eco-Friendly Export Quality Jute">১০০% পরিবেশবান্ধব এক্সপোর্ট কোয়ালিটি পাট</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-circle-check text-lime-400 flex-shrink-0"></i>
+                  <span data-bn="হাই-ভিজিবিলিটি লার্জ সাইজ স্ক্রিন লোগো প্রিন্ট" data-en="High-Visibility Large Screen Logo Print">হাই-ভিজিবিলিটি লার্জ সাইজ স্ক্রিন লোগো প্রিন্ট</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-circle-check text-lime-400 flex-shrink-0"></i>
+                  <span data-bn="ল্যাপটপ কম্পার্টমেন্ট ও ওয়াটার রেজিস্ট্যান্ট লাইনিং" data-en="Laptop Pocket & Water-Resistant Lining">ল্যাপটপ কম্পার্টমেন্ট ও ওয়াটার রেজিস্ট্যান্ট লাইনিং</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-circle-check text-lime-400 flex-shrink-0"></i>
+                  <span data-bn="সেমিনার, এজিএম ও প্রশিক্ষণ কর্মশালার জন্য বেস্ট চয়েস" data-en="Best for Seminars, AGMs & Corporate Training">সেমিনার, এজিএম ও প্রশিক্ষণ কর্মশালার জন্য বেস্ট চয়েস</span>
+                </div>
+              </div>
+
+              <div class="slide-cta flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-2">
+                <a href="category.html?id=eco-bags" class="px-7 py-3.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold rounded-xl text-sm transition-all shadow-lg shadow-emerald-500/30 flex items-center gap-2 hover:-translate-y-0.5">
+                  <i class="fa-solid fa-leaf"></i>
+                  <span data-bn="ইকো ব্যাগ কালেকশন দেখুন" data-en="Browse Eco Bags">ইকো ব্যাগ কালেকশন দেখুন</span>
+                </a>
+                <button onclick="openQuotationModalForSection('eco-bags')" class="px-7 py-3.5 bg-white/10 hover:bg-white/20 text-white font-bold rounded-xl text-sm border border-white/25 backdrop-blur-sm transition-all flex items-center gap-2 hover:-translate-y-0.5">
+                  <i class="fa-solid fa-box-open"></i>
+                  <span data-bn="বাল্ক অর্ডার দিন" data-en="Place Bulk Order">বাল্ক অর্ডার দিন</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Slide Visual -->
+            <div class="lg:col-span-5 relative mt-6 lg:mt-0">
+              <div class="slide-visual relative mx-auto max-w-md">
+                <div class="absolute -inset-2 bg-gradient-to-r from-emerald-500 to-lime-400 rounded-3xl blur-2xl opacity-25"></div>
+                <div class="relative bg-slate-900/80 border border-emerald-700/50 rounded-3xl p-4 shadow-2xl backdrop-blur-md overflow-hidden">
+                  <div class="overflow-hidden rounded-2xl h-72 sm:h-80">
+                    <img 
+                      src="https://www.giftpalacebd.com/public/uploads/all/biI2M7ZVdn6XdD9Gbl5GDJ7krBxAo5itsi5dcMFj.jpg" 
+                      alt="Eco-Friendly Jute Bag" 
+                      class="slide-img w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                  <!-- Floating badge bottom-left -->
+                  <div class="animate-badge-bobble absolute -bottom-3 -left-3 bg-white text-slate-900 p-3.5 rounded-2xl shadow-2xl border border-slate-100 flex items-center gap-3 max-w-[230px]">
+                    <div class="w-10 h-10 rounded-xl bg-lime-100 text-emerald-800 flex items-center justify-center text-lg flex-shrink-0">
+                      <i class="fa-solid fa-recycle"></i>
+                    </div>
+                    <div>
+                      <div class="text-xs font-bold" data-bn="১০০% পরিবেশবান্ধব পাট" data-en="100% Biodegradable Jute">১০০% পরিবেশবান্ধব পাট</div>
+                      <div class="text-[11px] text-slate-500" data-bn="টেকসই ও এক্সপোর্ট গ্রেড" data-en="Durable Export Grade">টেকসই ও এক্সপোর্ট গ্রেড</div>
+                    </div>
+                  </div>
+                  <!-- Floating badge top-right -->
+                  <div class="absolute -top-3 -right-3 bg-emerald-600 text-white px-3.5 py-2.5 rounded-2xl shadow-xl flex items-center gap-2">
+                    <i class="fa-solid fa-seedling text-base"></i>
+                    <div class="text-[11px] font-bold leading-tight">
+                      <div data-bn="গ্রিন" data-en="Green">গ্রিন</div>
+                      <div data-bn="কর্পোরেট" data-en="Corporate">কর্পোরেট</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Navigation Arrows -->
+    <button 
+      id="hero-slider-prev" 
+      aria-label="Previous Slide"
+      class="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-slate-900/60 hover:bg-emerald-600/90 text-white border border-white/20 backdrop-blur-md flex items-center justify-center transition-all duration-200 hover:scale-110 shadow-xl focus:outline-none focus:ring-2 focus:ring-emerald-400">
+      <i class="fa-solid fa-chevron-left text-sm sm:text-base"></i>
+    </button>
+    <button 
+      id="hero-slider-next" 
+      aria-label="Next Slide"
+      class="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-slate-900/60 hover:bg-emerald-600/90 text-white border border-white/20 backdrop-blur-md flex items-center justify-center transition-all duration-200 hover:scale-110 shadow-xl focus:outline-none focus:ring-2 focus:ring-emerald-400">
+      <i class="fa-solid fa-chevron-right text-sm sm:text-base"></i>
+    </button>
+
+    <!-- 5 Slide Progress Indicator Bars & Direct Click Dots -->
+    <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-4">
+      <div class="flex items-center justify-center gap-2.5" id="hero-slider-indicators">
+        <!-- Dot 0 -->
+        <button onclick="goToHeroSlide(0)" class="slider-indicator active w-10 sm:w-12 h-2.5 rounded-full bg-white/20 cursor-pointer focus:outline-none transition-all" aria-label="Slide 1 - Corporate Gift Boxes">
+          <span class="slider-indicator-fill"></span>
+        </button>
+        <!-- Dot 1 -->
+        <button onclick="goToHeroSlide(1)" class="slider-indicator w-3 h-2.5 rounded-full bg-white/30 hover:bg-white/50 cursor-pointer focus:outline-none transition-all" aria-label="Slide 2 - Crests & Awards">
+          <span class="slider-indicator-fill"></span>
+        </button>
+        <!-- Dot 2 -->
+        <button onclick="goToHeroSlide(2)" class="slider-indicator w-3 h-2.5 rounded-full bg-white/30 hover:bg-white/50 cursor-pointer focus:outline-none transition-all" aria-label="Slide 3 - Smart Drinkware">
+          <span class="slider-indicator-fill"></span>
+        </button>
+        <!-- Dot 3 -->
+        <button onclick="goToHeroSlide(3)" class="slider-indicator w-3 h-2.5 rounded-full bg-white/30 hover:bg-white/50 cursor-pointer focus:outline-none transition-all" aria-label="Slide 4 - Coat Pins">
+          <span class="slider-indicator-fill"></span>
+        </button>
+        <!-- Dot 4 -->
+        <button onclick="goToHeroSlide(4)" class="slider-indicator w-3 h-2.5 rounded-full bg-white/30 hover:bg-white/50 cursor-pointer focus:outline-none transition-all" aria-label="Slide 5 - Eco Bags">
+          <span class="slider-indicator-fill"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Persistent Trust Stats Ribbon at bottom of Hero -->
+    <div class="relative z-20 border-t border-white/10 bg-slate-950/60 backdrop-blur-md">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-5">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center sm:text-left">
+          <div class="flex items-center gap-3 justify-center sm:justify-start">
+            <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-lg">
+              <i class="fa-solid fa-handshake"></i>
+            </div>
+            <div>
+              <div class="text-xl sm:text-2xl font-black text-emerald-400">৫০০+</div>
+              <div class="text-xs text-slate-400" data-bn="কর্পোরেট ক্লায়েন্ট" data-en="Corporate Clients">কর্পোরেট ক্লায়েন্ট</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 justify-center sm:justify-start">
+            <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-lg">
+              <i class="fa-solid fa-stamp"></i>
+            </div>
+            <div>
+              <div class="text-xl sm:text-2xl font-black text-emerald-400">১০০%</div>
+              <div class="text-xs text-slate-400" data-bn="কাস্টম লোগো প্রিন্ট" data-en="Custom Logo Print">কাস্টম লোগো প্রিন্ট</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 justify-center sm:justify-start">
+            <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-lg">
+              <i class="fa-solid fa-leaf"></i>
+            </div>
+            <div>
+              <div class="text-xl sm:text-2xl font-black text-emerald-400">ECO</div>
+              <div class="text-xs text-slate-400" data-bn="পরিবেশবান্ধব পণ্য" data-en="Eco-Friendly Products">পরিবেশবান্ধব পণ্য</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 justify-center sm:justify-start">
+            <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-lg">
+              <i class="fa-solid fa-truck-fast"></i>
+            </div>
+            <div>
+              <div class="text-xl sm:text-2xl font-black text-emerald-400">৬৪</div>
+              <div class="text-xs text-slate-400" data-bn="জেলায় ডেলিভারি" data-en="Districts Delivery">জেলায় ডেলিভারি</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Value Features Ribbon -->
+  <section class="bg-emerald-900 text-emerald-100 border-b border-emerald-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <div class="flex flex-wrap justify-center md:justify-between items-center gap-4 text-xs font-semibold">
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-truck-fast text-emerald-400"></i>
+          <span data-bn="সারাদেশে দ্রুত ডেলিভারি" data-en="Fast Delivery Nationwide">সারাদেশে দ্রুত ডেলিভারি</span>
+        </div>
+        <div class="w-px h-4 bg-emerald-700 hidden md:block"></div>
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-stamp text-emerald-400"></i>
+          <span data-bn="লেজার / UV / গোল্ড ফয়েল লোগো প্রিন্ট" data-en="Laser / UV / Gold Foil Logo Print">লেজার / UV / গোল্ড ফয়েল লোগো প্রিন্ট</span>
+        </div>
+        <div class="w-px h-4 bg-emerald-700 hidden md:block"></div>
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-leaf text-emerald-400"></i>
+          <span data-bn="পরিবেশবান্ধব ইকো পণ্য" data-en="Eco-Friendly Sustainable Products">পরিবেশবান্ধব ইকো পণ্য</span>
+        </div>
+        <div class="w-px h-4 bg-emerald-700 hidden md:block"></div>
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-percent text-emerald-400"></i>
+          <span data-bn="বাল্ক অর্ডারে ৩০% পর্যন্ত ছাড়" data-en="Up to 30% Off on Bulk Orders">বাল্ক অর্ডারে ৩০% পর্যন্ত ছাড়</span>
+        </div>
+        <div class="w-px h-4 bg-emerald-700 hidden md:block"></div>
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-handshake text-emerald-400"></i>
+          <span data-bn="AGM / ঈদ / কর্পোরেট ইভেন্ট স্পেশালিস্ট" data-en="AGM / Eid / Corporate Event Specialist">AGM / ঈদ / কর্পোরেট ইভেন্ট স্পেশালিস্ট</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Categories Bullet List Section -->
+  <section class="bg-white border-b border-slate-200 py-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-8">
+        <span class="inline-block text-emerald-700 text-xs font-bold uppercase tracking-widest mb-2" data-bn="আমাদের সম্পূর্ণ পণ্য তালিকা" data-en="Our Complete Product Range">আমাদের সম্পূর্ণ পণ্য তালিকা</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900" data-bn="কর্পোরেট গিফটের সকল ক্যাটাগরি" data-en="All Corporate Gift Categories">কর্পোরেট গিফটের সকল ক্যাটাগরি</h2>
+        <p class="text-sm text-slate-500 mt-2 max-w-xl mx-auto" data-bn="সরাসরি ক্যাটাগরিতে যেতে নিচের যেকোনো বিভাগে ক্লিক করুন" data-en="Click any category below to jump directly to that section">সরাসরি ক্যাটাগরিতে যেতে নিচের যেকোনো বিভাগে ক্লিক করুন</p>
+      </div>
+
+      <div id="corporate-categories-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5">
+
+        <!-- 1. Gift Boxes -->
+        <a href="category.html?id=gift-boxes" class="group flex items-start gap-4 p-4 rounded-2xl border border-slate-200 bg-white hover:border-emerald-500 hover:bg-emerald-50/70 hover:shadow-md transition-all duration-200">
+          <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center text-2xl sm:text-3xl flex-shrink-0 shadow-sm group-hover:scale-110 group-hover:rotate-2 transition-transform">
+            <i class="fa-solid fa-gift"></i>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center justify-between gap-1">
+              <div class="text-sm font-bold text-slate-800 group-hover:text-emerald-700 truncate" data-bn="কর্পোরেট গিফট বক্স ও কম্বো" data-en="Gift Boxes & Combos">কর্পোরেট গিফট বক্স ও কম্বো</div>
+              <span class="text-[10px] font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-full whitespace-nowrap">১০৯টি</span>
+            </div>
+            <div class="text-[11px] text-slate-500 mt-1 line-clamp-1" data-bn="হ্যাম্পার, ভিআইপি সেট, লাক্সারি কম্বো" data-en="Hampers, VIP sets, luxury combos">হ্যাম্পার, ভিআইপি সেট, লাক্সারি কম্বো</div>
+            <div class="text-[10px] text-emerald-600 font-bold mt-1 flex items-center gap-1 group-hover:underline">
+              <span data-bn="ক্যাটাগরি পেজে যান" data-en="View Category">ক্যাটাগরি পেজে যান</span> <i class="fa-solid fa-arrow-right text-[9px]"></i>
+            </div>
+          </div>
+        </a>
+
+        <!-- 2. Crests & Awards -->
+        <a href="category.html?id=crests-awards" class="group flex items-start gap-4 p-4 rounded-2xl border border-slate-200 bg-white hover:border-emerald-500 hover:bg-emerald-50/70 hover:shadow-md transition-all duration-200">
+          <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-yellow-100 text-yellow-700 flex items-center justify-center text-2xl sm:text-3xl flex-shrink-0 shadow-sm group-hover:scale-110 group-hover:rotate-2 transition-transform">
+            <i class="fa-solid fa-award"></i>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center justify-between gap-1">
+              <div class="text-sm font-bold text-slate-800 group-hover:text-emerald-700 truncate" data-bn="ক্রেস্ট, মেটাল প্লেট ও অ্যাওয়ার্ড" data-en="Crests, Plates & Awards">ক্রেস্ট, মেটাল প্লেট ও অ্যাওয়ার্ড</div>
+              <span class="text-[10px] font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-full whitespace-nowrap">৩৩০টি</span>
+            </div>
+            <div class="text-[11px] text-slate-500 mt-1 line-clamp-1" data-bn="ক্রিস্টাল ক্রেস্ট, গোল্ডেন মেটাল প্লেট" data-en="Crystal crests, golden metal plates">ক্রিস্টাল ক্রেস্ট, গোল্ডেন মেটাল প্লেট</div>
+            <div class="text-[10px] text-emerald-600 font-bold mt-1 flex items-center gap-1 group-hover:underline">
+              <span data-bn="ক্যাটাগরি পেজে যান" data-en="View Category">ক্যাটাগরি পেজে যান</span> <i class="fa-solid fa-arrow-right text-[9px]"></i>
+            </div>
+          </div>
+        </a>
+
+        <!-- 3. Trophies & Sports Awards -->
+        <a href="category.html?id=trophy-awards" class="group flex items-start gap-4 p-4 rounded-2xl border border-slate-200 bg-white hover:border-emerald-500 hover:bg-emerald-50/70 hover:shadow-md transition-all duration-200">
+          <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center text-2xl sm:text-3xl flex-shrink-0 shadow-sm group-hover:scale-110 group-hover:rotate-2 transition-transform">
+            <i class="fa-solid fa-trophy"></i>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center justify-between gap-1">
+              <div class="text-sm font-bold text-slate-800 group-hover:text-emerald-700 truncate" data-bn="ট্রফি, শিল্ড ও মেডেল" data-en="Trophies, Shields & Medals">ট্রফি, শিল্ড ও মেডেল</div>
+              <span class="text-[10px] font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-full whitespace-nowrap">৮৮টি</span>
+            </div>
+            <div class="text-[11px] text-slate-500 mt-1 line-clamp-1" data-bn="চ্যাম্পিয়নশিপ ট্রফি, টুর্নামেন্ট শিল্ড" data-en="Championship trophies, tournament shields">চ্যাম্পিয়নশিপ ট্রফি, টুর্নামেন্ট শিল্ড</div>
+            <div class="text-[10px] text-emerald-600 font-bold mt-1 flex items-center gap-1 group-hover:underline">
+              <span data-bn="ক্যাটাগরি পেজে যান" data-en="View Category">ক্যাটাগরি পেজে যান</span> <i class="fa-solid fa-arrow-right text-[9px]"></i>
+            </div>
+          </div>
+        </a>
+
+        <!-- 4. Coat Pins & Cufflinks -->
+        <a href="category.html?id=pins-accessories" class="group flex items-start gap-4 p-4 rounded-2xl border border-slate-200 bg-white hover:border-emerald-500 hover:bg-emerald-50/70 hover:shadow-md transition-all duration-200">
+          <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-rose-100 text-rose-700 flex items-center justify-center text-2xl sm:text-3xl flex-shrink-0 shadow-sm group-hover:scale-110 group-hover:rotate-2 transition-transform">
+            <i class="fa-solid fa-medal"></i>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center justify-between gap-1">
+              <div class="text-sm font-bold text-slate-800 group-hover:text-emerald-700 truncate" data-bn="কোটপিন, কাফলিংক ও ব্যাজ" data-en="Coat Pins, Cufflinks & Badges">কোটপিন, কাফলিংক ও ব্যাজ</div>
+              <span class="text-[10px] font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-full whitespace-nowrap">১০৮টি</span>
+            </div>
+            <div class="text-[11px] text-slate-500 mt-1 line-clamp-1" data-bn="ডাই কাস্টিং, টাই ক্লিপ, মেডেল" data-en="Die casting, tie clips, medals">ডাই কাস্টিং, টাই ক্লিপ, মেডেল</div>
+            <div class="text-[10px] text-emerald-600 font-bold mt-1 flex items-center gap-1 group-hover:underline">
+              <span data-bn="ক্যাটাগরি পেজে যান" data-en="View Category">ক্যাটাগরি পেজে যান</span> <i class="fa-solid fa-arrow-right text-[9px]"></i>
+            </div>
+          </div>
+        </a>
+
+        <!-- 5. Smart Drinkware -->
+        <a href="category.html?id=smart-drinkware" class="group flex items-start gap-4 p-4 rounded-2xl border border-slate-200 bg-white hover:border-emerald-500 hover:bg-emerald-50/70 hover:shadow-md transition-all duration-200">
+          <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-blue-100 text-blue-700 flex items-center justify-center text-2xl sm:text-3xl flex-shrink-0 shadow-sm group-hover:scale-110 group-hover:rotate-2 transition-transform">
+            <i class="fa-solid fa-bottle-water"></i>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center justify-between gap-1">
+              <div class="text-sm font-bold text-slate-800 group-hover:text-emerald-700 truncate" data-bn="স্মার্ট ফ্লাস্ক ও ড্রিংকওয়্যার" data-en="Smart Flasks & Drinkware">স্মার্ট ফ্লাস্ক ও ড্রিংকওয়্যার</div>
+              <span class="text-[10px] font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-full whitespace-nowrap">৩৫টি</span>
+            </div>
+            <div class="text-[11px] text-slate-500 mt-1 line-clamp-1" data-bn="ভ্যাকুয়াম ফ্লাস্ক, সিরামিক মগ, বোতল" data-en="Vacuum flasks, ceramic mugs, bottles">ভ্যাকুয়াম ফ্লাস্ক, সিরামিক মগ, বোতল</div>
+            <div class="text-[10px] text-emerald-600 font-bold mt-1 flex items-center gap-1 group-hover:underline">
+              <span data-bn="ক্যাটাগরি পেজে যান" data-en="View Category">ক্যাটাগরি পেজে যান</span> <i class="fa-solid fa-arrow-right text-[9px]"></i>
+            </div>
+          </div>
+        </a>
+
+        <!-- 6. Desktop Organizers & Clocks -->
+        <a href="category.html?id=desktop-organizers" class="group flex items-start gap-4 p-4 rounded-2xl border border-slate-200 bg-white hover:border-emerald-500 hover:bg-emerald-50/70 hover:shadow-md transition-all duration-200">
+          <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-orange-100 text-orange-700 flex items-center justify-center text-2xl sm:text-3xl flex-shrink-0 shadow-sm group-hover:scale-110 group-hover:rotate-2 transition-transform">
+            <i class="fa-solid fa-boxes-stacked"></i>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center justify-between gap-1">
+              <div class="text-sm font-bold text-slate-800 group-hover:text-emerald-700 truncate" data-bn="ডেস্কটপ অর্গানাইজার ও ঘড়ি" data-en="Desktop Organizers & Clocks">ডেস্কটপ অর্গানাইজার ও ঘড়ি</div>
+              <span class="text-[10px] font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-full whitespace-nowrap">৪১টি</span>
+            </div>
+            <div class="text-[11px] text-slate-500 mt-1 line-clamp-1" data-bn="উডেন, লেদারেট ও ব্যাম্বু অর্গানাইজার" data-en="Wooden, leatherette & bamboo organizers">উডেন, লেদারেট ও ব্যাম্বু অর্গানাইজার</div>
+            <div class="text-[10px] text-emerald-600 font-bold mt-1 flex items-center gap-1 group-hover:underline">
+              <span data-bn="ক্যাটাগরি পেজে যান" data-en="View Category">ক্যাটাগরি পেজে যান</span> <i class="fa-solid fa-arrow-right text-[9px]"></i>
+            </div>
+          </div>
+        </a>
+
+        <!-- 7. Executive Metal Pens -->
+        <a href="category.html?id=op-pens" class="group flex items-start gap-4 p-4 rounded-2xl border border-slate-200 bg-white hover:border-emerald-500 hover:bg-emerald-50/70 hover:shadow-md transition-all duration-200">
+          <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-violet-100 text-violet-700 flex items-center justify-center text-2xl sm:text-3xl flex-shrink-0 shadow-sm group-hover:scale-110 group-hover:rotate-2 transition-transform">
+            <i class="fa-solid fa-pen-nib"></i>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center justify-between gap-1">
+              <div class="text-sm font-bold text-slate-800 group-hover:text-emerald-700 truncate" data-bn="সিগনেচার মেটাল পেন (OP সিরিজ)" data-en="Signature Metal Pens (OP Series)">সিগনেচার মেটাল পেন (OP সিরিজ)</div>
+              <span class="text-[10px] font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-full whitespace-nowrap">৩১টি</span>
+            </div>
+            <div class="text-[11px] text-slate-500 mt-1 line-clamp-1" data-bn="রোলার, বলপেন, লেজার এনগ্রেভেবল" data-en="Roller, ballpoint, laser engravable">রোলার, বলপেন, লেজার এনগ্রেভেবল</div>
+            <div class="text-[10px] text-emerald-600 font-bold mt-1 flex items-center gap-1 group-hover:underline">
+              <span data-bn="ক্যাটাগরি পেজে যান" data-en="View Category">ক্যাটাগরি পেজে যান</span> <i class="fa-solid fa-arrow-right text-[9px]"></i>
+            </div>
+          </div>
+        </a>
+
+        <!-- 8. Keyrings & Accessories -->
+        <a href="category.html?id=keyrings-accessories" class="group flex items-start gap-4 p-4 rounded-2xl border border-slate-200 bg-white hover:border-emerald-500 hover:bg-emerald-50/70 hover:shadow-md transition-all duration-200">
+          <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-cyan-100 text-cyan-700 flex items-center justify-center text-2xl sm:text-3xl flex-shrink-0 shadow-sm group-hover:scale-110 group-hover:rotate-2 transition-transform">
+            <i class="fa-solid fa-key"></i>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center justify-between gap-1">
+              <div class="text-sm font-bold text-slate-800 group-hover:text-emerald-700 truncate" data-bn="মেটাল ও লেদার চাবির রিং" data-en="Metal & Leather Keyrings">মেটাল ও লেদার চাবির রিং</div>
+              <span class="text-[10px] font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-full whitespace-nowrap">৪৮টি</span>
+            </div>
+            <div class="text-[11px] text-slate-500 mt-1 line-clamp-1" data-bn="কাস্টম লোগো খোদাইকৃত কি-রিং" data-en="Custom engraved branded keyrings">কাস্টম লোগো খোদাইকৃত কি-রিং</div>
+            <div class="text-[10px] text-emerald-600 font-bold mt-1 flex items-center gap-1 group-hover:underline">
+              <span data-bn="ক্যাটাগরি পেজে যান" data-en="View Category">ক্যাটাগরি পেজে যান</span> <i class="fa-solid fa-arrow-right text-[9px]"></i>
+            </div>
+          </div>
+        </a>
+
+        <!-- 9. Italian Frames & Eyewear -->
+        <a href="category.html?id=italian-frames" class="group flex items-start gap-4 p-4 rounded-2xl border border-slate-200 bg-white hover:border-emerald-500 hover:bg-emerald-50/70 hover:shadow-md transition-all duration-200">
+          <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-indigo-100 text-indigo-700 flex items-center justify-center text-2xl sm:text-3xl flex-shrink-0 shadow-sm group-hover:scale-110 group-hover:rotate-2 transition-transform">
+            <i class="fa-solid fa-glasses"></i>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center justify-between gap-1">
+              <div class="text-sm font-bold text-slate-800 group-hover:text-emerald-700 truncate" data-bn="ইতালিয়ান ফ্রেম ও গ্লাস" data-en="Italian Frames & Eyewear">ইতালিয়ান ফ্রেম ও গ্লাস</div>
+              <span class="text-[10px] font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-full whitespace-nowrap">৩৭টি</span>
+            </div>
+            <div class="text-[11px] text-slate-500 mt-1 line-clamp-1" data-bn="ক্লাসিক ডিজাইনের স্টাইলিশ ফ্রেম" data-en="Classic stylish designer eyewear">ক্লাসিক ডিজাইনের স্টাইলিশ ফ্রেম</div>
+            <div class="text-[10px] text-emerald-600 font-bold mt-1 flex items-center gap-1 group-hover:underline">
+              <span data-bn="ক্যাটাগরি পেজে যান" data-en="View Category">ক্যাটাগরি পেজে যান</span> <i class="fa-solid fa-arrow-right text-[9px]"></i>
+            </div>
+          </div>
+        </a>
+
+        <!-- 10. Door Plates & Signage -->
+        <a href="category.html?id=door-plates-signage" class="group flex items-start gap-4 p-4 rounded-2xl border border-slate-200 bg-white hover:border-emerald-500 hover:bg-emerald-50/70 hover:shadow-md transition-all duration-200">
+          <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-teal-100 text-teal-700 flex items-center justify-center text-2xl sm:text-3xl flex-shrink-0 shadow-sm group-hover:scale-110 group-hover:rotate-2 transition-transform">
+            <i class="fa-solid fa-chalkboard-user"></i>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center justify-between gap-1">
+              <div class="text-sm font-bold text-slate-800 group-hover:text-emerald-700 truncate" data-bn="ডোর প্লেট ও সাইনেজ" data-en="Door Plates & Signage">ডোর প্লেট ও সাইনেজ</div>
+              <span class="text-[10px] font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-full whitespace-nowrap">১৫টি</span>
+            </div>
+            <div class="text-[11px] text-slate-500 mt-1 line-clamp-1" data-bn="মেটাল ডোর নেমপ্লেট ও লেকচার স্ট্যান্ড" data-en="Metal door nameplates & podiums">মেটাল ডোর নেমপ্লেট ও লেকচার স্ট্যান্ড</div>
+            <div class="text-[10px] text-emerald-600 font-bold mt-1 flex items-center gap-1 group-hover:underline">
+              <span data-bn="ক্যাটাগরি পেজে যান" data-en="View Category">ক্যাটাগরি পেজে যান</span> <i class="fa-solid fa-arrow-right text-[9px]"></i>
+            </div>
+          </div>
+        </a>
+
+        <!-- 11. Eco Jute Bags -->
+        <a href="category.html?id=eco-bags" class="group flex items-start gap-4 p-4 rounded-2xl border border-slate-200 bg-white hover:border-emerald-500 hover:bg-emerald-50/70 hover:shadow-md transition-all duration-200">
+          <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-2xl sm:text-3xl flex-shrink-0 shadow-sm group-hover:scale-110 group-hover:rotate-2 transition-transform">
+            <i class="fa-solid fa-leaf"></i>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center justify-between gap-1">
+              <div class="text-sm font-bold text-slate-800 group-hover:text-emerald-700 truncate" data-bn="পাটজাত ও ইকো ব্যাগ" data-en="Jute & Eco Bags">পাটজাত ও ইকো ব্যাগ</div>
+              <span class="text-[10px] font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-full whitespace-nowrap">১২টি</span>
+            </div>
+            <div class="text-[11px] text-slate-500 mt-1 line-clamp-1" data-bn="সেমিনার ব্যাগ, ল্যাপটপ ব্যাগ, টোট" data-en="Seminar bags, laptop bags, totes">সেমিনার ব্যাগ, ল্যাপটপ ব্যাগ, টোট</div>
+            <div class="text-[10px] text-emerald-600 font-bold mt-1 flex items-center gap-1 group-hover:underline">
+              <span data-bn="ক্যাটাগরি পেজে যান" data-en="View Category">ক্যাটাগরি পেজে যান</span> <i class="fa-solid fa-arrow-right text-[9px]"></i>
+            </div>
+          </div>
+        </a>
+
+        <!-- 12. CTA Card -->
+        <div class="group flex items-start gap-4 p-4 rounded-2xl border-2 border-dashed border-emerald-400 bg-emerald-50/80 cursor-pointer hover:bg-emerald-100 transition-all duration-200 shadow-sm hover:shadow" onclick="openQuotationModal()">
+          <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-emerald-700 text-white flex items-center justify-center text-2xl sm:text-3xl flex-shrink-0 shadow-md group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-file-invoice"></i>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="text-sm font-bold text-emerald-900" data-bn="কাস্টম প্যাকেজ চান?" data-en="Need a Custom Package?">কাস্টম প্যাকেজ চান?</div>
+            <div class="text-[11px] text-emerald-700 mt-1 line-clamp-1" data-bn="বাজেট ও চাহিদা অনুযায়ী স্পেশাল কোটেশন" data-en="Custom quote tailored to your budget">বাজেট ও চাহিদা অনুযায়ী স্পেশাল কোটেশন</div>
+            <div class="text-[10px] text-emerald-800 font-bold mt-1 flex items-center gap-1 group-hover:underline">
+              <span data-bn="কোটেশন রিকোয়েস্ট করুন" data-en="Request Quotation">কোটেশন রিকোয়েস্ট করুন</span> <i class="fa-solid fa-arrow-right text-[9px]"></i>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <!-- Sticky Quick Jump Category Navigation -->
+  <div class="sticky top-20 z-30 bg-slate-50/95 backdrop-blur-md border-b border-slate-200/90 py-3 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1" id="category-jump-nav">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- All Individual Product Sections -->
+  <main id="products-section" class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full">
+    <div id="sections-container" class="space-y-4">
+      <!-- Each individual section rendered separately by JS -->
+    </div>
+  </main>
+
+  <!-- How Corporate Order Works -->
+  <section class="bg-slate-100/70 border-y border-slate-200 py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-emerald-700 text-xs font-bold uppercase tracking-wider" data-bn="সহজ প্রক্রিয়া" data-en="Simple Process">সহজ প্রক্রিয়া</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1" data-bn="কীভাবে কর্পোরেট অর্ডার করবেন?" data-en="How to Place a Corporate Order?">কীভাবে কর্পোরেট অর্ডার করবেন?</h2>
+        <p class="text-sm text-slate-600 mt-2" data-bn="লোগো সহ কাস্টমাইজড পণ্য প্রস্তুত করা আমাদের সাথে অত্যন্ত সহজ ও ঝামেলামুক্ত।" data-en="Customizing branded products with your logo is effortless and smooth with us.">লোগো সহ কাস্টমাইজড পণ্য প্রস্তুত করা আমাদের সাথে অত্যন্ত সহজ ও ঝামেলামুক্ত।</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        
+        <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm relative text-center">
+          <div class="w-12 h-12 rounded-xl bg-emerald-700 text-white flex items-center justify-center font-bold text-lg mx-auto mb-4 shadow-md shadow-emerald-700/20">
+            ১
+          </div>
+          <h3 class="font-bold text-slate-800 text-base mb-1" data-bn="পণ্য পছন্দ করুন" data-en="Select Products">পণ্য পছন্দ করুন</h3>
+          <p class="text-xs text-slate-500" data-bn="আমাদের ক্যাটালগ থেকে আপনার পছন্দসই পণ্য নির্বাচন করুন অথবা আপনার নির্দিষ্ট বাজেট জানান।" data-en="Choose preferred items from our catalog or let us know your specific budget.">আমাদের ক্যাটালগ থেকে আপনার পছন্দসই পণ্য নির্বাচন করুন অথবা আপনার নির্দিষ্ট বাজেট জানান।</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm relative text-center">
+          <div class="w-12 h-12 rounded-xl bg-emerald-700 text-white flex items-center justify-center font-bold text-lg mx-auto mb-4 shadow-md shadow-emerald-700/20">
+            ২
+          </div>
+          <h3 class="font-bold text-slate-800 text-base mb-1" data-bn="লোগো ও চাহিদা দিন" data-en="Share Logo & Quantity">লোগো ও চাহিদা দিন</h3>
+          <p class="text-xs text-slate-500" data-bn="আপনার কোম্পানির লোগো (AI/PDF/PNG) এবং প্রয়োজনীয় পণ্যের পরিমাণ আমাদের হোয়াটসঅ্যাপে পাঠান।" data-en="Send your company logo (vector/high-res) and required quantity to our WhatsApp.">আপনার কোম্পানির লোগো (AI/PDF/PNG) এবং প্রয়োজনীয় পণ্যের পরিমাণ আমাদের হোয়াটসঅ্যাপে পাঠান।</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm relative text-center">
+          <div class="w-12 h-12 rounded-xl bg-emerald-700 text-white flex items-center justify-center font-bold text-lg mx-auto mb-4 shadow-md shadow-emerald-700/20">
+            ৩
+          </div>
+          <h3 class="font-bold text-slate-800 text-base mb-1" data-bn="ডিজিটাল মক-আপ অনুমোদন" data-en="Free Mockup Approval">ডিজিটাল মক-আপ অনুমোদন</h3>
+          <p class="text-xs text-slate-500" data-bn="আমাদের ডিজাইন টিম বিনামূল্যে পণ্যে আপনার লোগো বসিয়ে মক-আপ দেখাবে। আপনার অনুমোদনের পর প্রোডাকশন শুরু হবে।" data-en="Our design team provides a free digital product mockup with your logo before production starts.">আমাদের ডিজাইন টিম বিনামূল্যে পণ্যে আপনার লোগো বসিয়ে মক-আপ দেখাবে। আপনার অনুমোদনের পর প্রোডাকশন শুরু হবে।</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm relative text-center">
+          <div class="w-12 h-12 rounded-xl bg-emerald-700 text-white flex items-center justify-center font-bold text-lg mx-auto mb-4 shadow-md shadow-emerald-700/20">
+            ৪
+          </div>
+          <h3 class="font-bold text-slate-800 text-base mb-1" data-bn="প্রোডাকশন ও ডেলিভারি" data-en="Production & Delivery">প্রোডাকশন ও ডেলিভারি</h3>
+          <p class="text-xs text-slate-500" data-bn="নির্ধারিত সময়ের মধ্যে যত্নসহকারে তৈরি করে সারা দেশে আপনার অফিসে নিরাপদ ডেলিভারি পৌঁছে দেওয়া হবে।" data-en="Carefully manufactured within timeline and safely delivered right to your office nationwide.">নির্ধারিত সময়ের মধ্যে যত্নসহকারে তৈরি করে সারা দেশে আপনার অফিসে নিরাপদ ডেলিভারি পৌঁছে দেওয়া হবে।</p>
+        </div>
+
+      </div>
+
+      <div class="mt-10 text-center">
+        <button onclick="openQuotationModal()" class="px-8 py-3.5 bg-emerald-700 hover:bg-emerald-800 text-white font-bold rounded-xl text-sm transition-all shadow-lg shadow-emerald-700/25 inline-flex items-center gap-2">
+          <i class="fa-solid fa-file-invoice"></i>
+          <span data-bn="এখনই আপনার অর্ডারের কোটেশন নিন" data-en="Request Corporate Quotation Now">এখনই আপনার অর্ডারের কোটেশন নিন</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400 text-xs pt-16 pb-12 border-t border-slate-800 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-slate-800">
+        
+        <!-- About Prokritee -->
+        <div class="space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="h-10 w-10 rounded-lg overflow-hidden bg-white p-0.5">
+              <img src="assets/images/logo.jpg" alt="Prokritee" class="h-full w-full object-contain">
+            </div>
+            <div>
+              <span class="text-xl font-bold text-white block">prokritee</span>
+              <span class="text-[10px] text-emerald-400 italic">impossible is nothing</span>
+            </div>
+          </div>
+          <p class="text-slate-400 text-xs leading-relaxed" data-bn="প্রকৃতি (Prokritee) পরিবেশবান্ধব ও প্রিমিয়াম কর্পোরেট গিফটিং সলিউশন প্রোভাইডার। আধুনিক ডিজাইন ও লোকাল কারুশিল্পের মেলবন্ধনে তৈরি আমাদের প্রতিটি উপহার সামগ্রী।" data-en="Prokritee is a premier eco-friendly corporate gifting solutions partner, blending modern design with fine local craftsmanship.">
+            প্রকৃতি (Prokritee) পরিবেশবান্ধব ও প্রিমিয়াম কর্পোরেট গিফটিং সলিউশন প্রোভাইডার। আধুনিক ডিজাইন ও লোকাল কারুশিল্পের মেলবন্ধনে তৈরি আমাদের প্রতিটি উপহার সামগ্রী।
+          </p>
+          <div class="flex gap-3 text-slate-400 text-base">
+            <a href="https://www.facebook.com/prokritee360/" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-slate-800 hover:bg-emerald-600 flex items-center justify-center text-slate-300 hover:text-white transition-all shadow-sm" title="Facebook"><i class="fa-brands fa-facebook-f text-sm"></i></a>
+            <a href="https://www.instagram.com/prokritee.com.bd/" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-slate-800 hover:bg-emerald-600 flex items-center justify-center text-slate-300 hover:text-white transition-all shadow-sm" title="Instagram"><i class="fa-brands fa-instagram text-sm"></i></a>
+            <a href="https://wa.me/8801911193642" target="_blank" class="w-9 h-9 rounded-full bg-slate-800 hover:bg-emerald-600 flex items-center justify-center text-slate-300 hover:text-white transition-all shadow-sm" title="WhatsApp"><i class="fa-brands fa-whatsapp text-sm"></i></a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h4 class="text-sm font-bold text-white mb-4 uppercase tracking-wider" data-bn="জনপ্রিয় ক্যাটাগরি" data-en="Popular Categories">জনপ্রিয় ক্যাটাগরি</h4>
+          <ul class="space-y-2.5">
+            <li><a href="#section-gift-boxes" class="hover:text-emerald-400 transition-colors" data-bn="কর্পোরেট গিফট কম্বো" data-en="Corporate Gift Combos">কর্পোরেট গিফট কম্বো</a></li>
+            <li><a href="#section-eco-bags" class="hover:text-emerald-400 transition-colors" data-bn="ইকো ও পাটজাত পণ্য" data-en="Eco & Jute Products">ইকো ও পাটজাত পণ্য</a></li>
+            <li><a href="#section-smart-drinkware" class="hover:text-emerald-400 transition-colors" data-bn="স্মার্ট ফ্লাস্ক ও মগ" data-en="Smart Flasks & Mugs">স্মার্ট ফ্লাস্ক ও মগ</a></li>
+            <li><a href="#section-op-pens" class="hover:text-emerald-400 transition-colors" data-bn="বিজনেস ডায়েরি ও পেন" data-en="Business Diaries & Pens">বিজনেস ডায়েরি ও পেন</a></li>
+            <li><a href="#section-crests-awards" class="hover:text-emerald-400 transition-colors" data-bn="সম্মাননা ক্রেস্ট ও ট্রফি" data-en="Honor Crests & Awards">সম্মাননা ক্রেস্ট ও ট্রফি</a></li>
+          </ul>
+        </div>
+
+        <!-- Customer Care -->
+        <div>
+          <h4 class="text-sm font-bold text-white mb-4 uppercase tracking-wider" data-bn="সহায়তা ও সেবা" data-en="Support & Services">সহায়তা ও সেবা</h4>
+          <ul class="space-y-2.5">
+            <li><a href="javascript:void(0)" onclick="openQuotationModal()" class="hover:text-emerald-400 transition-colors" data-bn="বাল্ক অর্ডার ও কোটেশন" data-en="Bulk Orders & Quotes">বাল্ক অর্ডার ও কোটেশন</a></li>
+            <li><a href="javascript:void(0)" onclick="toggleCartDrawer()" class="hover:text-emerald-400 transition-colors" data-bn="আপনার কার্ট দেখুন" data-en="View Your Cart">আপনার কার্ট দেখুন</a></li>
+            <li><a href="javascript:void(0)" class="hover:text-emerald-400 transition-colors" data-bn="ডেলিভারি ও রিটার্ন পলিসি" data-en="Delivery & Return Policy">ডেলিভারি ও রিটার্ন পলিসি</a></li>
+            <li><a href="javascript:void(0)" class="hover:text-emerald-400 transition-colors" data-bn="টার্মস অ্যান্ড কন্ডিশনস" data-en="Terms & Conditions">টার্মস অ্যান্ড কন্ডিশনস</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact & Office -->
+        <div>
+          <h4 class="text-sm font-bold text-white mb-4 uppercase tracking-wider" data-bn="যোগাযোগ" data-en="Contact Us">যোগাযোগ</h4>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-2.5">
+              <i class="fa-solid fa-location-dot text-emerald-500 mt-1"></i>
+              <span data-bn="২২১, ঢাকা ইউনিভার্সিটি মার্কেট, কাঁটাবন, ঢাকা" data-en="221, Dhaka University Market, Katabon, Dhaka">২২১, ঢাকা ইউনিভার্সিটি মার্কেট, কাঁটাবন, ঢাকা</span>
+            </li>
+            <li class="flex items-center gap-2.5">
+              <i class="fa-solid fa-phone text-emerald-500"></i>
+              <a href="tel:01911193642" class="hover:text-white">০১৯১১১৯৩৬৪২</a>
+            </li>
+            <li class="flex items-center gap-2.5">
+              <i class="fa-solid fa-envelope text-emerald-500"></i>
+              <a href="mailto:info@prokriteebd.com" class="hover:text-white">info@prokriteebd.com</a>
+            </li>
+            <li class="flex items-center gap-2.5">
+              <i class="fa-brands fa-whatsapp text-emerald-500 text-sm"></i>
+              <a href="https://wa.me/8801911193642" target="_blank" class="hover:text-white">০১৯১১১৯৩৬৪২ (<span data-bn="হোয়াটসঅ্যাপ" data-en="WhatsApp">হোয়াটসঅ্যাপ</span>)</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Payment Gateways & Copyright -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <p class="text-slate-500 text-[11px]" data-bn="&copy; ২০২৬ Prokritee. সর্বস্বত্ব সংরক্ষিত। impossible is nothing." data-en="&copy; 2026 Prokritee. All rights reserved. impossible is nothing.">
+            &copy; ২০২৬ Prokritee. সর্বস্বত্ব সংরক্ষিত। impossible is nothing.
+          </p>
+          <span class="text-slate-700 text-xs">|</span>
+          <a href="/admin" target="_blank" class="text-slate-400 hover:text-emerald-400 text-[11px] font-medium transition-colors flex items-center gap-1.5">
+            <i class="fa-solid fa-shield-halved text-[10px] text-emerald-500"></i>
+            <span data-bn="অ্যাডমিন প্যানেল" data-en="Admin Portal">অ্যাডমিন প্যানেল</span>
+          </a>
+        </div>
+        
+        <div class="flex items-center gap-2 text-slate-400">
+          <span class="text-[11px] mr-2" data-bn="নিরাপদ পেমেন্ট:" data-en="Secure Payment:">নিরাপদ পেমেন্ট:</span>
+          <span class="px-2 py-1 bg-slate-800 rounded font-bold text-[10px] text-pink-400">bKash</span>
+          <span class="px-2 py-1 bg-slate-800 rounded font-bold text-[10px] text-amber-500">Nagad</span>
+          <span class="px-2 py-1 bg-slate-800 rounded font-bold text-[10px] text-violet-400">Rocket</span>
+          <span class="px-2 py-1 bg-slate-800 rounded font-bold text-[10px] text-emerald-400" data-bn="ক্যাশ অন ডেলিভারি" data-en="Cash on Delivery">ক্যাশ অন ডেলিভারি</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Slide-Over Shopping Cart Drawer -->
+  <div id="cart-drawer" class="fixed inset-y-0 right-0 max-w-full flex pl-10 z-50 transform translate-x-full transition-transform duration-300 ease-in-out">
+    <div class="w-screen max-w-md bg-white shadow-2xl flex flex-col">
+      
+      <!-- Drawer Header -->
+      <div class="p-4 border-b border-slate-200 flex items-center justify-between bg-slate-50">
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-cart-shopping text-emerald-700"></i>
+          <h3 class="font-bold text-slate-800 text-sm" data-bn="আপনার শপিং কার্ট" data-en="Your Shopping Cart">আপনার শপিং কার্ট</h3>
+        </div>
+        <button onclick="toggleCartDrawer()" class="p-2 text-slate-400 hover:text-slate-600 rounded-lg">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+
+      <!-- Drawer Body Items -->
+      <div class="flex-1 overflow-y-auto p-4 space-y-3">
+        <div id="cart-empty-state" class="hidden py-16 text-center">
+          <div class="w-16 h-16 mx-auto mb-3 bg-slate-100 rounded-full flex items-center justify-center text-slate-400 text-xl">
+            <i class="fa-solid fa-basket-shopping"></i>
+          </div>
+          <p class="text-sm font-semibold text-slate-700" data-bn="আপনার কার্ট খালি রয়েছে" data-en="Your cart is currently empty">আপনার কার্ট খালি রয়েছে</p>
+          <p class="text-xs text-slate-400 mt-1" data-bn="পণ্য যোগ করতে ক্যাটালগ দেখুন" data-en="Browse catalog to add items">পণ্য যোগ করতে ক্যাটালগ দেখুন</p>
+        </div>
+        <div id="cart-items-list" class="space-y-3"></div>
+      </div>
+
+      <!-- Drawer Footer -->
+      <div id="cart-drawer-footer" class="p-4 border-t border-slate-200 bg-slate-50 space-y-3">
+        <div class="flex items-center justify-between text-sm">
+          <span class="text-slate-600 font-medium" data-bn="উপমোট (Subtotal):" data-en="Subtotal:">উপমোট (Subtotal):</span>
+          <span id="cart-drawer-subtotal" class="font-bold text-lg text-emerald-800">৳০</span>
+        </div>
+        <p class="text-[11px] text-slate-500" data-bn="ডেলিভারি চার্জ চেকআউটের সময় নির্ধারিত হবে।" data-en="Delivery charge calculated at checkout.">ডেলিভারি চার্জ চেকআউটের সময় নির্ধারিত হবে।</p>
+        
+        <button 
+          onclick="openCheckoutModal()" 
+          class="w-full py-3 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-sm rounded-xl transition-all shadow-md shadow-emerald-700/20 flex items-center justify-center gap-2">
+          <i class="fa-solid fa-credit-card"></i>
+          <span data-bn="অর্ডার সম্পন্ন করতে এগিয়ে যান" data-en="Proceed to Checkout">অর্ডার সম্পন্ন করতে এগিয়ে যান</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Product Quick View Modal -->
+  <div id="product-modal" class="fixed inset-0 z-50 modal-backdrop hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-2xl w-full overflow-hidden shadow-2xl relative animate-in fade-in zoom-in duration-200">
+      <button onclick="closeProductModal()" class="absolute top-4 right-4 z-10 w-9 h-9 bg-slate-100 hover:bg-slate-200 rounded-full flex items-center justify-center text-slate-600 transition-colors">
+        <i class="fa-solid fa-xmark text-sm"></i>
+      </button>
+
+      <div class="grid grid-cols-1 md:grid-cols-2">
+        <div class="h-64 md:h-full bg-slate-100 relative">
+          <img id="modal-img" src="" alt="Product" onerror="this.onerror=null;this.src='assets/images/logo.jpg';" class="w-full h-full object-cover">
+          <!-- Brand Watermark Badge -->
+          <div class="absolute bottom-3 right-3 bg-slate-950/80 backdrop-blur-md text-white text-[11px] font-bold px-2.5 py-1 rounded-lg pointer-events-none flex items-center gap-1.5 shadow-md border border-white/20">
+            <i class="fa-solid fa-leaf text-emerald-400 text-xs"></i>
+            <span class="tracking-wide">Prokritee • প্রকৃতি</span>
+          </div>
+        </div>
+
+        <div class="p-6 flex flex-col justify-between">
+          <div>
+            <span class="text-[11px] font-semibold text-emerald-700 uppercase tracking-wide" data-bn="পণ্যের বিস্তারিত" data-en="Product Details">পণ্যের বিস্তারিত</span>
+            <h3 id="modal-title-bn" class="text-lg font-bold text-slate-900 mt-1"></h3>
+            <p id="modal-title-en" class="text-xs text-slate-400"></p>
+
+            <div class="flex items-baseline gap-2 mt-3">
+              <span id="modal-price" class="text-2xl font-bold text-emerald-700"></span>
+              <span id="modal-orig-price" class="text-sm text-slate-400 line-through"></span>
+            </div>
+
+            <p id="modal-desc" class="text-xs text-slate-600 mt-3 leading-relaxed"></p>
+
+            <div class="mt-4 pt-3 border-t border-slate-100">
+              <div class="text-[11px] font-bold text-slate-700 mb-1.5" data-bn="লোগো কাস্টমাইজেশন সুবিধা:" data-en="Customization Features:">লোগো কাস্টমাইজেশন সুবিধা:</div>
+              <ul id="modal-features" class="space-y-1"></ul>
+            </div>
+
+            <div class="mt-3 text-[11px] text-slate-500">
+              <span class="font-bold text-slate-700" data-bn="সর্বনিম্ন অর্ডার (MOQ):" data-en="Minimum Order (MOQ):">সর্বনিম্ন অর্ডার (MOQ):</span> 
+              <span id="modal-moq" class="text-emerald-700 font-semibold"></span>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-slate-100 flex items-center gap-3">
+            <div class="flex items-center border border-slate-200 rounded-xl bg-slate-50">
+              <button onclick="updateModalQty(-1)" class="w-8 h-9 flex items-center justify-center text-sm text-slate-600 hover:bg-slate-200 rounded-l-xl">-</button>
+              <input type="number" id="modal-qty" value="1" min="1" class="w-10 text-center text-xs font-bold bg-transparent text-slate-800 outline-none">
+              <button onclick="updateModalQty(1)" class="w-8 h-9 flex items-center justify-center text-sm text-slate-600 hover:bg-slate-200 rounded-r-xl">+</button>
+            </div>
+            
+            <button 
+              onclick="addModalItemToCart()"
+              class="flex-1 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs rounded-xl transition-all shadow-md shadow-emerald-700/20 flex items-center justify-center gap-1.5">
+              <i class="fa-solid fa-cart-plus"></i>
+              <span data-bn="কার্টে যোগ করুন" data-en="Add to Cart">কার্টে যোগ করুন</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Checkout Modal -->
+  <div id="checkout-modal" class="fixed inset-0 z-50 modal-backdrop hidden flex items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-white rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl relative my-8 animate-in fade-in duration-200">
+      
+      <button onclick="closeCheckoutModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-600">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+
+      <div class="flex items-center gap-2 mb-6">
+        <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center text-base">
+          <i class="fa-solid fa-truck-ramp-box"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-slate-900" data-bn="অর্ডার নিশ্চিতকরণ" data-en="Order Confirmation">অর্ডার নিশ্চিতকরণ</h3>
+          <p class="text-xs text-slate-500" data-bn="আপনার ডেলিভারির তথ্য দিন এবং অর্ডার সম্পন্ন করুন" data-en="Enter your delivery information and confirm order">আপনার ডেলিভারির তথ্য দিন এবং অর্ডার সম্পন্ন করুন</p>
+        </div>
+      </div>
+
+      <form id="checkout-form" class="space-y-4">
+        
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1" data-bn="আপনার নাম *" data-en="Your Full Name *">আপনার নাম *</label>
+          <input type="text" id="checkout-name" required data-placeholder-bn="পূর্ণ নাম লিখুন" data-placeholder-en="Enter your full name" placeholder="পূর্ণ নাম লিখুন" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-600 focus:outline-none">
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1" data-bn="মোবাইল নম্বর *" data-en="Mobile Number *">মোবাইল নম্বর *</label>
+            <input type="tel" id="checkout-phone" required data-placeholder-bn="০১XXXXXXXXX" data-placeholder-en="01XXXXXXXXX" placeholder="০১XXXXXXXXX" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-600 focus:outline-none">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1" data-bn="ডেলিভারি এরিয়া *" data-en="Delivery Area *">ডেলিভারি এরিয়া *</label>
+            <select id="checkout-area" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-600 focus:outline-none bg-white">
+              <option value="dhaka" data-bn="ঢাকার ভেতরে (৳৮০)" data-en="Inside Dhaka (৳80)">ঢাকার ভেতরে (৳৮০)</option>
+              <option value="outside" data-bn="ঢাকার বাইরে (৳১৫০)" data-en="Outside Dhaka (৳150)">ঢাকার বাইরে (৳১৫০)</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1" data-bn="সম্পূর্ণ ঠিকানা (বাসা/অফিস নম্বর, রোড, এলাকা) *" data-en="Full Address (Office/House No, Road, Area) *">সম্পূর্ণ ঠিকানা (বাসা/অফিস নম্বর, রোড, এলাকা) *</label>
+          <textarea id="checkout-address" required rows="2" data-placeholder-bn="বিস্তারিত ঠিকানা লিখুন..." data-placeholder-en="Enter detailed delivery address..." placeholder="বিস্তারিত ঠিকানা লিখুন..." class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-600 focus:outline-none"></textarea>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1" data-bn="বিশেষ কোনো নির্দেশনা (ঐচ্ছিক)" data-en="Special Instructions (Optional)">বিশেষ কোনো নির্দেশনা (ঐচ্ছিক)</label>
+          <input type="text" id="checkout-notes" data-placeholder-bn="যেমন: লোগো প্রিন্ট বা নির্দিষ্ট ডেলিভারি টাইম..." data-placeholder-en="E.g., logo print style or delivery time..." placeholder="যেমন: লোগো প্রিন্ট বা নির্দিষ্ট ডেলিভারি টাইম..." class="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs focus:ring-2 focus:ring-emerald-600 focus:outline-none">
+        </div>
+
+        <!-- Payment Method -->
+        <div class="pt-2">
+          <label class="block text-xs font-bold text-slate-700 mb-2" data-bn="পেমেন্ট মেথড নির্বাচন করুন" data-en="Select Payment Method">পেমেন্ট মেথড নির্বাচন করুন</label>
+          <div class="grid grid-cols-2 gap-3 text-xs">
+            <label class="flex items-center gap-2 p-3 border border-emerald-300 bg-emerald-50/50 rounded-xl cursor-pointer">
+              <input type="radio" name="payment_method" value="COD" checked class="text-emerald-600 focus:ring-emerald-500">
+              <span class="font-semibold text-slate-800" data-bn="ক্যাশ অন ডেলিভারি" data-en="Cash on Delivery">ক্যাশ অন ডেলিভারি</span>
+            </label>
+            <label class="flex items-center gap-2 p-3 border border-slate-200 rounded-xl cursor-pointer hover:bg-slate-50">
+              <input type="radio" name="payment_method" value="bKash/Nagad" class="text-emerald-600 focus:ring-emerald-500">
+              <span class="font-semibold text-slate-800" data-bn="বিকাশ / নগদ (অ্যাডভান্স)" data-en="bKash / Nagad (Advance)">বিকাশ / নগদ (অ্যাডভান্স)</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Order Summary Box -->
+        <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200 mt-4 space-y-2">
+          <div class="text-xs font-bold text-slate-700 mb-1" data-bn="অর্ডার সামারি:" data-en="Order Summary:">অর্ডার সামারি:</div>
+          <div id="checkout-summary-items" class="max-h-28 overflow-y-auto pr-1"></div>
+          
+          <div class="pt-2 border-t border-slate-200 flex justify-between text-xs text-slate-600">
+            <span data-bn="পণ্য উপমোট:" data-en="Subtotal:">পণ্য উপমোট:</span>
+            <span id="checkout-subtotal" class="font-semibold">৳০</span>
+          </div>
+          <div class="flex justify-between text-xs text-slate-600">
+            <span data-bn="ডেলিভারি চার্জ:" data-en="Delivery Charge:">ডেলিভারি চার্জ:</span>
+            <span id="checkout-shipping" class="font-semibold">৳৮০</span>
+          </div>
+          <div class="flex justify-between text-sm font-bold text-emerald-800 pt-1 border-t border-slate-200">
+            <span data-bn="সর্বমোট প্রদেয়:" data-en="Total Payable:">সর্বমোট প্রদেয়:</span>
+            <span id="checkout-total">৳০</span>
+          </div>
+        </div>
+
+        <button type="submit" class="w-full py-3 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-sm rounded-xl transition-all shadow-md shadow-emerald-700/20 flex items-center justify-center gap-2">
+          <i class="fa-solid fa-circle-check"></i>
+          <span data-bn="অর্ডার প্লেস করুন" data-en="Place Order">অর্ডার প্লেস করুন</span>
+        </button>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- Corporate Quotation Modal -->
+  <div id="quotation-modal" class="fixed inset-0 z-50 modal-backdrop hidden flex items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative my-8 animate-in fade-in duration-200">
+      
+      <button onclick="closeQuotationModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-600">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+
+      <div class="flex items-center gap-2 mb-6">
+        <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center text-base">
+          <i class="fa-solid fa-file-invoice"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-slate-900" data-bn="কর্পোরেট বাল্ক কোটেশন রিকোয়েস্ট" data-en="Corporate Bulk Quotation Request">কর্পোরেট বাল্ক কোটেশন রিকোয়েস্ট</h3>
+          <p class="text-xs text-slate-500" data-bn="আপনার তথ্য দিন, আমরা দ্রুত অফিশিয়াল প্রোপোজাল পাঠাব" data-en="Submit your info, we will promptly send an official proposal">আপনার তথ্য দিন, আমরা দ্রুত অফিশিয়াল প্রোপোজাল পাঠাব</p>
+        </div>
+      </div>
+
+      <form id="quotation-form" class="space-y-4">
+        
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1" data-bn="কোম্পানি / প্রতিষ্ঠানের নাম *" data-en="Company / Organization Name *">কোম্পানি / প্রতিষ্ঠানের নাম *</label>
+          <input type="text" id="quote-company" required data-placeholder-bn="যেমন: গ্রামীণফোন, ব্র্যাক, বিকাশ..." data-placeholder-en="E.g.: Grameenphone, BRAC, bKash..." placeholder="যেমন: গ্রামীণফোন, ব্র্যাক, বিকাশ..." class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-600 focus:outline-none">
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1" data-bn="যোগাযোগকারীর নাম *" data-en="Contact Person Name *">যোগাযোগকারীর নাম *</label>
+            <input type="text" id="quote-name" required data-placeholder-bn="আপনার নাম" data-placeholder-en="Your name" placeholder="আপনার নাম" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-600 focus:outline-none">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1" data-bn="মোবাইল / হোয়াটসঅ্যাপ নম্বর *" data-en="Mobile / WhatsApp Number *">মোবাইল / হোয়াটসঅ্যাপ নম্বর *</label>
+            <input type="tel" id="quote-phone" required data-placeholder-bn="০১XXXXXXXXX" data-placeholder-en="01XXXXXXXXX" placeholder="০১XXXXXXXXX" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-600 focus:outline-none">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1" data-bn="পণ্য নির্বাচন করুন" data-en="Select Product">পণ্য নির্বাচন করুন</label>
+            <select id="quote-product" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs focus:ring-2 focus:ring-emerald-600 focus:outline-none bg-white">
+              <!-- Rendered by JS -->
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1" data-bn="সম্ভাব্য পরিমাণ (Pieces) *" data-en="Estimated Quantity (Pieces) *">সম্ভাব্য পরিমাণ (Pieces) *</label>
+            <input type="number" id="quote-quantity" required min="10" data-placeholder-bn="যেমন: ৫০, ১০০, ৫০০..." data-placeholder-en="E.g.: 50, 100, 500..." placeholder="যেমন: ৫০, ১০০, ৫০০..." class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-600 focus:outline-none">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1" data-bn="নির্দিষ্ট কোনো রিকোয়ারমেন্ট বা ডেলিভারি ডেডলাইন" data-en="Specific Requirements or Delivery Deadline">নির্দিষ্ট কোনো রিকোয়ারমেন্ট বা ডেলিভারি ডেডলাইন</label>
+          <textarea id="quote-details" rows="2" data-placeholder-bn="লোগো প্রিন্টের ধরন, বক্স প্যাকিং ইত্যাদি সম্পর্কে কিছু জানাতে চাইলে লিখুন..." data-placeholder-en="Specify logo branding type, box packing preferences, deadline etc..." placeholder="লোগো প্রিন্টের ধরন, বক্স প্যাকিং ইত্যাদি সম্পর্কে কিছু জানাতে চাইলে লিখুন..." class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs focus:ring-2 focus:ring-emerald-600 focus:outline-none"></textarea>
+        </div>
+
+        <div class="p-3 bg-emerald-50 rounded-xl border border-emerald-200 text-[11px] text-emerald-800 flex items-center gap-2">
+          <i class="fa-solid fa-circle-info text-emerald-600"></i>
+          <span data-bn="সাবমিট করার পর তথ্যটি সরাসরি আমাদের হোয়াটসঅ্যাপ কর্পোরেট প্যানেলে যুক্ত হবে।" data-en="After submitting, the proposal request connects directly to our WhatsApp corporate desk.">সাবমিট করার পর তথ্যটি সরাসরি আমাদের হোয়াটসঅ্যাপ কর্পোরেট প্যানেলে যুক্ত হবে।</span>
+        </div>
+
+        <button type="submit" class="w-full py-3 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-sm rounded-xl transition-all shadow-md shadow-emerald-700/20 flex items-center justify-center gap-2">
+          <i class="fa-brands fa-whatsapp text-base"></i>
+          <span data-bn="হোয়াটসঅ্যাপে কোটেশন পাঠান" data-en="Send Quotation Request on WhatsApp">হোয়াটসঅ্যাপে কোটেশন পাঠান</span>
+        </button>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- Order Success Modal -->
+  <div id="success-modal" class="fixed inset-0 z-50 modal-backdrop hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-8 shadow-2xl text-center relative animate-in fade-in zoom-in duration-200">
+      
+      <div class="w-16 h-16 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center text-3xl mx-auto mb-4 animate-bounce">
+        <i class="fa-solid fa-check"></i>
+      </div>
+
+      <h3 class="text-xl font-bold text-slate-900" data-bn="অভিনন্দন! অর্ডার সফল হয়েছে" data-en="Congratulations! Order Placed Successfully">অভিনন্দন! অর্ডার সফল হয়েছে</h3>
+      <p class="text-xs text-slate-500 mt-1" data-bn="আপনার অর্ডারটি সিস্টেমে রেকর্ড করা হয়েছে।" data-en="Your order has been recorded in the system.">আপনার অর্ডারটি সিস্টেমে রেকর্ড করা হয়েছে।</p>
+
+      <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-left my-5 space-y-2 text-xs">
+        <div class="flex justify-between">
+          <span class="text-slate-500" data-bn="অর্ডার নম্বর:" data-en="Order ID:">অর্ডার নম্বর:</span>
+          <span id="success-order-id" class="font-bold text-slate-800"></span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-slate-500" data-bn="গ্রাহকের নাম:" data-en="Customer Name:">গ্রাহকের নাম:</span>
+          <span id="success-name" class="font-semibold text-slate-800"></span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-slate-500" data-bn="মোবাইল:" data-en="Mobile:">মোবাইল:</span>
+          <span id="success-phone" class="font-semibold text-slate-800"></span>
+        </div>
+        <div class="flex justify-between pt-2 border-t border-slate-200 font-bold text-emerald-800">
+          <span data-bn="মোট বিল:" data-en="Total Payable:">মোট বিল:</span>
+          <span id="success-total"></span>
+        </div>
+      </div>
+
+      <div class="space-y-2">
+        <a 
+          id="success-whatsapp-btn" 
+          href="#" 
+          target="_blank" 
+          class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl flex items-center justify-center gap-2 transition-all">
+          <i class="fa-brands fa-whatsapp text-sm"></i>
+          <span data-bn="হোয়াটসঅ্যাপে আপডেট নিশ্চিত করুন" data-en="Confirm on WhatsApp">হোয়াটসঅ্যাপে আপডেট নিশ্চিত করুন</span>
+        </a>
+
+        <button 
+          onclick="closeSuccessModal()" 
+          class="w-full py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs rounded-xl transition-all">
+          <span data-bn="আরও কেনাকাটা করুন" data-en="Continue Shopping">আরও কেনাকাটা করুন</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Floating Social Actions Stack -->
+  <div class="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-2.5">
+    
+    <!-- Facebook Floating Pill -->
+    <a 
+      href="https://www.facebook.com/prokritee360/" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      class="bg-[#1877F2] hover:bg-blue-700 text-white w-11 h-11 rounded-full flex items-center justify-center text-lg shadow-xl hover:scale-110 transition-all duration-300 group relative"
+      title="Facebook Page">
+      <i class="fa-brands fa-facebook-f"></i>
+      <span class="absolute right-14 bg-slate-900 text-white text-[11px] font-semibold py-1 px-2.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-md">
+        Facebook
+      </span>
+    </a>
+
+    <!-- Instagram Floating Pill -->
+    <a 
+      href="https://www.instagram.com/prokritee.com.bd/" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      class="bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white w-11 h-11 rounded-full flex items-center justify-center text-lg shadow-xl hover:scale-110 transition-all duration-300 group relative"
+      title="Instagram Profile">
+      <i class="fa-brands fa-instagram"></i>
+      <span class="absolute right-14 bg-slate-900 text-white text-[11px] font-semibold py-1 px-2.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-md">
+        Instagram
+      </span>
+    </a>
+
+    <!-- Floating WhatsApp Button -->
+    <a 
+      href="https://wa.me/8801911193642?text=হ্যালো,%20আমি%20প্রকৃতি%20(Prokritee)%20থেকে%20কর্পোরেট%20গিফট%20সম্পর্কে%20জানতে%20চাই।" 
+      target="_blank"
+      class="bg-emerald-600 hover:bg-emerald-700 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-2xl hover:scale-110 transition-all duration-300 pulse-badge group relative"
+      title="WhatsApp Chat">
+      <i class="fa-brands fa-whatsapp"></i>
+      <span class="absolute right-16 bg-slate-900 text-white text-[11px] font-semibold py-1.5 px-3 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-md" data-bn="হোয়াটসঅ্যাপে চ্যাট করুন" data-en="Chat on WhatsApp">
+        হোয়াটসঅ্যাপে চ্যাট করুন
+      </span>
+    </a>
+  </div>
+
+  <!-- Application Script -->
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
