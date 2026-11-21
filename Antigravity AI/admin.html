@@ -480,15 +480,21 @@
       <!-- ══ TAB 5: ORDERS ══ -->
       <div id="tab-orders" class="tab-content hidden space-y-6">
         <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm p-6 space-y-4">
-          <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-100 gap-3">
             <div>
               <h2 class="text-lg font-bold text-slate-900">🛍️ Orders & Quotation Inbox</h2>
               <p class="text-xs text-slate-500">Customer orders and corporate bulk quotation requests</p>
             </div>
-            <button onclick="loadOrders()" class="px-3 py-1.5 rounded-lg border border-slate-200 text-xs text-slate-600 hover:bg-slate-50">
-              <i class="fa-solid fa-rotate mr-1"></i> Refresh
-            </button>
+            <div class="flex items-center gap-2">
+              <button onclick="exportOrdersToCSV()" class="px-3 py-1.5 rounded-lg border border-slate-200 text-xs font-semibold text-slate-700 hover:bg-slate-50 flex items-center gap-1.5 transition-colors">
+                <i class="fa-solid fa-file-excel text-emerald-600"></i> Export CSV
+              </button>
+              <button onclick="loadOrders()" class="px-3 py-1.5 rounded-lg border border-slate-200 text-xs font-semibold text-slate-600 hover:bg-slate-50 flex items-center gap-1.5 transition-colors">
+                <i class="fa-solid fa-rotate"></i> Refresh
+              </button>
+            </div>
           </div>
+          <div id="orders-restore-banner" class="hidden p-4 bg-emerald-50 border border-emerald-200 rounded-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3"></div>
           <div class="overflow-x-auto rounded-xl border border-slate-100">
             <table class="w-full text-left border-collapse text-xs">
               <thead>
@@ -1624,11 +1630,110 @@
       const res = await fetch('/api/orders');
       if (res.ok) {
         allOrders = await res.json();
+        
+        // Cache to localStorage for safety against server restarts
+        if (allOrders && allOrders.length > 0) {
+          localStorage.setItem('pk_admin_cached_orders', JSON.stringify(allOrders));
+          hideRestoreBanner();
+        } else {
+          // Check if we have cached orders from before a server restart
+          checkAndShowRestoreBanner();
+        }
+
         document.getElementById('stat-orders').textContent          = allOrders.length;
         document.getElementById('badge-total-orders').textContent   = allOrders.length;
         renderOrdersTable();
       }
+    } catch (e) {
+      checkAndShowRestoreBanner();
+    }
+  }
+
+  function checkAndShowRestoreBanner() {
+    try {
+      const raw = localStorage.getItem('pk_admin_cached_orders');
+      if (raw) {
+        const cached = JSON.parse(raw);
+        if (Array.isArray(cached) && cached.length > 0 && allOrders.length === 0) {
+          const banner = document.getElementById('orders-restore-banner');
+          if (banner) {
+            banner.innerHTML = `
+              <div class="flex items-center gap-3">
+                <i class="fa-solid fa-cloud-arrow-up text-emerald-600 text-2xl"></i>
+                <div>
+                  <div class="font-bold text-slate-800 text-sm">সার্ভার স্লিপ/রিস্টার্টের ফলে লাইভ মেমোরি খালি হয়েছে</div>
+                  <div class="text-xs text-slate-600">আপনার ব্রাউজারের লোকাল ক্যাশে পূর্ববর্তী <b>${cached.length} টি অর্ডার</b> সংরক্ষিত আছে। ১-ক্লিকে ফিরিয়ে আনতে চান?</div>
+                </div>
+              </div>
+              <button onclick="restoreCachedOrders()" class="px-4 py-2 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs rounded-xl shadow transition-all flex items-center gap-2">
+                <i class="fa-solid fa-rotate-left"></i> সার্ভারে রিস্টোর করুন (${cached.length} টি)
+              </button>
+            `;
+            banner.classList.remove('hidden');
+          }
+        }
+      }
     } catch (e) {}
+  }
+
+  function hideRestoreBanner() {
+    const banner = document.getElementById('orders-restore-banner');
+    if (banner) banner.classList.add('hidden');
+  }
+
+  async function restoreCachedOrders() {
+    try {
+      const raw = localStorage.getItem('pk_admin_cached_orders');
+      if (!raw) return;
+      const cached = JSON.parse(raw);
+      if (!Array.isArray(cached) || cached.length === 0) return;
+
+      const res = await fetch('/api/orders/bulk-sync', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ orders: cached })
+      });
+      if (res.ok) {
+        showAdminToast(`${cached.length} orders restored to server successfully!`);
+        await loadOrders();
+      } else {
+        showAdminToast('Failed to restore orders. Please check login.');
+      }
+    } catch (e) {
+      showAdminToast('Error restoring orders: ' + e.message);
+    }
+  }
+
+  function exportOrdersToCSV() {
+    if (!allOrders || allOrders.length === 0) {
+      showAdminToast('No orders to export!');
+      return;
+    }
+    const headers = ['Order ID', 'Type', 'Customer Name', 'Company', 'Phone', 'Address', 'Area', 'Payment Method', 'Total', 'Status', 'Date', 'Items'];
+    const rows = allOrders.map(o => [
+      `"${o.id || ''}"`,
+      `"${o.type || 'order'}"`,
+      `"${(o.customerName || '').replace(/"/g, '""')}"`,
+      `"${(o.company || '').replace(/"/g, '""')}"`,
+      `"${o.phone || ''}"`,
+      `"${(o.address || '').replace(/"/g, '""')}"`,
+      `"${o.area || ''}"`,
+      `"${o.paymentMethod || 'COD'}"`,
+      o.total || 0,
+      `"${o.status || 'Pending'}"`,
+      `"${o.createdAt || ''}"`,
+      `"${((o.items || []).map(i => `${i.quantity}x ${i.name || i.nameBn || i.code} (৳${i.price})`).join('; ')).replace(/"/g, '""')}"`
+    ]);
+    const csvContent = "\uFEFF" + [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `prokritee_orders_${new Date().toISOString().slice(0,10)}.csv`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    showAdminToast('Orders exported to CSV!');
   }
 
   function renderOrdersTable() {
@@ -1649,7 +1754,7 @@
           </span>
         </td>
         <td class="p-3">
-          <div class="font-bold text-slate-800 text-xs">${o.customerName||'N/A'} ${o.company?`(${o.company})`:''}}</div>
+          <div class="font-bold text-slate-800 text-xs">${o.customerName||'N/A'} ${o.company?`(${o.company})`:''}</div>
           <a href="https://wa.me/88${o.phone}" target="_blank" class="text-[11px] text-emerald-700 hover:underline flex items-center gap-1 mt-0.5">
             <i class="fa-brands fa-whatsapp"></i> ${o.phone}
           </a>

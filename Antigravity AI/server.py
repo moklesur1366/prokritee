@@ -22,6 +22,8 @@ import time
 import uuid
 import hashlib
 import urllib.parse
+import urllib.request
+import threading
 import mimetypes
 import email
 from email.policy import default
@@ -41,9 +43,157 @@ SETTINGS_FILE = os.path.join(DATA_DIR, "settings.json")
 USERS_FILE    = os.path.join(DATA_DIR, "users.json")
 APP_JS_FILE   = os.path.join(BASE_DIR, "assets", "js", "app.js")
 
+# Server tracking & Keep-Alive URL
+SERVER_START_TIME = time.time()
+PUBLIC_URL = os.environ.get("RENDER_EXTERNAL_URL", os.environ.get("PUBLIC_URL", "https://prokritee.onrender.com")).rstrip("/")
+
 # In-memory sessions: {session_token: {username, role, created_at}}
 SESSIONS = {}
 SESSION_MAX_AGE = 24 * 3600  # 24 hours
+
+# ─── Cloud Storage & Persistence Helpers ─────────────────────────────────────
+
+def save_order_to_cloud(order):
+    """Save order to cloud storage (Google Sheet / Supabase) to survive container restarts."""
+    # 1. Google Sheets Webhook
+    gsheet_url = os.environ.get("GOOGLE_SHEET_WEBHOOK", "").strip()
+    if gsheet_url:
+        try:
+            data = json.dumps(order).encode("utf-8")
+            req = urllib.request.Request(
+                gsheet_url,
+                data=data,
+                headers={"Content-Type": "application/json"}
+            )
+            with urllib.request.urlopen(req, timeout=10) as resp:
+                print(f"✓ Order {order.get('id')} synced to Google Sheet")
+        except Exception as e:
+            print(f"Google Sheet sync: {e}")
+
+    # 2. Supabase REST API
+    sb_url = os.environ.get("SUPABASE_URL", "").strip().rstrip("/")
+    sb_key = os.environ.get("SUPABASE_KEY", "").strip()
+    if sb_url and sb_key:
+        try:
+            endpoint = f"{sb_url}/rest/v1/orders"
+            payload = json.dumps({
+                "id": str(order.get("id")),
+                "type": order.get("type", "order"),
+                "customer_name": order.get("customerName", ""),
+                "company": order.get("company", ""),
+                "phone": order.get("phone", ""),
+                "address": order.get("address", ""),
+                "area": order.get("area", "dhaka"),
+                "payment_method": order.get("paymentMethod", "COD"),
+                "total": int(order.get("total", 0)),
+                "items": order.get("items", []),
+                "notes": order.get("notes", ""),
+                "status": order.get("status", "Pending"),
+                "created_at": order.get("createdAt", time.strftime("%Y-%m-%d %H:%M:%S"))
+            }).encode("utf-8")
+            req = urllib.request.Request(
+                endpoint,
+                data=payload,
+                headers={
+                    "Content-Type": "application/json",
+                    "apikey": sb_key,
+                    "Authorization": f"Bearer {sb_key}",
+                    "Prefer": "resolution=merge-duplicates"
+                }
+            )
+            with urllib.request.urlopen(req, timeout=10) as resp:
+                print(f"✓ Order {order.get('id')} synced to Supabase")
+        except Exception as e:
+            print(f"Supabase sync: {e}")
+
+def load_orders_from_cloud():
+    """Fetch orders from cloud storage if configured."""
+    # 1. Supabase
+    sb_url = os.environ.get("SUPABASE_URL", "").strip().rstrip("/")
+    sb_key = os.environ.get("SUPABASE_KEY", "").strip()
+    if sb_url and sb_key:
+        try:
+            endpoint = f"{sb_url}/rest/v1/orders?select=*&order=created_at.desc"
+            req = urllib.request.Request(
+                endpoint,
+                headers={"apikey": sb_key, "Authorization": f"Bearer {sb_key}"}
+            )
+            with urllib.request.urlopen(req, timeout=10) as resp:
+                data = json.loads(resp.read().decode("utf-8"))
+                orders = []
+                for r in data:
+                    orders.append({
+                        "id": r.get("id"),
+                        "type": r.get("type", "order"),
+                        "customerName": r.get("customer_name", ""),
+                        "company": r.get("company", ""),
+                        "phone": r.get("phone", ""),
+                        "address": r.get("address", ""),
+                        "area": r.get("area", "dhaka"),
+                        "paymentMethod": r.get("payment_method", "COD"),
+                        "total": r.get("total", 0),
+                        "items": r.get("items", []),
+                        "notes": r.get("notes", ""),
+                        "status": r.get("status", "Pending"),
+                        "createdAt": r.get("created_at", "")
+                    })
+                return orders
+        except Exception as e:
+            print(f"Supabase load: {e}")
+
+    # 2. Google Sheets
+    gsheet_url = os.environ.get("GOOGLE_SHEET_WEBHOOK", "").strip()
+    if gsheet_url:
+        try:
+            req = urllib.request.Request(gsheet_url, headers={"User-Agent": "Prokritee-Server/1.0"})
+            with urllib.request.urlopen(req, timeout=10) as resp:
+                data = json.loads(resp.read().decode("utf-8"))
+                if isinstance(data, list):
+                    return data
+                if isinstance(data, dict) and "orders" in data:
+                    return data["orders"]
+        except Exception as e:
+            print(f"Google Sheet load: {e}")
+
+    return None
+
+def get_persisted_orders():
+    """Load orders, merging local JSON and cloud orders if available."""
+    local_orders = load_json(ORDERS_FILE, [])
+    cloud_orders = load_orders_from_cloud()
+    if cloud_orders:
+        merged = {str(o.get("id")): o for o in local_orders}
+        for o in cloud_orders:
+            merged[str(o.get("id"))] = o
+        orders_list = list(merged.values())
+        orders_list.sort(key=lambda x: str(x.get("createdAt", "")), reverse=True)
+        save_json(ORDERS_FILE, orders_list)
+        return orders_list
+    return local_orders
+
+# ─── Anti-Sleep Keep-Alive Background Thread ──────────────────────────────────
+
+def keep_alive_loop():
+    """Background daemon that pings self every 9 minutes to prevent Render Free Tier from idling to sleep."""
+    time.sleep(25)  # Wait for server startup
+    ping_url = f"{PUBLIC_URL}/api/ping"
+    print(f"🔄 Keep-Alive daemon active. Pinging {ping_url} every 9 minutes to stay awake.")
+    while True:
+        try:
+            req = urllib.request.Request(
+                ping_url,
+                headers={"User-Agent": "Prokritee-KeepAlive-Daemon/1.0"}
+            )
+            with urllib.request.urlopen(req, timeout=15) as resp:
+                print(f"[{time.strftime('%H:%M:%S')}] ✓ Keep-Alive ping OK ({resp.status})")
+        except Exception as e:
+            # Don't crash if network is temporarily unavailable
+            pass
+        time.sleep(540)  # 9 minutes (Render sleeps at 15 minutes)
+
+def start_keepalive():
+    t = threading.Thread(target=keep_alive_loop, daemon=True)
+    t.start()
 
 # ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -93,17 +243,36 @@ def is_authenticated(handler):
     return session is not None
 
 def ensure_default_admin():
-    """Create default admin if users.json is empty/missing."""
+    """Create or enforce admin user. Prioritizes ADMIN_USERNAME & ADMIN_PASSWORD env vars."""
+    env_un = os.environ.get("ADMIN_USERNAME", "admin").strip()
+    env_pw = os.environ.get("ADMIN_PASSWORD", "").strip()
     users = load_json(USERS_FILE, [])
+
     if not users:
+        pw_to_use = env_pw if env_pw else "admin123"
         users = [{
-            "username": "admin",
-            "password": hash_password("admin123"),
+            "username": env_un,
+            "password": hash_password(pw_to_use),
             "role": "admin",
             "fullName": "Administrator"
         }]
         save_json(USERS_FILE, users)
-        print("ℹ  Created default admin user. Username: admin | Password: admin123")
+        print(f"ℹ  Created admin user. Username: {env_un}")
+    else:
+        # If ADMIN_PASSWORD is set in Render environment, ensure it is locked into users.json
+        if env_pw:
+            target = next((u for u in users if u["username"].lower() == env_un.lower()), None)
+            if target:
+                target["password"] = hash_password(env_pw)
+            else:
+                users.append({
+                    "username": env_un,
+                    "password": hash_password(env_pw),
+                    "role": "admin",
+                    "fullName": "Administrator"
+                })
+            save_json(USERS_FILE, users)
+            print(f"ℹ  Enforced admin password from environment variable for '{env_un}'.")
     return users
 
 # ─── App.js sync ──────────────────────────────────────────────────────────────
@@ -206,6 +375,15 @@ class ProkriteeHandler(http.server.SimpleHTTPRequestHandler):
             return super().do_GET()
 
         # ── Public API endpoints (no auth required) ──
+        if path == "/api/ping":
+            uptime = int(time.time() - SERVER_START_TIME)
+            return self.send_json_response({
+                "status": "online",
+                "service": "Prokritee Store Backend",
+                "uptimeSeconds": uptime,
+                "timestamp": time.strftime("%Y-%m-%d %H:%M:%S")
+            })
+
         if path == "/api/products":
             products = load_json(PRODUCTS_FILE, [])
             category = query.get("category", [None])[0]
@@ -241,7 +419,7 @@ class ProkriteeHandler(http.server.SimpleHTTPRequestHandler):
         if path == "/api/stats":
             products = load_json(PRODUCTS_FILE, [])
             sections = load_json(SECTIONS_FILE, [])
-            orders   = load_json(ORDERS_FILE,   [])
+            orders   = get_persisted_orders()
             return self.send_json_response({
                 "totalProducts":      len(products),
                 "totalSections":      len(sections),
@@ -253,7 +431,7 @@ class ProkriteeHandler(http.server.SimpleHTTPRequestHandler):
         if path == "/api/orders":
             if not is_authenticated(self):
                 return self.send_json_response({"error": "Unauthorized"}, 401)
-            return self.send_json_response(load_json(ORDERS_FILE, []))
+            return self.send_json_response(get_persisted_orders())
 
         # ── Auth check endpoint ──
         if path == "/api/auth-check":
@@ -499,7 +677,30 @@ class ProkriteeHandler(http.server.SimpleHTTPRequestHandler):
             }
             orders.insert(0, order)
             save_json(ORDERS_FILE, orders)
+            # Sync to cloud storage if configured
+            save_order_to_cloud(order)
             return self.send_json_response({"success": True, "order": order}, 201)
+
+        # ── BULK SYNC / RESTORE ORDERS ──
+        if path == "/api/orders/bulk-sync":
+            if not is_authenticated(self):
+                return self.send_json_response({"error": "Unauthorized"}, 401)
+            incoming = body.get("orders", [])
+            if not isinstance(incoming, list):
+                return self.send_json_response({"error": "orders must be a list"}, 400)
+            existing = load_json(ORDERS_FILE, [])
+            merged = {str(o.get("id")): o for o in existing}
+            added = 0
+            for o in incoming:
+                oid = str(o.get("id"))
+                if oid and oid not in merged:
+                    merged[oid] = o
+                    added += 1
+                    save_order_to_cloud(o)
+            orders_list = list(merged.values())
+            orders_list.sort(key=lambda x: str(x.get("createdAt", "")), reverse=True)
+            save_json(ORDERS_FILE, orders_list)
+            return self.send_json_response({"success": True, "restored": added, "total": len(orders_list)})
 
         # ── SETTINGS ──
         if path == "/api/settings":
@@ -708,6 +909,8 @@ def start_server():
                 print("="*65)
                 print("Default Admin — Username: admin  |  Password: admin123")
                 print("Press Ctrl+C to stop.\n")
+                # Start Keep-Alive daemon to prevent cloud sleep
+                start_keepalive()
                 if not is_cloud:
                     try:
                         webbrowser.open(login_url)

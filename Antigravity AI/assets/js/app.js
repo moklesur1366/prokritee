@@ -14452,7 +14452,17 @@ function updateCartUI() {
 
 function toggleCartDrawer() {
   const drawer = document.getElementById('cart-drawer');
+  const backdrop = document.getElementById('cart-backdrop');
+  if (!drawer) return;
+  const isOpening = drawer.classList.contains('translate-x-full');
   drawer.classList.toggle('translate-x-full');
+  if (backdrop) {
+    if (isOpening) {
+      backdrop.classList.remove('hidden');
+    } else {
+      backdrop.classList.add('hidden');
+    }
+  }
 }
 
 // Checkout Modal
@@ -14462,16 +14472,28 @@ function openCheckoutModal() {
     return;
   }
   const drawer = document.getElementById('cart-drawer');
+  const backdrop = document.getElementById('cart-backdrop');
   if (drawer && !drawer.classList.contains('translate-x-full')) {
     drawer.classList.add('translate-x-full');
   }
+  if (backdrop) {
+    backdrop.classList.add('hidden');
+  }
 
   updateCheckoutSummary();
-  document.getElementById('checkout-modal').classList.remove('hidden');
+  const checkoutModal = document.getElementById('checkout-modal');
+  if (checkoutModal) {
+    checkoutModal.classList.remove('hidden');
+    // Ensure modal scrolls to top when opened on mobile
+    checkoutModal.scrollTop = 0;
+  }
 }
 
 function closeCheckoutModal() {
-  document.getElementById('checkout-modal').classList.add('hidden');
+  const checkoutModal = document.getElementById('checkout-modal');
+  if (checkoutModal) {
+    checkoutModal.classList.add('hidden');
+  }
 }
 
 function updateCheckoutSummary() {
@@ -14506,7 +14528,7 @@ function updateCheckoutSummary() {
   }).join('');
 }
 
-function handleCheckoutSubmit(e) {
+async function handleCheckoutSubmit(e) {
   e.preventDefault();
   const name = document.getElementById('checkout-name').value.trim();
   const phone = document.getElementById('checkout-phone').value.trim();
@@ -14544,9 +14566,16 @@ function handleCheckoutSubmit(e) {
   message += `*সর্বমোট প্রদেয়: ৳${grandTotal}*\n\n`;
   message += `দোকানের ঠিকানা: ${CONFIG.address}`;
 
-  // Post order to backend API if running
+  // Disable submit button during request
+  const submitBtn = e.target.querySelector('button[type="submit"]');
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> প্রসেসিং...';
+  }
+
+  // Post order to backend API
   try {
-    fetch('/api/orders', {
+    const res = await fetch('/api/orders', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -14567,8 +14596,18 @@ function handleCheckoutSubmit(e) {
           price: i.price
         }))
       })
-    }).catch(() => {});
-  } catch (err) {}
+    });
+    if (!res.ok) {
+      console.warn('Backend order save status:', res.status);
+    }
+  } catch (err) {
+    console.error('Failed to post order to backend:', err);
+  } finally {
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = '<i class="fa-solid fa-circle-check"></i> <span data-bn="অর্ডার প্লেস করুন" data-en="Place Order">অর্ডার প্লেস করুন</span>';
+    }
+  }
 
   closeCheckoutModal();
   showOrderSuccess(orderId, name, phone, grandTotal, message);
